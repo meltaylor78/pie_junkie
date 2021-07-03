@@ -1,6 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1 class="text-success">It works!</h1>
+    <div class="containe-fluid">
+        <div class="row m-3">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <h5>Ready to get started!</h5>
+                <a href="#" class="btn btn-success">Start Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="containe-fluid">
+        <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <img class="card-img-top retroPi_image" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 test>RetroPie: Build Your Own Raspberry Pi Retro Gaming Rig</h5>
+                                <p class="card-text">For around ¢50, you can build your very own vintage gaming rig 
+                                                    that will hook up to any HDMI-enabled TV or monitor. This guide will show you everything you need to do to get playing.
+                                                    <a href="https://howchoo.com/g/n2qyzdk5zdm/build-your-own-raspberry-pi-retro-gaming-rig"> More Info</a>
+                                                xx
+                                                </p>
+                            </div>
+                      </div> 
+                </div>
+            <div class="col-6">
+                    <div class="card">
+                        <img class="card-img-top" src="% static 'home/images/.retroPi.jpg' %" alt="Card image cap">
+                        <div class="card-body">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock%}
