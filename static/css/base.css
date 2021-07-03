@@ -7,8 +7,12 @@
 .nav_text, .footer_text{
     color: white;
 }
+
+.footer_text{
+    font-size: 10px;
+}
 .footer_text, h5{
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .fa-raspberry-pi, strong{
     padding-left: 10px;
@@ -26,7 +30,24 @@
     padding-left: 50px;
 }
 .footericons{
-    font-size: 35px;
-    padding-left: 50px;
+    font-size: 20px;
+    padding-left: 15px;
     text-align: center;
+    padding-bottom: 10px;
+}
+@media only screen and (min-width: 768px) {
+    .footer_text{
+        font-size: 20px;
+    }
+    .footer_text, p{
+        font-size: 15px;
+    }
+    .footer_text, h5{
+        padding-top: 10px;
+    }
+    .footericons{
+        font-size: 35px;
+        padding-left: 50px;
+        text-align: center;
+    }
 }
