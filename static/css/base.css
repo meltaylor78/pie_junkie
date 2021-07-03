@@ -1,0 +1,21 @@
+
+
+/* ___________ Main Nav Bar ___________ */
+.nav_row{
+    background-color: #154245;
+}
+.nav_text{
+    color: white;
+}
+.fa-raspberry-pi, strong{
+    padding-left: 10px;
+}
+.nav_search{
+    background-color: white;
+}
+.fa-shopping-cart, .fa-user{
+    color: white;
+}
+.nav_right_col{
+    padding-right: 35px;
+}
