@@ -1,11 +1,14 @@
 
 
-/* ___________ Main Nav Bar ___________ */
-.nav_row{
-    background-color: #154245;
+/* ___________ Main Nav Bar & Footer ___________ */
+.nav_row, .footer_row{
+    background-color: #153243;
 }
-.nav_text{
+.nav_text, .footer_text{
     color: white;
+}
+.footer_text, h5{
+    padding-top: 10px;
 }
 .fa-raspberry-pi, strong{
     padding-left: 10px;
@@ -18,4 +21,12 @@
 }
 .nav_right_col{
     padding-right: 35px;
+}
+.footer_left{
+    padding-left: 50px;
+}
+.footericons{
+    font-size: 35px;
+    padding-left: 50px;
+    text-align: center;
 }
