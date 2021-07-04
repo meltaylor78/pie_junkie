@@ -60,9 +60,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # Retain, required by Allauth.
+                'django.template.context_processors.request',# Retain, required by Allauth.
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -80,7 +81,8 @@ SITE_ID = 1
 
 MAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # (sends confirmation mauls to console)
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  #  (allow autentication with e-mail or userIDs)
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  
+#  (allow autentication with e-mail or userIDs)
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
