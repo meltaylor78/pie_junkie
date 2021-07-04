@@ -1,6 +1,16 @@
 
-
-
-.retroPi_image {
-    background: url('../../media/retropie.jpg');
+/* -_-_-_-_-_-_-_-_-_-_ Card CSS _-_-_-_-_-_-_-_-_-_- */
+.card-img-top{
+    max-width: 100%;
+    max-height: 360px;
+    min-height: 360px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.card{
+    min-height: 600px;
+    max-height: 600px;
+    border: none;
+    }
