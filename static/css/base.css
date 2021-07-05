@@ -21,7 +21,6 @@ a {
     border-radius: 0;
 }
 .main_btn:hover{
-    border: none;
     background: #153243;
     color: white;
 }
