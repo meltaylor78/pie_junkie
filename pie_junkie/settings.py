@@ -61,7 +61,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',# Retain, required by Allauth.
+                'django.template.context_processors.request',
+                # Retain, required by Allauth.
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -80,9 +81,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-MAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # (sends confirmation mauls to console)
+MAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# (sends confirmation mauls to console)
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 #  (allow autentication with e-mail or userIDs)
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -110,16 +112,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
