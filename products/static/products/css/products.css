@@ -1,0 +1,14 @@
+# css for products page
+.product_row{
+    margin-bottom: 400px;
+}
+.card-img-top{
+    max-height: 360px;
+    min-height: 360px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fa-star{
+    color: orange;
+}

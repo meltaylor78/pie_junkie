@@ -1,4 +1,4 @@
-asgiref==3.4.0
+pyasgiref==3.4.0
 Django==3.2.4
 django-allauth==0.41.0
 include==0.2.2
