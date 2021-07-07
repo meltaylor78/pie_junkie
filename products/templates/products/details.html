@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-2 text-center">
+                {% if product.image %}
+                <a href="{% url 'details' product.id %}">
+                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+                {% else %}
+                <a href="{% url 'details' product.id %}">
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-lg-4 text-center mt-5">
+                <div class="row">
+                    <div class="col text-left">
+                        <h4>{{ product.name }}</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-left">
+                        <p>€ {{ product.price }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-left">
+                        <small class="text-muted"><i class="fas fa-tag mr-1"></i>{{ product.category }}</small>
+                    </div>
+                    <div class="col-6 text-left">
+                        {% if product.rating %}
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /5</small>
+                        {% else %}
+                        <small class="text-muted">No Rating</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col text-left">
+                        <p>{{ product.description}}</p>
+                    </div>
+                </div>
+                {% if product.power %}
+                <div class="row mt-1">
+                    <div class="col-12 text-left">
+                        <p><strong>Plug Type:</strong></p>
+                        <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                            <option value="ire_uk" selected>Ire / UK Plug</option>
+                            <option value="us">US Plug</option>
+                            <option value="eu" >EU Plug</option>
+                        </select>
+                    </div>
+                </div>
+                {% endif %}
+                {% if product.ram %}
+                <div class="row mt-1">
+                    <div class="col-12 text-left">
+                        <p><strong>Ram:</strong></p>
+                        <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                            <option value="2gb">2 Gb</option>
+                            <option value="4gb">4 Gb</option>
+                            <option value="8gb" selected>8 Gb</option>
+                        </select>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
