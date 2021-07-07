@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-6 text-left">
-                        <small class="text-muted"><i class="fas fa-tag mr-1"></i>{{ product.category }}</small>
+                        <a class="text-muted" href="{$ url 'products' %}?category={{ product.category.name }}"><i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}</a>
                     </div>
                     <div class="col-6 text-left">
                         {% if product.rating %}
