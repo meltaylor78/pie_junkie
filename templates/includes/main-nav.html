@@ -1,27 +1,15 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Products <i class="fas fa-chevron-down"></i>
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Raspberry Pi Consoles <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="raspberry pi links"">
-                <a href="" class="dropdown-item">ARaspberry Pi 4</a>
-                <a href="" class="dropdown-item">Raspberry Pi 3</a>
-                <a href="" class="dropdown-item">Raspberry Pi Zero</a>
-                <a href="" class="dropdown-item">Raspberry Pi Pico</a>
-                <a href="" class="dropdown-item">All Raspberry Pi</a>
+                <a href="{% url 'products' %}?category=raspberry_pi_4" class="dropdown-item">Raspberry Pi 4</a>
+                <a href="{% url 'products' %}?category=raspberry_pi_3" class="dropdown-item">Raspberry Pi 3</a>
+                <a href="{% url 'products' %}?category=raspberry_pi_zero" class="dropdown-item">Raspberry Pi Zero</a>
+                <a href="{% url 'products' %}?category=raspberry_pi_pico" class="dropdown-item">Raspberry Pi Pico</a>
+                <a href="{% url 'products' %}?category=raspberry_pi_4,raspberry_pi_3,raspberry_pi_zero,raspberry_pi_pico" class="dropdown-item">All Raspberry Pi</a>
             </div>
         </li>
 
@@ -30,21 +18,35 @@
                 Accessories <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="Accessories link">
-                <a href="" class="dropdown-item">Cables</a>
-                <a href="" class="dropdown-item">USB Dongles</a>
-                <a href="" class="dropdown-item">Components</a>
+                <a href="{% url 'products' %}?category=power_cable" class="dropdown-item">Power Cables</a>
+                <a href="{% url 'products' %}?category=vid_audio_cable" class="dropdown-item">Video / Audio Cables</a>
+                <a href="{% url 'products' %}?category=usb_dongles" class="dropdown-item">USB Dongles</a>
+                <a href="{% url 'products' %}?category=usb_dongles" class="dropdown-item">Components & Sensors</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Raspberry Kits <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="Raspberry kits link">
-                <a href="" class="dropdown-item">Gaming</a>
-                <a href="" class="dropdown-item">Projects</a>
-                <a href="" class="dropdown-item">Mini Projects</a>
-                <a href="" class="dropdown-item">All Kits</a>
+                <a href="{% url 'products' %}?category=game_kit" class="dropdown-item">Gaming</a>
+                <a href="{% url 'products' %}?category=project" class="dropdown-item">Projects</a>
+                <a href="{% url 'products' %}?category=mini_projects" class="dropdown-item">Mini Projects</a>
+                <a href="{% url 'products' %}?category=game_kit,project,mini_projects" class="dropdown-item">All Kits</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Product Sort <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Price (low to high)</a>
+                <a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Price (high to low)</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By Category</a>
             </div>
         </li>
     </ul>
