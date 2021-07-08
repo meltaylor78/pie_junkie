@@ -3,6 +3,7 @@ from .models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
 
+
 def all_products(request):
 
     products = Product.objects.all()
@@ -11,7 +12,6 @@ def all_products(request):
     sort = None
     direction = None
 
-
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -19,6 +19,8 @@ def all_products(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':
+                sortkey = 'category__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -37,18 +39,20 @@ def all_products(request):
                 messages.error(request, "No search criteria entered")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
-
     current_sorting = f'{sort}_{direction}'
-            
+
     context = {
         'products': products,
         'displayed_category': categories,
-        'current_sorting': current_sorting
+        'current_sorting': current_sorting,
+        'search_term': query
     }
     return render(request, 'products/products.html', context)
+
 
 def details(request, product_id):
 

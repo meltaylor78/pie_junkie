@@ -15,11 +15,11 @@ a {
     font-family: "serrat", sans-serif;
 }
 body{
-    overflow: hidden;
+    overflow-x: hidden;
 }
 /* ___________ Buttons ___________ */
 .main_btn{
-    border: solid 2px #153243;
+    border: solid 1px #153243;
     border-radius: 0;
 }
 .main_btn:hover{
