@@ -10,3 +10,7 @@
 .fa-star, .fa-tag{
     color: orange;
 }
+
+.product_title{
+    min-height: 75px;
+}
