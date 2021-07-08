@@ -14,7 +14,9 @@ p {
 a {
     font-family: "serrat", sans-serif;
 }
-
+body{
+    overflow: hidden;
+}
 /* ___________ Buttons ___________ */
 .main_btn{
     border: solid 2px #153243;
@@ -33,7 +35,10 @@ a {
 .nav_text, .footer_text{
     color: white;
 }
-
+.product-menu{
+    font-family: "Roboto Condensed", sans-serif;
+    color: #153243;;
+}
 .footer_text{
     font-size: 10px;
 }

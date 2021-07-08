@@ -34,62 +34,64 @@
     <title>Pie Junkie {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top "></header>
-      <div id="topnav" class="row pt-lg-2 d-none d-lg-flex nav_row">
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <h2 class="logo-font my-0 fab fa-raspberry-pi nav_text"><strong>Pie Junkie</strong></h2>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-            <form method="GET" action="{% url 'products' %}">
-                <div class="input-group w-100">
-                    <input class="form-control border border-black rounded-0 nav_search" type="text" name="search_box" placeholder="Product search">
-                    <div class="input-group-append">
-                        <button class="form-control rounded-0 btn btn-success" type="submit">
-                            <span class="icon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-            <ul class="list-inline list-unstyled text-lg-right my-0 nav_right_col">
-                <li class="list-inline-item dropdown">
-                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <p class="my-0 nav_text">My Account</p>
+        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex nav_row">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h2 class="logo-font my-0 fab fa-raspberry-pi nav_text"><strong>Pie Junkie</strong></h2>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control border border-black rounded-0 nav_search" type="text"
+                            name="search_box" placeholder="Product search">
+                        <div class="input-group-append">
+                            <button class="form-control rounded-0 btn btn-success" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
                         </div>
-                    </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                        
                     </div>
-                </li>
-                <li class="list-inline-item">
-                    <a class="" href="">
-                        <div class="text-center nav_text">
-                            <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                            <p class="my-0">
-                                to update
-                            </p>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <ul class="list-inline list-unstyled text-lg-right my-0 nav_right_col">
+                    <li class="list-inline-item dropdown">
+                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <p class="my-0 nav_text">My Account</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
                         </div>
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="" href="">
+                            <div class="text-center nav_text">
+                                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                                <p class="my-0">
+                                    to update
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            {% include 'includes/main-nav.html' %}
-        </nav>
-    </div>
-      
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    {% include 'includes/main-nav.html' %}
+                </nav>
+            </div>
+        </div>
     {% if messages %}
         <div class="messages-container"></div>
     {% endif %}
@@ -102,25 +104,26 @@
 
     {% block postloadjs%}
     {% endblock %}
-    <footer class="page-footer teal darken-4">
+    <footer class="fixed-bottom">
         <div class="container-fluid">
             <div class="row footer_row">
                 <div class="col-12 col-lg-6 my-auto footer_text footer_left">
                     <h5>Pie Junkie</h5>
-                    <p>All your <a href="https://www.raspberrypi.org/" target="_blank">Raspberry Pi</a> components, kits and tutorials</p>
+                    <p>All your <a href="https://www.raspberrypi.org/" target="_blank">Raspberry Pi</a> components, kits
+                        and tutorials</p>
                 </div>
                 <div class="col-12 col-lg-6 my-auto text-center">
                     <a class="footer_text" href="https://www.instagram.com/raspberrypi/" target="_blank"><i
-                        class="fab fa-instagram footericons" aria-hidden="true"></i> <span 
+                            class="fab fa-instagram footericons" aria-hidden="true"></i> <span
                             class="sr-only">Instagramlink.</span></a>
-                   <a class="footer_text" href="https://twitter.com/Raspberry_Pi" target="_blank"><i
-                        class="fab fa-twitter-square footericons" aria-hidden="true"></i> <span
+                    <a class="footer_text" href="https://twitter.com/Raspberry_Pi" target="_blank"><i
+                            class="fab fa-twitter-square footericons" aria-hidden="true"></i> <span
                             class="sr-only">Twitter link.</span></a>
                     <a class="footer_text" href="https://www.youtube.com/raspberrypi" target="_blank"><i
-                        class="fab fa-youtube-square footericons" aria-hidden="true"></i> <span
+                            class="fab fa-youtube-square footericons" aria-hidden="true"></i> <span
                             class="sr-only">Youtube link.</span></a>
                     <a class="footer_text" href="https://www.facebook.com/raspberrypi" target="_blank"><i
-                        class="fab fa-facebook-square footericons" aria-hidden="true"></i> <span
+                            class="fab fa-facebook-square footericons" aria-hidden="true"></i> <span
                             class="sr-only">Facebook link.</span></a>
                 </div>
             </div>
