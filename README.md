@@ -7,3 +7,4 @@ An issue arose, when selecting All Rasperberry Pi or all All kits, it displated 
 To resolve the issue, I updated the main nav page to pass in "All xxx" as the first category, this is not a valid DB value, 
 so in the views I extract the first item from the array if the array is more that one and secure it as varilable to be used in the template. 
 
+t
