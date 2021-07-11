@@ -3,6 +3,7 @@ from .models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+from .forms import ProductForm
 
 
 def all_products(request):
@@ -68,3 +69,24 @@ def details(request, product_id):
         'product': product,
     }
     return render(request, 'products/details.html', context)
+
+
+def new_product(request):
+    if request.method =='POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "New Product has been added.")
+            return redirect(reverse('new_product'))
+        else:
+            messages.error(request, 
+                "Add new product failed, please recheck the form is valid.")
+    else:
+        form = ProductForm()
+        
+    template = 'products/new_product.html'
+    context= {
+    'form': form,
+    }
+
+    return render(request, template, context)
