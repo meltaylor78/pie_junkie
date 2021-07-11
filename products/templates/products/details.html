@@ -34,11 +34,25 @@
                         <hr>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col text-left">
+                {% if request.user.is_superuser %}
+                <div class="row mb-1">
+                    <div class="col-12 col-md-6 text-left">
                         <p>€ {{ product.price }}</p>
                     </div>
+                    <div class="col-6 col-md-3 text-center">
+                        <a class="btn main_btn btn-sm" href="#">Edit Product</a>
+                    </div>
+                    <div class="col-6 col-md-3 text-center">                        
+                        <a class="btn btn-danger btn-sm" href="{% url 'delete_product' product.id %}">Delete</a>
+                    </div>
                 </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col text-left">
+                            <p>€ {{ product.price }}</p>
+                        </div>
+                    </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-6 text-left">
                         <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}"><i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}</a>
