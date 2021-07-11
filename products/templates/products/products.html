@@ -46,6 +46,7 @@
                 </p>
             </div>
             <div class="col-10 offset-1 col-md-4 mb-2 my-auto">
+                {% if products|length > 1 %}
                 <div class="sort-select-wrapper w-50 text-center text-l-left">
                     <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
@@ -59,6 +60,7 @@
                         <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
                     </select>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -107,7 +109,7 @@
                             
                                 <div class="col-10 offset-1 col-md-8 offset-md-2 text-center mt-5">
                                     <h6>Currently no products in this category</h6>
-                                    <a href="{% url 'products' %}" class="btn main_btn">All Products</a>
+                                    <a href="{% url 'products' %}" class="btn main_btn">All Products <i class="fas fa-chevron-right"></i></a>
                                 </div>
                             
                             {% endif %}
@@ -116,4 +118,36 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
+    
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
 {% endblock %}
