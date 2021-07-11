@@ -11,6 +11,7 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+    roll_up = None
 
     if request.GET:
         if 'sort' in request.GET:
