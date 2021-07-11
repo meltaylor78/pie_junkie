@@ -21,9 +21,13 @@
                 {% if search_term %}
                     <h4>Search Results</h4>  
                 {% elif displayed_category %}
-                    {% for cat in displayed_category %}
-                        <h4>{{ cat.friendly_name }}</h4>
-                    {% endfor %}
+                    {% if displayed_category|length > 1  %}
+                        <h4>{{ roll_up }}</h4>
+                    {% else %}
+                        {% for cat in displayed_category %}
+                            <h4>{{ cat.friendly_name }}</h4>
+                        {% endfor %}
+                    {% endif %}
                 {% else %}
                     <h4>Products</h4>
                 {% endif %}

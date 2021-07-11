@@ -30,6 +30,9 @@ def all_products(request):
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
+            if 'categories|length > 1':
+                roll_up = categories[0]
+            print(roll_up)
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
@@ -49,7 +52,8 @@ def all_products(request):
         'products': products,
         'displayed_category': categories,
         'current_sorting': current_sorting,
-        'search_term': query
+        'search_term': query,
+        'roll_up': roll_up
     }
     return render(request, 'products/products.html', context)
 
