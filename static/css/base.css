@@ -19,6 +19,7 @@ body{
 }
 /* ___________ Buttons ___________ */
 .main_btn{
+    background: white;
     border: solid 1px #153243 !important;
     border-radius: 0 !important;
 }
