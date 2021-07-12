@@ -17,6 +17,12 @@ a {
 body{
     overflow-x: hidden;
 }
+/* ___________ Messages ___________ */
+.messages_bar{
+    background-color: #153243;
+    color: white;
+    text-align: center;
+}
 /* ___________ Buttons ___________ */
 .main_btn{
     background: white;

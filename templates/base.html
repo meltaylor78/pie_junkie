@@ -103,7 +103,17 @@
             </div>
         </div>
     {% if messages %}
-        <div class="messages-container"></div>
+        <div class="messages-container"> 
+            <div class="row">
+                <div class="col-4 offset-4 messages_bar mt-1 mb-1">
+                    {% for message in messages%}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
     {% endif %}
 
     {% block page_header%}
