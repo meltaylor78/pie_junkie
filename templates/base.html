@@ -74,7 +74,7 @@
                                 <a href="#" class="dropdown-item">Logout</a>
                             {% else %}
                                 <a href="#" class="dropdown-item">Register</a>
-                                <a href="{#" class="dropdown-item">Login</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
                     </li>
@@ -114,7 +114,7 @@
 
     {% block postloadjs%}
     {% endblock %}
-    <footer class="bottom">
+    <footer class="footer">
         <div class="container-fluid">
             <div class="row footer_row">
                 <div class="col-12 col-lg-6 my-auto footer_text footer_left">
