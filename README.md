@@ -1,4 +1,6 @@
 
+load all from req.txt > pip3 install -r requirements.txt
+> python3.8 -m pip install --upgrade pip
 
 Features : Issues and fixes. 
 
