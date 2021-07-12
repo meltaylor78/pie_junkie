@@ -19,12 +19,12 @@ body{
 }
 /* ___________ Buttons ___________ */
 .main_btn{
-    border: solid 1px #153243;
-    border-radius: 0;
+    border: solid 1px #153243 !important;
+    border-radius: 0 !important;
 }
 .main_btn:hover{
-    background: #153243;
-    color: white;
+    background: #153243 !important;
+    color: white !important;
 }
 
 
