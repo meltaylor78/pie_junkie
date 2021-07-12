@@ -4,6 +4,7 @@ cycler==0.10.0
 Django==3.2.4
 django-allauth==0.41.0
 django-crispy-forms==1.12.0
+django-messages==0.6.0
 fabio==0.11.0
 h5py==3.3.0
 include==0.2.2
