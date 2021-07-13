@@ -33,13 +33,13 @@ body{
     background: #153243 !important;
     color: white !important;
 }
-.cart_btn{
+.invert_main_btn{
     background: #153243 !important;
     border: solid 1px #153243 !important;
     color: white !important;
     border-radius: 0 !important;
 }
-.cart_btn:hover{
+.invert_main_btn:hover{
     background: white !important;
     color: #153243 !important;
 }
