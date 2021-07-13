@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row m-3 mb-5">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <hr>
+                <H1>Shopping Cart</H1>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-lg-4 offset-lg-2 col-10 offset-1 no-gutters">
+                <p>Test content</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock%}

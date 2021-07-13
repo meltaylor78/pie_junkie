@@ -34,9 +34,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    
+    # site apps
     'home',
     'products',
-    'crispy_forms'
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +68,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                # Retain, required by Allauth.
+                        # Retain, required by Allauth.
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
