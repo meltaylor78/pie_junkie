@@ -11,16 +11,10 @@ def add_to_cart(request, item_id):
     power = None
 
     if 'product_ram' in request.POST:
-        print ('true')
         ram = request.POST['product_ram']
-        print(ram)
-    else:
-        print ('no ram')
-
+   
     if 'product_power' in request.POST:
-        print ('true')
         power = request.POST['product_power']
-        print(power)
 
     cart = request.session.get('cart', {})
 

@@ -43,7 +43,24 @@ body{
     background: white !important;
     color: #153243 !important;
 }
-
+.decrement_button{
+    background-color: white;
+    color: #153243;
+    border-right: 1px solid lightgrey;
+}
+.decrement_button:hover{
+    background-color: #153243;
+    color:white;
+}
+.increment_button{
+    background-color: white;
+    color: #153243;
+    border-left: 1px solid lightgrey;
+}
+.increment_button:hover{
+    background-color: #153243;
+    color:white;
+}
 /* ___________ Main Nav Bar & Footer ___________ */
 .nav_row, .footer_row{
     background-color: #153243;
