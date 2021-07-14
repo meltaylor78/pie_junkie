@@ -70,36 +70,34 @@
                         <p>{{ product.description}}</p>
                     </div>
                 </div>
-                {% with product.power as pwr %}
-                    {% if pwr %}
-                <div class="row mt-1">
-                    <div class="col-12 text-left">
-                        <p><strong>Plug Type:</strong></p>
-                        <select class="form-control rounded-0 w-50" name="product_power" id='id_product_power'>
-                            <option value="ire_uk">Ire / UK Plug</option>
-                            <option value="us">US Plug</option>
-                            <option value="eu">EU Plug</option>
-                        </select>
-                    </div>
-                </div>
-                {% endif %}
-                {% with product.ram as ram %}
-                    {% if ram %}
-                        <div class="row mt-1">
-                            <div class="col-12 text-left">
-                                <p><strong>Ram:</strong></p>
-                                <select class="form-control rounded-0 w-50" name="product_ram" id='id_product_ram'>
-                                    <option value="2Gb">2 Gb</option>
-                                    <option value="4Gb">4 Gb</option>
-                                    <option value="8Gb">8 Gb</option>
-                                </select>
-                            </div>
-                        </div>
-                    {% endif %}
                 <div class="row mt-1">
                     <div class="col-12 text-left">
                         <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST"> 
                             {% csrf_token %}
+                            {% if product.ram %}
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <p><strong>Ram:</strong></p>
+                                        <select class="form-control rounded-0 w-50" name="product_ram" id='id_product_ram'>
+                                            <option value="2Gb">2 Gb</option>
+                                            <option value="4Gb">4 Gb</option>
+                                            <option value="8Gb">8 Gb</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if product.power %}
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <p><strong>Plug Type:</strong></p>
+                                            <select class="form-control rounded-0 w-50" name="product_power" id='id_product_power'>
+                                                <option value="Ire_UK">Ire / UK Plug</option>
+                                                <option value="US">US Plug</option>
+                                                <option value="EU">EU Plug</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            {% endif %}
                             <div class="form-row">
                                 <div class="col-12">
                                     <p class="mt-3"><strong>Quantity:</strong></p>
@@ -120,8 +118,6 @@
                                     <input type="submit" class="btn invert_main_btn mt-5 ml-3" value="Add to Cart">
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                {% endwith %}
-                                {% endwith %}
                             </div>
                         </form>
                     </div>

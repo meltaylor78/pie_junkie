@@ -75,6 +75,7 @@ def details(request, product_id):
 def new_product(request):
     if request.method =='POST':
         form = ProductForm(request.POST, request.FILES)
+        
         if form.is_valid():
             product = form.save()
             messages.success(request, "New Product has been added.")
