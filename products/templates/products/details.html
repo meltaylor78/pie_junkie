@@ -66,10 +66,11 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col text-left">
+                    <div class="col text-left description_detailed_view">
                         <p>{{ product.description}}</p>
                     </div>
                 </div>
+                <hr>
                 <div class="row mt-1">
                     <div class="col-12 text-left">
                         <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST"> 
@@ -87,7 +88,7 @@
                                 </div>
                             {% endif %}
                             {% if product.power %}
-                                <div class="form-row">
+                                <div class="form-row mt-2">
                                     <div class="col-12">
                                         <p><strong>Plug Type:</strong></p>
                                             <select class="form-control rounded-0 w-50" name="product_power" id='id_product_power'>
@@ -108,14 +109,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12">
-                                    <a href="{% url 'products' %}" class="btn main_btn mt-5">
+                                <div class="col-12 mt-1 mb-3">
+                                    <a href="{% url 'products' %}" class="btn main_btn">
                                         <span class="icon">
                                             <i class="fas fa-chevron-left"></i>
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
-                                    <input type="submit" class="btn invert_main_btn mt-5 ml-3" value="Add to Cart">
+                                    <input type="submit" class="btn invert_main_btn ml-3" value="Add to Cart">
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>

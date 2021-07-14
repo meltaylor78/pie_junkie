@@ -11,3 +11,8 @@
 .product_title{
     min-height: 75px;
 }
+.description_detailed_view{
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+}
