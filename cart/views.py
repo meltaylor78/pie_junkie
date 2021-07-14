@@ -22,6 +22,8 @@ def add_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             if ram in cart[item_id]['ram_size'].keys():
                 cart[item_id]['ram_size'][ram] += quantity
+                print ("This")
+                print (cart[item_id]['ram_size'][ram])
             else:
                 cart[item_id]['ram_size'][ram] = quantity
         else:
