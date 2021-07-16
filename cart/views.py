@@ -12,20 +12,46 @@ def add_to_cart(request, item_id):
 
     if 'product_ram' in request.POST:
         ram = request.POST['product_ram']
-   
     if 'product_power' in request.POST:
         power = request.POST['product_power']
 
     cart = request.session.get('cart', {})
 
-    if ram:
+    if ram and power:
+        print(cart)
         if item_id in list(cart.keys()):
-            if ram in cart[item_id]['ram_size'].keys():
-                cart[item_id]['ram_size'][ram] += quantity
+            if ram in cart[item_id].keys() and power in cart[item_id][ram].keys():
+                cart[item_id][ram][power] += quantity
+            
+            elif ram in cart[item_id].keys() and not power in cart[item_id][ram].keys():
+                cart[item_id][ram][power] = quantity                           
+            
             else:
-                cart[item_id]['ram_size'][ram] = quantity
+                cart[item_id][ram]= {power: quantity}
+        
         else:
-            cart[item_id] = {'ram_size': {ram: quantity}}
+            cart[item_id] = {ram: {power: quantity}}
+
+   
+    elif ram and not power:
+        print(cart)
+        if item_id in list(cart.keys()):
+            if ram in cart[item_id]['product_ram'].keys():
+                cart[item_id]['product_ram'][ram] += quantity
+            else:
+                cart[item_id]['product_ram'][ram] = quantity
+        else:
+            cart[item_id] = {'product_ram': {ram: quantity}}
+
+    elif power and not ram:
+        if item_id in list(cart.keys()):
+            if power in cart[item_id]['product_power'].keys():
+                cart[item_id]['product_power'][power] += quantity
+            else:
+                cart[item_id]['product_power'][power] = quantity
+        else:
+            cart[item_id] = {'product_power': {power: quantity}}
+   
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
@@ -34,3 +60,4 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+

@@ -20,9 +20,26 @@ def cart_contents(request):
                 'quantity': item_data,
                 'product': product,
             })
-        else:
+        
+        elif '2Gb' or '4Gb' or '8Gb' in item_data.keys():
             product = get_object_or_404(Product, pk=item_id)
-            for ram, quantity in item_data['ram_size'].items():
+            ram_options = list(item_data.keys())
+            print (ram_options)
+            for opt in ram_options:
+                for power, quantity in item_data[opt].items():
+                    total += quantity * product.price
+                    product_count += quantity
+                    cart_items.append({
+                        'item_id': item_id,
+                        'quantity': quantity,
+                        'product': product,
+                        'ram': opt,
+                        'power': power
+                    })
+        else :
+            product = get_object_or_404(Product, pk=item_id)
+            for ram, quantity in item_data['product_ram'].items():
+                print(ram)
                 total += quantity * product.price
                 product_count += quantity
                 cart_items.append({
