@@ -18,7 +18,6 @@ def add_to_cart(request, item_id):
     cart = request.session.get('cart', {})
 
     if ram and power:
-        print(cart)
         if item_id in list(cart.keys()):
             if ram in cart[item_id].keys() and power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] += quantity

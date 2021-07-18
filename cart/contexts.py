@@ -4,7 +4,6 @@ from django.conf import settings
 from products.models import Product
 
 def cart_contents(request):
-
     cart_items = []
     total = 0
     product_count = 0
@@ -21,10 +20,9 @@ def cart_contents(request):
                 'product': product,
             })
         
-        elif '2Gb' or '4Gb' or '8Gb' in item_data.keys():
+        elif 'product_ram' not in item_data.keys():
             product = get_object_or_404(Product, pk=item_id)
             ram_options = list(item_data.keys())
-            print (ram_options)
             for opt in ram_options:
                 for power, quantity in item_data[opt].items():
                     total += quantity * product.price
@@ -39,7 +37,6 @@ def cart_contents(request):
         else :
             product = get_object_or_404(Product, pk=item_id)
             for ram, quantity in item_data['product_ram'].items():
-                print(ram)
                 total += quantity * product.price
                 product_count += quantity
                 cart_items.append({
