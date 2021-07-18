@@ -34,12 +34,22 @@
                             {% for item in cart_items %}
                                 <tr class="border_bottom">
                                     <td class="py-3 w-25">
-                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                    {% if item.product.image %}
+                                        <a href="../products/int:{{ item.item_id }}" >
+                                            <img class="img-fluid rounded" src="{{ item.product.image.url }}" 
+                                                alt="{{ item.product.name }}">
+                                        </a>
+                                    {% else %}
+                                        <a href="../products/int:{{ item.item_id }}" >
+                                            <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" 
+                                                alt="{{ item.product.name }}">
+                                        </a>
+                                    a{% endif %}
                                     </td>
                                     <td class="py-3">
                                         <div class="row">
                                             <div class="col-12">
-                                                <p class="pl-2 my-0"><strong>{{ item.product.name }}</strong></p>
+                                                <p class="pl-2 my-0"><strong>{{ item.product.name }} </strong></p>
                                                 <hr>
                                             </div>
                                         </div>
@@ -59,8 +69,10 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col-12">
-                                                <hr>
                                                 <p class="small text-muted pl-2">SKU: {{ item.product.sku|upper }}</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <a class="small text-muted" href="../products/int:{{ item.item_id }}"> Product Details</a>
                                             </div>
                                         </div>
                                     </td>
@@ -68,7 +80,7 @@
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <form class="form update-form" method="POST" action="">
+                                        <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -99,10 +111,13 @@
                                                         <input type="hidden" name="product_power" value="{{ item.power }}">
                                                     {% endif %}
                                                 </div>
+                                                <button class="ubmit">Submit</button>
                                             </form>
+                                            <a class="remove-item text-danger float-left" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Delete</small></a>
+                                            <a class="update-item text-info float-right"><small>Update</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price }}</p>
+                                        <p class="my-0">€{{ item.sub_total }}</p>
                                     </td>
                                 </tr>
 
@@ -151,7 +166,30 @@
     </div>
     {% endif %}
     {% endblock %}
+    
     {% block postloadjs %}
     {{ block.super }}
     {% include 'products/includes/quantity_input_script.html' %}
+    
+    <script type="text/javascript">
+        $('.update-item').click(function(e) {
+            var form = $(this).prev('.update-form');
+            form.submit();
+            console.log(form)
+        })
+
+        $('.remove-item').click(function(e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var ram = $(this).data('ram');
+            var power = $(this).data('power');
+            var url = `/bag/remove/${itemId}`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'ram': ram, 'power': power};
+    
+            $.post(url, data)
+             .done(function() {
+                 location.reload();
+             });
+        })
+    </script>
     {% endblock %}

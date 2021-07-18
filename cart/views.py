@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 def view_cart(request):
     return render(request, 'cart/cart.html')
@@ -21,10 +21,10 @@ def add_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             if ram in cart[item_id].keys() and power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] += quantity
-            
+     
             elif ram in cart[item_id].keys() and not power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] = quantity                           
-            
+
             else:
                 cart[item_id][ram]= {power: quantity}
         
@@ -33,7 +33,6 @@ def add_to_cart(request, item_id):
 
    
     elif ram and not power:
-        print(cart)
         if item_id in list(cart.keys()):
             if ram in cart[item_id]['product_ram'].keys():
                 cart[item_id]['product_ram'][ram] += quantity
@@ -60,3 +59,48 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     return redirect(redirect_url)
 
+def update_cart(request, item_id):
+    quantity = int(request.POST.get('quantity'))
+    ram = None
+    power = None
+
+    if 'product_ram' in request.POST:
+        ram = request.POST['product_ram']
+
+    if 'product_power' in request.POST:
+        power = request.POST['product_power']
+
+    cart = request.session.get('cart', {})
+
+    if ram and power:
+        if quantity > 0:
+            cart[item_id][ram][power] = quantity
+        else:
+            del cart[item_id][ram][power]
+            if not cart[item_id][ram][power]:
+                cart.pop(item_id)
+   
+    elif ram and not power:
+        if quantity > 0:
+            cart[item_id]['product_ram']['ram'] = quantity
+        else:
+            del cart[item_id]['product_ram']['ram']
+            if not cart[item_id]['product_ram']['ram']:
+                cart.pop(item_id)
+
+    elif power and not ram:
+        if quantity > 0:
+            cart[item_id]['product_power']['power'] = quantity
+        else:
+            del cart[item_id]['product_power']['power']
+            if not cart[item_id]['product_power']['power']:
+                cart.pop(item_id)
+    else:
+        if quantity > 0:
+            cart[item_id] = quantity
+        else:
+            cart.pop[item_id]
+
+    request.session['cart'] = cart
+
+    return redirect(reverse('view_cart'))

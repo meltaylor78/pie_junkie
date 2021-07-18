@@ -13,11 +13,13 @@ def cart_contents(request):
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
             total += item_data * product.price
+            sub_total = item_data * product.price
             product_count += item_data
             cart_items.append({
                 'item_id': item_id,
                 'quantity': item_data,
                 'product': product,
+                'sub_total': sub_total
             })
         
         elif 'product_ram' not in item_data.keys():
@@ -26,24 +28,28 @@ def cart_contents(request):
             for opt in ram_options:
                 for power, quantity in item_data[opt].items():
                     total += quantity * product.price
+                    sub_total = quantity * product.price
                     product_count += quantity
                     cart_items.append({
                         'item_id': item_id,
                         'quantity': quantity,
                         'product': product,
                         'ram': opt,
-                        'power': power
+                        'power': power,
+                        'sub_total': sub_total
                     })
         else :
             product = get_object_or_404(Product, pk=item_id)
             for ram, quantity in item_data['product_ram'].items():
                 total += quantity * product.price
+                sub_total = quantity * product.price
                 product_count += quantity
                 cart_items.append({
                     'item_id': item_id,
                     'quantity': quantity,
                     'product': product,
                     'ram': ram,
+                    'sub_total': sub_total
                 })
 
     if total < settings.FREE_DELIVERY:
