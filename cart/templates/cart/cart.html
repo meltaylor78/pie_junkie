@@ -111,9 +111,8 @@
                                                         <input type="hidden" name="product_power" value="{{ item.power }}">
                                                     {% endif %}
                                                 </div>
-                                                <button class="ubmit">Submit</button>
                                             </form>
-                                            <a class="remove-item text-danger float-left" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Delete</small></a>
+                                            <a class="remove-item text-danger float-left" id="remove_{{ item.item_id }}" data-product="{{ item.ram }}_{{ item.power }}"><small>Remove</small></a>
                                             <a class="update-item text-info float-right"><small>Update</small></a>
                                     </td>
                                     <td class="py-3">
@@ -181,14 +180,15 @@
         $('.remove-item').click(function(e) {
             var csrfToken = "{{ csrf_token }}";
             var itemId = $(this).attr('id').split('remove_')[1];
-            var ram = $(this).data('ram');
-            var power = $(this).data('power');
-            var url = `/bag/remove/${itemId}`;
-            var data = {'csrfmiddlewaretoken': csrfToken, 'ram': ram, 'power': power};
-    
+            console.log(itemId)
+            var ram = $(this).data('product').split('_')[0];
+            var power = $(this).data('product').split('_')[1];
+            var url = `/cart/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'product_ram': ram, 'product_power': power};
+            console.log(e)
             $.post(url, data)
              .done(function() {
-                 location.reload();
+                location.reload();
              });
         })
     </script>

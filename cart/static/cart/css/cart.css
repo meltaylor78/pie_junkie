@@ -9,6 +9,6 @@
   border-top: 1px solid lightgrey;
 }
 .remove-item,
-.update-item,{
+.update-item {
   cursor: pointer;
 }

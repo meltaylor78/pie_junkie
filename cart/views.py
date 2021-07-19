@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 def view_cart(request):
     return render(request, 'cart/cart.html')
@@ -102,5 +102,49 @@ def update_cart(request, item_id):
             cart.pop[item_id]
 
     request.session['cart'] = cart
-
     return redirect(reverse('view_cart'))
+
+def remove_item(request, item_id):
+    try:
+        ram = None
+        power = None
+
+        if 'product_ram' in request.POST:
+            ram = request.POST['product_ram']
+
+        if 'product_power' in request.POST:
+            power = request.POST['product_power']
+
+        cart = request.session.get('cart', {})
+        print (cart)
+        if ram and power:
+            print("ran power and ram")
+            print(ram)
+            print(power)
+            print("this is the car ID")
+            print(cart[item_id][ram][power])
+            del cart[item_id][ram][power]
+            if not cart[item_id][ram][power]:
+                cart.pop(item_id)
+    
+        elif ram and not power:
+            print("ran ram option")
+            print(ram)
+            print([cart[item_id]['product_ram'][ram]])
+            del cart[item_id]['product_ram']['ram']
+            if not cart[item_id]['product_ram']:
+                cart.pop(item_id)
+
+        elif power and not ram:
+            del cart[item_id]['product_power']['power']
+            if not cart[item_id]['product_power']:
+                cart.pop(item_id)
+        else:
+            cart.pop(item_id)
+
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
+
