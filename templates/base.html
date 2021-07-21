@@ -107,16 +107,10 @@
             </div>
         </div>
     {% if messages %}
-        <div class="messages-container"> 
-            <div class="row">
-                <div class="col-4 offset-4 messages_bar mt-1 mb-1">
-                    {% for message in messages%}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-
-            </div>
-
+        <div class="message-container"> 
+            {% for message in messages %}
+                {% include 'includes/toasts/toast_success.html' %}  
+            {% endfor %}
         </div>
     {% endif %}
 
@@ -127,6 +121,9 @@
     {% endblock %}
 
     {% block postloadjs%}
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
     {% endblock %}
     <footer class="footer">
         <div class="container-fluid">

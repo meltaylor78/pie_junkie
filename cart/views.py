@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
+from products.models import Product
 
 def view_cart(request):
     return render(request, 'cart/cart.html')
 
 
 def add_to_cart(request, item_id):
+    product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     ram = None
@@ -21,7 +24,7 @@ def add_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             if ram in cart[item_id].keys() and power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] += quantity
-     
+
             elif ram in cart[item_id].keys() and not power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] = quantity                           
 
@@ -30,7 +33,8 @@ def add_to_cart(request, item_id):
         
         else:
             cart[item_id] = {ram: {power: quantity}}
-
+    
+        messages.success(request, f'Added {product.name} to shopping cart')
    
     elif ram and not power:
         if item_id in list(cart.keys()):
@@ -41,6 +45,8 @@ def add_to_cart(request, item_id):
         else:
             cart[item_id] = {'product_ram': {ram: quantity}}
 
+        messages.success(request, f'Added {product.name} to shopping cart')
+
     elif power and not ram:
         if item_id in list(cart.keys()):
             if power in cart[item_id]['product_power'].keys():
@@ -49,12 +55,15 @@ def add_to_cart(request, item_id):
                 cart[item_id]['product_power'][power] = quantity
         else:
             cart[item_id] = {'product_power': {power: quantity}}
-   
+
+        messages.success(request, f'Added {product.name} to shopping cart')
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
+        print(f'Added {product.name} to shopping cart')
+        messages.success(request, f'Added {product.name} to your bag')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -119,7 +128,6 @@ def remove_item(request, item_id):
 
         cart = request.session.get('cart', {})
         if ram and power:
-            print(cart)
             del cart[item_id][ram][power]
             if not cart[item_id][ram]:
                 del cart[item_id][ram]
