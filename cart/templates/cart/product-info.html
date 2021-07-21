@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-12">
+        <p class="my-0"><strong>{{ item.product.name }} </strong></p>
+        <hr class="d-none d-md-block">
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col-6">
+        {% if item.product.ram %}
+            <p class="my-0"><strong>Ram</strong> : {{ item.ram }}</p>
+        {% else %}
+            <p class="my-0"><strong>Ram</strong> : N/A</p>
+        {% endif %}
+    </div>
+    <div class="col-6">
+        {% if item.product.power %}
+            <p class="my-0"><strong>Plug Type</strong> : {{ item.power }}</p>
+        {% else %}
+            <p class="my-0"><strong>Plug Type</strong> : N/A</p>
+        {% endif %}
+    </div>
+    <div class="col-6 col-md-12">
+        <p class="small text-muted pl-2">SKU: {{ item.product.sku|upper }}</p>
+    </div>
+    <div class="col-6 col-md-12">
+        <a class="small text-muted pl-2" href="../products/int:{{ item.item_id }}">Product Details</a>
+    </div>
+</div>
