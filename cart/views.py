@@ -77,23 +77,25 @@ def update_cart(request, item_id):
             cart[item_id][ram][power] = quantity
         else:
             del cart[item_id][ram][power]
-            if not cart[item_id][ram][power]:
+            if not cart[item_id][ram]:
+                del cart[item_id][ram]
+            if not cart[item_id]:
                 cart.pop(item_id)
    
     elif ram and not power:
         if quantity > 0:
-            cart[item_id]['product_ram']['ram'] = quantity
+            cart[item_id]['product_ram'][ram] = quantity
         else:
-            del cart[item_id]['product_ram']['ram']
-            if not cart[item_id]['product_ram']['ram']:
+            del cart[item_id]['product_ram'][ram]
+            if not cart[item_id]['product_ram']:
                 cart.pop(item_id)
 
     elif power and not ram:
         if quantity > 0:
-            cart[item_id]['product_power']['power'] = quantity
+            cart[item_id]['product_power'][power] = quantity
         else:
-            del cart[item_id]['product_power']['power']
-            if not cart[item_id]['product_power']['power']:
+            del cart[item_id]['product_power'][power]
+            if not cart[item_id]['product_power']:
                 cart.pop(item_id)
     else:
         if quantity > 0:
@@ -116,27 +118,21 @@ def remove_item(request, item_id):
             power = request.POST['product_power']
 
         cart = request.session.get('cart', {})
-        print (cart)
         if ram and power:
-            print("ran power and ram")
-            print(ram)
-            print(power)
-            print("this is the car ID")
-            print(cart[item_id][ram][power])
+            print(cart)
             del cart[item_id][ram][power]
-            if not cart[item_id][ram][power]:
+            if not cart[item_id][ram]:
+                del cart[item_id][ram]
+            if not cart[item_id]:
                 cart.pop(item_id)
     
         elif ram and not power:
-            print("ran ram option")
-            print(ram)
-            print([cart[item_id]['product_ram'][ram]])
-            del cart[item_id]['product_ram']['ram']
+            del cart[item_id]['product_ram'][ram]
             if not cart[item_id]['product_ram']:
                 cart.pop(item_id)
 
         elif power and not ram:
-            del cart[item_id]['product_power']['power']
+            del cart[item_id]['product_power'][power]
             if not cart[item_id]['product_power']:
                 cart.pop(item_id)
         else:

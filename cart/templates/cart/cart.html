@@ -111,9 +111,10 @@
                                                         <input type="hidden" name="product_power" value="{{ item.power }}">
                                                     {% endif %}
                                                 </div>
-                                            </form>
-                                            <a class="remove-item text-danger float-left" id="remove_{{ item.item_id }}" data-product="{{ item.ram }}_{{ item.power }}"><small>Remove</small></a>
-                                            <a class="update-item text-info float-right"><small>Update</small></a>
+                                            </div>
+                                        </form>
+                                        <a class="update-item text-info float-right"><small>Update</small></a>
+                                        <a class="remove-item text-danger float-left" id="remove_{{ item.item_id }}" data-product="{{ item.ram }}|{{ item.power }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.sub_total }}</p>
@@ -172,20 +173,21 @@
     
     <script type="text/javascript">
         $('.update-item').click(function(e) {
-            var form = $(this).prev('.update-form');
-            form.submit();
+            let form = $(this).prev('.update-form');
             console.log(form)
+            form.submit();
         })
 
         $('.remove-item').click(function(e) {
-            var csrfToken = "{{ csrf_token }}";
-            var itemId = $(this).attr('id').split('remove_')[1];
-            console.log(itemId)
-            var ram = $(this).data('product').split('_')[0];
-            var power = $(this).data('product').split('_')[1];
-            var url = `/cart/remove/${itemId}/`;
-            var data = {'csrfmiddlewaretoken': csrfToken, 'product_ram': ram, 'product_power': power};
-            console.log(e)
+            let csrfToken = "{{ csrf_token }}";
+            let itemId = $(this).attr('id').split('remove_')[1];
+            let ram = $(this).data('product').split('|')[0];
+            if (ram == "product_power"){
+                ram = "" 
+            }
+            let power = $(this).data('product').split('|')[1];
+            let url = `/cart/remove/${itemId}/`;
+            let data = {'csrfmiddlewaretoken': csrfToken, 'product_ram': ram, 'product_power': power};
             $.post(url, data)
              .done(function() {
                 location.reload();
