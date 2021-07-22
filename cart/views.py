@@ -30,11 +30,11 @@ def add_to_cart(request, item_id):
 
             else:
                 cart[item_id][ram]= {power: quantity}
-        
+
         else:
             cart[item_id] = {ram: {power: quantity}}
     
-        messages.success(request, f'Added {product.name} to shopping cart')
+        messages.success(request, f'{product.name} (with {ram} Ram & {power} plug) added to cart')
    
     elif ram and not power:
         if item_id in list(cart.keys()):
@@ -45,7 +45,7 @@ def add_to_cart(request, item_id):
         else:
             cart[item_id] = {'product_ram': {ram: quantity}}
 
-        messages.success(request, f'Added {product.name} to shopping cart')
+        messages.success(request, f'{product.name} (with {ram} Ram) added to cart')
 
     elif power and not ram:
         if item_id in list(cart.keys()):
@@ -56,14 +56,16 @@ def add_to_cart(request, item_id):
         else:
             cart[item_id] = {'product_power': {power: quantity}}
 
-        messages.success(request, f'Added {product.name} to shopping cart')
+        messages.success(request, f'{product.name} (with {power} plug) added to cart')
+
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
         print(f'Added {product.name} to shopping cart')
-        messages.success(request, f'Added {product.name} to your bag')
+        
+        messages.success(request, f'{product.name} to cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)

@@ -8,11 +8,12 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        <div class="row">
-            <div class="col">
-                <p> {{ messages }}</p>
-                <hr class="mt-1 mb-3">
-            </div>
-        </div>
+        {{ message }}
+        <br>
+       <div class="row mt-2">
+           <div class="col text-center">
+                <a href="{% url 'view_cart' %}" class="btn invert_main_btn">Shopping Cart <i class="fas fa-chevron-right"></i></a>
+           </div>
+       </div>        
     </div>
 </div>
