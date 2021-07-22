@@ -43,7 +43,9 @@ def all_products(request):
         if 'search_box' in request.GET:
             query = request.GET['search_box']
             if not query:
-                messages.error(request, "No search criteria entered")
+                messages.warning(request, 
+                f'No search criteria entered')
+
                 return redirect(reverse('products'))
 
             queries = Q(
@@ -78,11 +80,15 @@ def new_product(request):
         
         if form.is_valid():
             product = form.save()
-            messages.success(request, "New Product has been added.")
+
+            messages.info(request, 
+                f'New Product has been added.')
+
             return redirect(reverse('details', args=[product.id]))
         else:
             messages.error(request, 
-                "Add new product failed, please recheck the form is valid.")
+                f'Add new product failed, please recheck the form is valid.')
+
     else:
         form = ProductForm()
         
@@ -97,18 +103,24 @@ def new_product(request):
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
-        messages.error(request, 'You must be am admin to delete a product')
+
+        messages.error(request, 
+            f'You must be am admin to delete a product')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, 'The product has been deleted from the DB.')
+
+    messages.info(request, 
+                f'The product has been deleted from the DB.')
+    
     return redirect(reverse('products'))
     
 @login_required
 def edit_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, 'You must be am admin to edit product details')
+        messages.error(request, 
+            f'You must be am admin to edit product details')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -116,10 +128,12 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Updates habe been savd')
+            messages.info(request, 'Updates habe been savd')
             return redirect(reverse('details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 
+                f'Failed to update product, please recheck the form is valid.')
+
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')

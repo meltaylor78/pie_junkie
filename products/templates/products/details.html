@@ -43,7 +43,8 @@
                         <a class="btn main_btn btn-sm" href="{% url 'edit_product' product.id %}">Edit Product</a>
                     </div>
                     <div class="col-6 col-md-3 text-center">                        
-                        <a class="btn btn-danger btn-sm" href="{% url 'delete_product' product.id %}">Delete</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'delete_product' product.id %}"
+                        onclick="return confirm('Confirm Deletion?')">Delete</a>
                     </div>
                 </div>
                 {% else %}
