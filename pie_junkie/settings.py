@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     # site apps
     'home',
     'products',
-    'cart'
+    'cart',
+    'checkout'
 ]
 
 MIDDLEWARE = [
