@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,7 +16,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-5 order-lg-last">
+        <div class="col-12 col-lg-4 order-lg-last order_summary">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
             <div class="row">
                 <div class="col-7 offset-2">
@@ -39,7 +38,7 @@
                         </a>
                     </div>
                     <div class="col-7">
-                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        <p class="my-0 pr-0"><strong>{{ item.product.name }}</strong></p>
                             <div class="row">
                                 <div class="col-6">
                                     <p class="my-0 small">Ram: {% if item.product.ram %}{{ item.ram }}{% else %}N/A{% endif %}</p>
@@ -53,7 +52,6 @@
                     <div class="col-3 text-right">
                         <p class="my-0 small text-muted">${{ item.product.price }}</p>
                     </div>
-
                 </div>
             {% endfor %}
             <hr class="my-0">
@@ -70,18 +68,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 offset-lg-1 col-lg-5">
+        <div class="col-12 offset-lg-2 col-lg-4">
             <p class="text-muted">Please fill out the form below to complete your order</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label small text-black px-2 w-auto">Contact Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                     {{ order_form.phone_number | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery Address</legend>
                     {{ order_form.street_address1 | as_crispy_field }}
                     {{ order_form.street_address2 | as_crispy_field }}
                     {{ order_form.town_or_city | as_crispy_field }}
@@ -102,35 +100,53 @@
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
+                      <div class="mb-3" id="card-element"></div>
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     <div class="mb-3" id="card-element"></div>
 
                     <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 </fieldset>
 
-                <div class="submit-button text-right mt-5 mb-2">                    
-                    <a href="{% url 'view_cart' %}" class="btn main_btn rounded-0">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="font-weight-bold">Adjust Cart</span>
-                    </a>
-                    <button id="submit-button" class="btn invert_main_btn rounded-0">
-                        <span class="font-weight-bold">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
+                <div class="text-right mt-5 mb-3">
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <a href="{% url 'view_cart' %}" class="btn main_btn mr-1">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="font-weight-bold">Adjust Cart</span>
+                            </a>
+                        </div>
+                        <div class="col-6 text-left">
+                            <button id="submit-button" class="btn invert_main_btn mr-2">
+                                <span class="font-weight-bold">Complete Order</span>
+                                <span class="icon">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col text-center">
+                            <p class="small text-danger my-0">
+                                <span class="icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </span>
+                                <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            </p>
+                        </div>
+                    </div>    
                 </div>
             </form>
         </div>
     </div>
 </div>
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
