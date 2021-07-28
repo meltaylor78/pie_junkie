@@ -1,11 +1,9 @@
 from django.db import models
-
 import uuid
+
 from django.db.models import Sum
 from django.conf import settings
-
 from django_countries.fields import CountryField
-
 from products.models import Product
 
 
@@ -31,19 +29,19 @@ class Order(models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, 
-    decimal_places=2, null=False, default=0)
+        decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, 
-    decimal_places=2, null=False, default=0)
+        decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, 
-    decimal_places=2, null=False, default=0)
-
+        decimal_places=2, null=False, default=0)
+    
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        if self.order_total < settings.FREE_DELIVERY:
+            self.delivery_cost = self.order_total * settings.DELIVERY_PERCENT / 100
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
