@@ -16,6 +16,10 @@
         overflow-y: scroll;
     }
 }
+/* ___________ Order Summary ___________ */
+.order_summary{
+  border: 1px solid lightgray;
+}
 
 /* ___________ Checkout Stripe Elements ___________ */
 .StripeElement,
