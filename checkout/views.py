@@ -29,13 +29,13 @@ def checkout(request):
             'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
+
         if order_form.is_valid():
             order = order_form.save()
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
-                        print ("No options")
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
@@ -44,21 +44,15 @@ def checkout(request):
                         order_line_item.save()
 
                     elif 'product_ram' not in item_data.keys():
-                        print(item_data)
                         ram_options = list(item_data.keys())
-                        print(ram_options)
                         for opt in ram_options:
                             for power, quantity in item_data[opt].items():
-                                print (opt)
                                 if opt != 'product_power':
                                     ram=opt
                                     quantity = item_data[opt][power]
                                 else:
                                     ram=''
-                                    quantity = item_data['product_power'][power]
-                                    print ('Qty')
-                                    print(quantity)
-                                    
+                                    quantity = item_data['product_power'][power]                                    
 
                                 order_line_item = OrderLineItem(
                                     order = order,
@@ -68,12 +62,10 @@ def checkout(request):
                                     product_power = power
                                 )
                                 order_line_item.save()
-                    else :
-                        print ("Ram")
-                        print(item_data)
+                    else:
                         for ram, quantity in item_data['product_ram'].items():
                             order_line_item = OrderLineItem(
-                                order= order,
+                                order=order,
                                 product=product,
                                 quantity=item_data['product_ram'][ram],
                                 product_ram=ram
@@ -89,7 +81,8 @@ def checkout(request):
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_successful', args=[order.order_number]))
+            return redirect(reverse('checkout_successful',
+                args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
