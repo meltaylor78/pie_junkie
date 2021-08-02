@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row m-3 mb-5">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <hr>
+                <h1>Your Profile</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-4 order-lg-last order_summary">
+            
+        </div>
+    </div>
+
+{% endblock %}
