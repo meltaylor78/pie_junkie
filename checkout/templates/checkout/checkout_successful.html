@@ -9,13 +9,20 @@
     <div class="container-fluid">
         <div class="row m-3 mb-5">
             <div class="col-lg-4 offset-lg-4 text-center">
+                {% if from_profile %}
                 <hr>
-                <h1>Order Successful</h1>
+                <h1>Order History</h1>
                 <hr>
-                <p><strong>Your oder ({{ order.order_number }}) has been successful placed, see details below.</strong> <br>
-                You will receive and confirmation e-mail with details for your records.</p>
-                <p>Now that you products are on the way, checkout some of our articles <br> on what you can do with them!</p>
-                <a href="{% url 'home' %}" class="btn main_btn">Home <i class="fas fa-chevron-right"></i></a>
+                <a href="{% url 'profile' %}" class="btn main_btn">Back to Profile<i class="fas fa-chevron-right"></i></a>
+                {% else %}
+                    <hr>
+                    <h1>Order Successful</h1>
+                    <hr>
+                    <p><strong>Your oder ({{ order.order_number }}) has been successful placed, see details below.</strong> <br>
+                    You will receive and confirmation e-mail with details for your records.</p>
+                    <p>Now that you products are on the way, checkout some of our articles <br> on what you can do with them!</p>
+                    <a href="{% url 'home' %}" class="btn main_btn">Home <i class="fas fa-chevron-right"></i></a>
+                {% endif %}
             </div>
         </div>
     </div>
