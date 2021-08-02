@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category
+from .models import Product, Category, Cust_Review
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -10,6 +10,7 @@ from .forms import ProductForm
 def all_products(request):
 
     products = Product.objects.all()
+    cust_review = Cust_Review.objects.all()
     query = None
     categories = None
     sort = None
@@ -67,10 +68,13 @@ def all_products(request):
 def details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-
+    cust_review = get_object_or_404(Cust_Review, pk=product_id)
+    
     context = {
         'product': product,
+        'cust_review': cust_review
     }
+
     return render(request, 'products/details.html', context)
 
 @login_required

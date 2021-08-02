@@ -144,6 +144,28 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row mb-1">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <hr>
+                <h3>Customer Reviews</h3>
+                <hr>
+            </div>
+        </div>
+        {% if cust_review %}
+        <div class="row">
+            <div class="col-lg-4 offset-lg-2 text-center">
+                {{ cust_review.date }}
+            </div>
+        </div>
+        {% else %}
+            <div class="row">
+                <div class="col-lg-4 offset-lg-2 text-center">
+                    <p>No cutomer review, be the first to leave a product review</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 
 {% endblock %}
 {% block postloadjs %}
