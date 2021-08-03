@@ -5,12 +5,13 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .forms import ProductForm
+from django.core.paginator import Paginator
 
 
 def all_products(request):
 
     products = Product.objects.all()
-    cust_review = Cust_Review.objects.all()
+    print(products)
     query = None
     categories = None
     sort = None
@@ -37,7 +38,6 @@ def all_products(request):
             categories = request.GET['category'].split(',')
             if 'categories|length > 1':
                 roll_up = categories[0]
-            print(roll_up)
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
@@ -68,11 +68,16 @@ def all_products(request):
 def details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-    cust_review = get_object_or_404(Cust_Review, pk=product_id)
+    cust_reviews = Cust_Review.objects.filter(product=product)
+    print("review List")
+    print(cust_reviews)
+    
+
+
     
     context = {
         'product': product,
-        'cust_review': cust_review
+        'cust_reviews': cust_reviews
     }
 
     return render(request, 'products/details.html', context)

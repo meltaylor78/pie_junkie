@@ -15,3 +15,13 @@
     overflow-y: scroll;
     margin-bottom: 5px;
 }
+
+.fa-check{
+    color: green;
+    font-weight: bolder;
+}
+.fa-times{
+    color: red;
+    font-weight: bolder;
+    
+}

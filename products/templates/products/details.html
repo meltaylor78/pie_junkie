@@ -144,23 +144,56 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mb-3">
         <div class="row mb-1">
-            <div class="col-lg-4 offset-lg-4 text-center">
+            <div class="col-lg-6 offset-lg-3 text-center">
                 <hr>
                 <h3>Customer Reviews</h3>
                 <hr>
             </div>
         </div>
-        {% if cust_review %}
-        <div class="row">
-            <div class="col-lg-4 offset-lg-2 text-center">
-                {{ cust_review.date }}
+        <div class="row mb-1">
+            <div class="col-lg-6 offset-lg-3 text-center">
+                {% for review in cust_reviews %}
+                    <div class="card">
+                        <div class="card-header mb-0 pb-0">
+                            <div class="row mb-0 pb-0 my-0">
+                                <div class="col-sm-12 col-md-8 text-left my-auto">
+                                    <p><strong>{{ review.title }}</strong></p>
+                                </div>
+                                <div class="col-sm-12 col-md-4 text-left my-auto">
+                                    <p>Reviewer : {{ review.user }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-left mb-0 pb-0">
+                            <div class="row mb-0">
+                                <div class="col">
+                                    <p>{{ review.review }}</p>
+                                    <hr>
+                                </div>
+                                
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-sm-12 col-md-8 text-left">
+                                    <p>{{ review.date }}</p>
+                                </div>
+                                <div class="col-sm-12 col-md-4 text-left">
+                                    {% if review.recommend  == "Yes" %}
+                                        <p>Recommends : <i class="fas fa-check"></i></i></p>
+                                    {% else %}
+                                        <p>Recommends : <i class="fas fa-times"></i></i></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
+        {% if cust_reviews %}
         {% else %}
             <div class="row">
-                <div class="col-lg-4 offset-lg-2 text-center">
+                <div class="col-lg-8 offset-lg-2 text-center">
                     <p>No cutomer review, be the first to leave a product review</p>
                 </div>
             </div>
