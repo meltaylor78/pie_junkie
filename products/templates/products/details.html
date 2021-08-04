@@ -152,7 +152,62 @@
                 <hr>
             </div>
         </div>
+        <div class="row mb-0 pb-0">
+            <div class="col-lg-6 offset-lg-3 text-left mb-0 pb-0 review_form">
+                <form class="form" action="#" method="POST"> 
+                    {% csrf_token %}
+                    <div class="form-row">
+                        {% for review in cust_reviews %}
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-9">
+                                    <small>Title</small><br>
+                                    <input type="text" name="title" maxlength="256" required class="w-100">
+                                </div>
+                                <div class="col-3">
+                                    <small>Recommended buy:</small><br>
+                                    <select class="form-control rounded-0 w-20" name="recommend" id='id_recommend'>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                
+                                    <div class="col">
+                                        <small>Product Review</small><br>
+                                        <input type="text" name="review" maxlength="500" required class="w-100">
+                                    </div>
+                                </div>
+                                <div class="row mt-1 mb-1">
+                                    <div class="col text-center">
+                                        <input type="submit" class="btn main_btn ml-3" value="Submit">
+                                    </div>
+                                </div>
+                            
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="hidden" name="user" value="{{ review.user }}" />
+                                </div>
+                                <div class="col-4">
+                                    <input type="hidden" name="user" value="{{ review.name }}" />
+                                </div>
+                                <div class="col-4">
+                                    <input type="hidden" name="product" value="{{ review.product }}" />
+                                </div>
+                            </div>                          
+                        </div>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row mb-1">
+            <div class="col-lg-6 offset-lg-3 text-left">
+                {% if request.user.is_authenticated %}
+                    <p>Write a review</p>
+                {% else %}
+                    <p><a href="{% url 'account_login' %}">Login</a> to leave a review</p>
+                {% endif %}
+            </div>
             <div class="col-lg-6 offset-lg-3 text-center">
                 {% for review in cust_reviews %}
                     <div class="card">
