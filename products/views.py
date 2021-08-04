@@ -4,14 +4,13 @@ from .models import Product, Category, Cust_Review
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .forms import ProductForm
+from .forms import ProductForm, AddReviewForm
 from django.core.paginator import Paginator
 
 
 def all_products(request):
 
     products = Product.objects.all()
-    print(products)
     query = None
     categories = None
     sort = None
@@ -69,18 +68,31 @@ def details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     cust_reviews = Cust_Review.objects.filter(product=product)
-    print("review List")
-    print(cust_reviews)
-    
-
-
-    
+       
     context = {
         'product': product,
         'cust_reviews': cust_reviews
     }
 
     return render(request, 'products/details.html', context)
+
+@login_required
+def add_review(request, product_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=product_id)
+        user_product = Cust_Review(user=request.user, product=product)
+        form = AddReviewForm(request.POST, instance=user_product)
+        
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Your review has been posted")
+        else:
+            messages.error(request, ("Error saving review," +
+                           "please try again later"))
+    else:
+        messages.error(request, "You must be logged in to post a review")
+    return redirect("details", product_id=product_id)
+
 
 @login_required
 def new_product(request):

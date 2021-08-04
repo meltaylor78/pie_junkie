@@ -25,7 +25,6 @@ class ReviewsAdmin(admin.ModelAdmin):
         'date',
         'user',
         'product',
-        'name',
         'title',
         'recommend'
     )
