@@ -10,4 +10,9 @@ $(".showReviewForm").click(function (e) {
     e.preventDefault();
 });
 
+$(".hideReviewForm").click(function (e) {
+    $(".review_form_row").hide();
+    $(".write_review_text").show();
+    e.preventDefault();
+});
 
