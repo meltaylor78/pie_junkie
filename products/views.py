@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .forms import ProductForm, AddReviewForm
-from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 
 def all_products(request):
@@ -93,14 +93,33 @@ def add_review(request, product_id):
         messages.error(request, "You must be logged in to post a review")
     return redirect("details", product_id=product_id)
 
+
+def edit_review(request, review_id, product_id):
+    review = get_object_or_404(Cust_Review, id=review_id)
+    user = get_object_or_404(User, id=review.user.id)
+    if request.user == user:
+        if request.method == "GET":
+            form = AddReviewForm(instance=review)
+            context = {
+                "form": form,
+                "product_id": product_id,
+            }
+            print(context)
+            return render(request, "products/edit_review.html", context)
+
+
+
 @login_required
 def delete_review(request, review_id, product_id):
     product = get_object_or_404(Product, id=product_id)
     review_to_delete = get_object_or_404(Cust_Review, id=review_id)
     review_to_delete.delete()
+
+    messages.info(request, 
+                f'Product review has been posted')
     
     return redirect("details", product_id=product_id)
-    
+
 
 @login_required
 def new_product(request):

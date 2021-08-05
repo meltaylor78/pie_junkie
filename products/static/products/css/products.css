@@ -32,3 +32,7 @@
 .hide{
     display: none;
 }
+
+.recommended_drop_down{
+    font-size: 12px;
+}

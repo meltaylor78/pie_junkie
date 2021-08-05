@@ -167,7 +167,7 @@
                         </div>
                         <div class="col-4 pl-5">
                             <small>Recommend Buy?</small>
-                            <select class="form-control rounded-0 w-50" name="recommend" id='id_recommend' required>
+                            <select class="form-control rounded-0 w-50 recommended_drop_down" name="recommend" id='id_recommend' required>
                                 <option hidden disabled selected value> </option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
@@ -239,7 +239,7 @@
                             <div class="row">
                                 <div class="col-6 col-md-3 offset-md-6 text-center">
                                     <small>
-                                        <a class="" href="#">Edit Review</a>
+                                        <a href="{% url 'edit_review' review.id product.id %}">Edit Review</a>
                                     </small>
                                 </div>
                                 <div class="col-6 col-md-3 text-center">
@@ -265,7 +265,6 @@
             {% endif %}
         </div>
     {% endif %}
-    
     
     {% endblock %}
     {% block postloadjs %}
