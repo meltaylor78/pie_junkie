@@ -154,7 +154,7 @@
                 <hr>
             </div>
         </div>
-        <div class="row mr-3 ml-3">
+        <div class="row mr-3 ml-3 review_form_row">
             <div class="col-lg-6 offset-lg-3 text-left review_form">
                 <h6>Submit a product review:</h6>
                 <form method="POST" action="{% url 'add_review' product.id %}">
@@ -163,17 +163,17 @@
                     <div class="form-row">
                         <div class="col-8">
                             <small>Review Title:</small><br>
-                            <input type="text" id="title" name="title" value="" id='id_title' required>
+                            <input type="text" id="title" name="title" value="" id='id_title' class="w-100" required>
                         </div>
-                        <div class="col-4">
-                            <small>Recommend:</small>
+                        <div class="col-4 pl-5">
+                            <small>Recommend Buy?</small>
                             <select class="form-control rounded-0 w-50" name="recommend" id='id_recommend' required>
                                 <option hidden disabled selected value> </option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                             <small>Your Review:</small>
                             <textarea id="review" name="review" rows="4" class="w-100" required></textarea>
                             <div class="col-12 mt-2">
@@ -184,65 +184,83 @@
             </div>
         </div>
     </div>
-    <div class="row review_cards_row">
+    <div class="row">
         <div class="col-lg-6 offset-lg-3 text-left">
-            {% if request.user.is_authenticated %}
-                <p>Write a review</p>
-            {% else %}
+            
+            {% if request.user.is_authenticated and cust_reviews %}
+                <p class="write_review_text"><a href="" class="showReviewForm">Write a review</a></p>
+            {% endif %}
+
+            {% if not request.user.is_authenticated and cust_reviews  %}
                 <p><a href="{% url 'account_login' %}">Login</a> to leave a review</p>
             {% endif %}
         </div>
-        {% if cust_reviews %}
-        <div class="col-lg-6 offset-lg-3 text-center">
-            {% for review in cust_reviews %}
-            <div class="card">
-                <div class="card-header mb-0 pb-0">
-                    <div class="row mb-0 pb-0 my-0">
-                        <div class="col-sm-12 col-md-8 text-left my-auto">
-                            <p><strong>{{ review.title }}</strong></p>
+    </div>
+    {% if cust_reviews %}
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 text-center">
+                {% for review in cust_reviews %}    
+                    <div class="card">
+                        <div class="card-header mb-0 pb-0">
+                            <div class="row mb-0 pb-0 my-0">
+                                <div class="col-sm-12 col-md-8 text-left my-auto">
+                                    <p><strong>{{ review.title }}</strong></p>
+                                </div>
+                                <div class="col-sm-12 col-md-4 text-left my-auto">
+                                    <p>Reviewer : {{ review.user }}
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-4 text-left my-auto">
-                            <p>Reviewer : {{ review.user }}
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body text-left mb-0 pb-0">
-                    <div class="row mb-0">
-                        <div class="col">
-                            <p>{{ review.review }}</p>
-                            <hr>
-                        </div>
-
-                    </div>
-                    <div class="row mb-0">
-                        <div class="col-sm-12 col-md-8 text-left">
-                            <p>{{ review.date }}</p>
-                        </div>
-                        <div class="col-sm-12 col-md-4 text-left">
-                            {% if review.recommend  == "Yes" %}
-                            <p>Recommends : <i class="fas fa-check"></i></i></p>
-                            {% else %}
-                            <p>Recommends : <i class="fas fa-times"></i></i></p>
+                        <div class="card-body text-left mb-0 pb-0">
+                            <div class="row mb-0">
+                                <div class="col">
+                                    <p>{{ review.review }}</p>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-sm-12 col-md-8 text-left">
+                                    <p>{{ review.date }}</p>
+                                </div>
+                                <div class="col-sm-12 col-md-4 text-left">
+                                    {% if review.recommend  == "Yes" %}
+                                        <p>Recommends : <i class="fas fa-check"></i></i></p>
+                                    {% else %}
+                                        <p>Recommends : <i class="fas fa-times"></i></i></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if request.user == review.user %}
+                                <div class="row mb-1">
+                                    <div class="col-6 col-md-2 offset-md-8 text-center">
+                                        <a class="btn btn-sm main_btn btn-sm" href="#">Edit Review</a>
+                                    </div>
+                                    <div class="col-6 col-md-2 text-center">
+                                        <a class="btn btn-sm btn-danger btn-sm" href="#" onclick="">Delete Review</a>
+                                    </div>
+                                </div>
                             {% endif %}
-                        </div>
+                            </div>
+                                            
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
+
+    {% else %}
+        <div class="col-lg-8 offset-lg-2 text-center">                        
+            {% if request.user.is_authenticated %}
+                <p>No cutomer review, be the first to leave a product review</p>
             {% else %}
-                <div class="col-lg-8 offset-lg-2 text-center">                        
-                    {% if request.user.is_authenticated %}
-                        <p>No cutomer review, be the first to leave a product review</p>
-                    {% else %}
-                        <p><a href="{% url 'account_login' %}">Login</a> to be the first to leave a review.</p>
-                    {% endif %}
-                </div>
+                <p><a href="{% url 'account_login' %}">Login</a> to be the first to leave a review.</p>
             {% endif %}
-    </div>
+        </div>
+    {% endif %}
+    
     
     {% endblock %}
     {% block postloadjs %}
     {{ block.super }}
-    {% include 'products/includes/quantity_input_script.html' %}
+        <script src="{% static 'products/js/products.js' %}"></script>
+        {% include 'products/includes/quantity_input_script.html' %}
     {% endblock %}

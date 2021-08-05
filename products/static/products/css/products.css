@@ -28,3 +28,7 @@
 .review_cards_row{
     margin-bottom: 1500px;
 }
+
+.hide{
+    display: none;
+}
