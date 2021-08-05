@@ -176,10 +176,15 @@
                         <div class="col-12 mb-3">
                             <small>Your Review:</small>
                             <textarea id="review" name="review" rows="4" class="w-100" required></textarea>
-                            <div class="col-12 mt-2">
-                                <button class="black-button small-button" type="submit">Submit</button>
+                        <div class="row mt-1">
+                            <div class="col-6 col-md-3 offset-md-6 text-center pt-2">
+                                <p><a href="" class="hideReviewForm text-danger">Cancel</a></p>
+                            </div>
+                            <div class="col-6 col-md-3 text-center">
+                                <button class="btn main_btn" type="submit">Post Review</button>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -224,24 +229,28 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 text-left">
                                     {% if review.recommend  == "Yes" %}
-                                        <p>Recommends : <i class="fas fa-check"></i></i></p>
+                                        <p>Recommends : <i class="fas fa-check"></i></p>
                                     {% else %}
-                                        <p>Recommends : <i class="fas fa-times"></i></i></p>
+                                        <p>Recommends : <i class="fas fa-times"></i></p>
                                     {% endif %}
                                 </div>
                             </div>
                             {% if request.user == review.user %}
-                                <div class="row mb-1">
-                                    <div class="col-6 col-md-2 offset-md-8 text-center">
-                                        <a class="btn btn-sm main_btn btn-sm" href="#">Edit Review</a>
-                                    </div>
-                                    <div class="col-6 col-md-2 text-center">
-                                        <a class="btn btn-sm btn-danger btn-sm" href="#" onclick="">Delete Review</a>
-                                    </div>
+                            <div class="row">
+                                <div class="col-6 col-md-3 offset-md-6 text-center">
+                                    <small>
+                                        <a class="" href="#">Edit Review</a>
+                                    </small>
                                 </div>
-                            {% endif %}
+                                <div class="col-6 col-md-3 text-center">
+                                    <small>
+                                        <a class="text-danger" href="{% url 'delete_review' review.id product.id %}"
+                                            onclick="return confirm('Confirm Deletion?')">Delete Review</a>
+                                    </small>
+                                </div>
                             </div>
-                                            
+                            {% endif %}
+                        </div>   
                     </div>
                 {% endfor %}
             </div>

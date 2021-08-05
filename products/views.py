@@ -93,6 +93,14 @@ def add_review(request, product_id):
         messages.error(request, "You must be logged in to post a review")
     return redirect("details", product_id=product_id)
 
+@login_required
+def delete_review(request, review_id, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    review_to_delete = get_object_or_404(Cust_Review, id=review_id)
+    review_to_delete.delete()
+    
+    return redirect("details", product_id=product_id)
+    
 
 @login_required
 def new_product(request):
