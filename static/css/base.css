@@ -111,6 +111,9 @@ body{
     text-align: center;
     padding-bottom: 10px;
 }
+.footericons:hover{
+    color: lightgray;
+}
 html {
     height: 100%;
     box-sizing: border-box;
