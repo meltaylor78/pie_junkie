@@ -106,6 +106,18 @@ def edit_review(request, review_id, product_id):
             }
             print(context)
             return render(request, "products/edit_review.html", context)
+        elif request.method =="POST":
+            review_edit = AddReviewForm(request.POST, instance=review)
+            if review_edit.is_valid():
+                review_edit.save()
+                messages.info(request, "Edited review has been posted")
+                return redirect("details", product_id=product_id)
+            else:
+                messages.error(request, "Error editing review, try again later")
+                return redirect("details", product_id=product_id)
+    else:
+        messages.error(request, "Requested action not allowed")
+        return redirect("details", product_id=product_id)
 
 
 

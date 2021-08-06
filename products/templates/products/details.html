@@ -259,7 +259,7 @@
     {% else %}
         <div class="col-lg-8 offset-lg-2 text-center">                        
             {% if request.user.is_authenticated %}
-                <p>No cutomer review, be the first to leave a product review</p>
+                <p class="write_review_text">No cutomer review, be the first to leave a <a href="" class="showReviewForm">product review</a></p>
             {% else %}
                 <p><a href="{% url 'account_login' %}">Login</a> to be the first to leave a review.</p>
             {% endif %}

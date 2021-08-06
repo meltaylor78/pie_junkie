@@ -25,14 +25,11 @@
     font-weight: bolder;
     
 }
-.review_cards_row{
-    margin-bottom: 1500px;
-}
-
-.hide{
-    display: none;
-}
 
 .recommended_drop_down{
     font-size: 12px;
+}
+
+.edit_review_form{
+    border: 1px solid lightgray;
 }
