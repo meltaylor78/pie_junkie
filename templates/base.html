@@ -38,7 +38,7 @@
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex nav_row">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font my-0 fab fa-raspberry-pi nav_text"><strong>Pie Junkie</strong></h2>
+                    <h2 class="logo-font my-0 fab fa-raspberry-pi nav_text"><strong> Pie Junkie</strong></h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -82,8 +82,8 @@
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-cart fa-lg text-info"></i></div>
-                                <p class="my-0">
+                                <div><i class="fas fa-shopping-cart fa-lg text-white text-info"></i></div>
+                                <p class="my-0 text-white">
                                     {% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
                                     {% else %}
@@ -97,12 +97,13 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg w-100">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="row mobile_header">
+                <nav class="navbar navbar-expand-lg navbar-dark w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" 
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    {% include 'includes/mobile-header.html' %}
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>

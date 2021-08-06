@@ -68,6 +68,15 @@ body{
 .nav_text, .footer_text{
     color: white;
 }
+.dropdown-item, 
+.fa-chevron-down, 
+.product-menu, 
+.mobile_top_header{
+    color: #153243 !important;
+}
+.dropdown-item:hover{
+    background: whitesmoke;
+}
 .product-menu{
     font-family: "Roboto Condensed", sans-serif;
     color: #153243;;
@@ -85,7 +94,7 @@ body{
     background-color: white;
 }
 .fa-shopping-cart, .fa-user, .fa-tag{
-    color: white;
+    color: white !important;
 }
 .nav_right_col{
     padding-right: 35px;
@@ -135,6 +144,33 @@ html {
         text-align: center;
     }
 }
+
+/* ___________ Mobile Header ___________ */
+
+@media screen and (max-width: 992px) {
+    .mobile_header{
+        background-color: #153243;
+    }
+    .dropdown-menu{
+        background-color: #153243;
+    }
+    .dropdown-item, 
+    .fa-chevron-down, 
+    .product-menu, 
+    .mobile_top_header{
+        color: white !important;
+    }
+    .dropdown-item:hover{
+        background-color: #153243 !important;
+    }
+    .navbar-toggler{
+        border-color: white;
+    }
+    .btn-success{
+        background-color: green;
+    }
+  }
+
 
 /* ___________ Toasts & Messages ___________ */
 .message-container {
