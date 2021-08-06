@@ -1,1 +1,1 @@
-web: gunicorn pie-junkie.wsgi:application
+web: gunicorn pie_junkie.wsgi:application
