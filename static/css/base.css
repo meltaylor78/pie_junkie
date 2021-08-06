@@ -68,6 +68,9 @@ body{
 .nav_text, .footer_text{
     color: white;
 }
+.nav_text:hover, .nav_icon:hover{
+    color: lightgray;
+}
 .dropdown-item, 
 .fa-chevron-down, 
 .product-menu, 

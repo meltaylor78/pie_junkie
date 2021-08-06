@@ -40,17 +40,26 @@
         {% endif %}
     </div>
 </li>
-<li class="list-inline-item">
+<li class="list-inline-item d-block d-lg-none">
     <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-white{% endif %} nav-link d-block d-lg-none" href="{% url 'view_cart' %}">
-        <div class="text-center">
-            <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-            <p class="my-0 text-white">
-                {% if grand_total %}
-                    €{{ grand_total|floatformat:2 }}
-                {% else %}
-                    €0.00
-                {% endif %}
-            </p>
-        </div>
+        {% if grand_total %}
+            <a class="cart_logo" href="{% url 'view_cart' %}">
+                <div class="text-center">
+                    <div><i class="fas fa-cart-arrow-down"></i></div>
+                    <p class="my-0 text-primary">
+                        €{{ grand_total|floatformat:2 }}
+                    </p>
+                </div>
+            </a>
+        {% else %}
+            <a class="text-white" href="{% url 'view_cart' %}">
+                <div class="text-center">
+                    <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                    <p class="my-0 text-white">
+                        €0.00
+                    </p>
+                </div>
+            </a>
+        {% endif %}
     </a>
 </li>
