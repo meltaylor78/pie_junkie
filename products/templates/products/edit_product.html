@@ -25,8 +25,8 @@
 </div>
 
 <div class="container-fluid main_page_contents">
-    <div class="row product_row">
-            <div class="col-10 offset-1 col-xl-6 offset-xl-3 mb-5">
+    <div class="row">
+            <div class="col-10 offset-1 col-xl-6 offset-xl-3 mb-5 edit_review_form">
             <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2"
                 enctype="multipart/form-data">
                 {% csrf_token %}
