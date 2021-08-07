@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% block meta%}
+    {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
     {% block extra_meta %}
     {% endblock %}
 
-    {% block corecss%}
+    {% block corecss %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -132,18 +132,7 @@
         {% endfor %}
         </div>
     {% endif %}
-
-    {% block page_header%}
-    {% endblock %}
-
-    {% block content%}
-    {% endblock %}
-
-    {% block postloadjs%}
-        <script type="text/javascript">
-            $('.toast').toast('show');
-        </script>
-    {% endblock %}
+    
     <footer class="footer">
         <div class="container-fluid">
             <div class="row footer_row">
@@ -169,6 +158,16 @@
             </div>
         </div>
     </footer>
-    <script src="{% static 'js/base.js' %}"></script>
+
+    {% block page_header%}
+    {% endblock %}
+
+    {% block content%}
+    {% endblock %}
+
+    {% block postloadjs%}
+        <script type="text/javascript">$('.toast').toast('show');</script>
+        <script src="{% static 'js/base.js' %}"></script>
+    {% endblock %}
   </body>
 </html>
