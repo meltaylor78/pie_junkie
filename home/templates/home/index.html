@@ -8,7 +8,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row m-3 mb-5">
-            <div class="col-lg-4 offset-lg-4 text-center">
+            <div class="col-lg-4 offset-lg-4 text-center mb-1">
                 <hr>
                 <H1>Ready to start you first project?</H1>
                 <a href="{% url 'products' %}" class="btn main_btn">Start Shopping <i class="fas fa-chevron-right"></i></a>
@@ -18,18 +18,28 @@
     </div>
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-lg-4 offset-lg-2 col-10 offset-1 no-gutters">
+            <div class="col-lg-6 offset-lg-3 col-10 offset-1 no-gutters text-center">
+                <p>
+                    In addition to providing Raspberry Pis, accessories and components, the Pie Junkie team provide links to articles
+                    and tutorials that you can visit to find out more info on the Pi and find projects you can complete
+                </p>
+                <hr>
+            </div>
+        </div>
+        <div class="row mb-md-2 mb-sm-0">
+            <div class="col-lg-4 offset-lg-2 col-10 offset-1 no-gutters mb-sm-1">
                 <div class="card">
                     <img class="card-img-top" src="{{ MEDIA_URL }}retropi.jpg" alt="place holder">
                     <div class="card-body">
                         <h5 test>RetroPie: Build Your Own Raspberry Pi Retro Gaming Rig</h5>
-                        <p class="card-text">For around ¢50, you can build your very own vintage gaming rig that will
-                            hook up to any HDMI-enabled
-                            TV or monitor. This guide will show you everything you need to do to get playing.
+                        <p class="card-text">
+                            For around 50 bucks, you can build your very own vintage gaming rig 
+                            that will hook up to any HDMI-enabled TV or monitor. This guide will 
+                            show you everything you need to do to get playing.
                         </p>
                         <div class="row">
                             <div class="col">
-                                <a href="https://howchoo.com/g/n2qyzdk5zdm/build-your-own-raspberry-pi-retro-gaming-rig"
+                                <a href="https://howchoo.com/g/n2qyzdk5zdm/build-your-own-raspberry-pi-retro-gaming-rig" target="_blank"
                                     class="btn main_btn float-left">Read More</a>
                             </div>
                         </div>
@@ -37,18 +47,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-0 col-10 offset-1 no-gutters">
+            <div class="col-lg-4 offset-lg-0 col-10 offset-1 no-gutters mb-sm-1">
                 <div class="card">
                     <img class="card-img-top" src="{{ MEDIA_URL }}introduction-to-raspberry-pi-3.jpg"
                         alt="Card image cap">
                     <div class="card-body">
                         <h5 test>Introduction to Raspberry Pi</h5>
-                        <p class="card-text">This project you will connect up a Raspberry Pi computer and find out what
-                            it can do. <br>
+                        <p class="card-text">
+                            In this project you will connect up a Raspberry Pi computer and find out what it can do.
+                            Note: this guide is an introduction to the Raspberry Pi computer, there are also detailed guides 
+                            to Setting up your Raspberry Pi and Using your Raspberry Pi.
+                            What you will make
                         </p>
                         <div class="row">
                             <div class="col">
-                                <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started"
+                                <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started" target="_blank"
                                     class="btn main_btn float-left">Read More</a>
                             </div>
                         </div>
@@ -61,18 +74,18 @@
 
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-lg-4 offset-lg-2 col-10 offset-1">
+            <div class="col-lg-4 offset-lg-2 col-10 offset-1 mb-sm-1">
                 <div class="card">
                     <img class="card-img-top" src="{{ MEDIA_URL }}picade.jpg" alt="place holder">
                     <div class="card-body">
-                        <h5 test>RetroPie: Build Your Own Raspberry Pi Retro Gaming Rig</h5>
-                        <p class="card-text">For around ¢50, you can build your very own vintage gaming rig
-                            that will hook up to any HDMI-enabled TV or monitor. This guide will show you everything you
-                            need to do to get playing.
+                        <h5 test>New Raspberry Pi 4 Picade Console now available</h5>
+                        <p class="card-text">
+                            The Pimoroni Picade Console takes an hour or two to build and features an enclosure 
+                            constructed from powder-coated MDF and acrylic, giving it an authentic arcade look and feel.
                         </p>
                         <div class="row">
                             <div class="col">
-                                <a href="https://projects-raspberry.com/new-raspberry-pi-4-picade-console-now-available/"
+                                <a href="https://projects-raspberry.com/new-raspberry-pi-4-picade-console-now-available/" target="_blank"
                                     class="btn main_btn float-left">Read More</a>
                             </div>
                         </div>
@@ -80,25 +93,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-0 col-10 offset-1 no-gutters">
+            <div class="col-lg-4 offset-lg-0 col-10 offset-1 no-gutters mb-sm-1">
                 <div class="card">
                     <img class="card-img-top" src="{{ MEDIA_URL }}security-camera.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 test>RetroPie: Build Your Own Raspberry Pi Retro Gaming Rig</h5>
-                        <p class="card-text">For around €50, you can build your very own vintage gaming rig that will
-                            hook up to any HDMI-enabled TV or monitor.
-                            This guide will show you everything you need to do to get playing.
+                        <h5>Raspberry Pi motion security camera project</h5>
+                        <p class="card-text">
+                            Using the latest Raspberry Pi 4 Model B mini PC you can easily create a security camera 
+                            complete with motion sensor which will automatically send images taken using a Rasberry 
+                            Pi camera via email direct to your inbox when triggered.
                         </p>
                         <div class="row">
                             <div class="col">
-                                <a href="https://www.geeky-gadgets.com/raspberry-pi-security-camera-27-05-2020/"
+                                <a href="https://www.geeky-gadgets.com/raspberry-pi-security-camera-27-05-2020/" target="_blank"
                                     class="btn main_btn float-left">Read More</a>
                             </div>
                         </div>
                         <hr>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

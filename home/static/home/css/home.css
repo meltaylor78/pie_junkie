@@ -14,3 +14,19 @@
     max-height: 600px;
     border: none;
     }
+.card, h5{
+    color: #153243 !important;
+    font: bold;
+}
+
+    /* ___________ Mobile Header ___________ */
+
+@media screen and (max-width: 992px) {
+    .card-img-top{
+        max-height: 180px;
+        min-height: 180px;
+    }
+    .card{
+        min-height: 300px;
+        }
+  }
