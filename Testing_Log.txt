@@ -1,0 +1,21 @@
+Testing Log:
+
+Hope Page:
+    1. Need to fix text for place holder articles. 
+
+
+1. Profile app, wrong message tpye showing in message window.
+    Updated message type to info, so the that checkout button is not included.
+
+3. Order confirmation em-mail, cost, shipping etc were showing as $, updated the message template to € as per site set-up.
+
+4. Display om Home page. Buttons not showing on mobile, hidden under following card and last button 
+
+5. Login / Logout success message displaying Cart Button.
+    Added if statement to toast success to not display the button for certain circumstances.
+
+
+
+To DOs:
+
+Edit / Delte reviews. Add user if to ensure only correct user can delete or edit.
