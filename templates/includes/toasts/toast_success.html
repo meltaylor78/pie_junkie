@@ -9,10 +9,12 @@
     <div class="toast-body bg-white">
         {{ message }}
         <br>
+        {% if grand_total and not on_profile_page %}
        <div class="row mt-2">
            <div class="col text-center">
                 <a href="{% url 'view_cart' %}" class="btn invert_main_btn">Shopping Cart <i class="fas fa-chevron-right"></i></a>
            </div>
-       </div>        
+       </div> 
+       {% endif %}     
     </div>
 </div>
