@@ -67,7 +67,7 @@ def all_products(request):
 def details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-    cust_reviews = Cust_Review.objects.filter(product=product)
+    cust_reviews = Cust_Review.objects.filter(product=product).order_by('-date')
        
     context = {
         'product': product,
