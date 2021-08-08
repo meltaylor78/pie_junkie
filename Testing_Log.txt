@@ -1,3 +1,5 @@
+Picture Size : 1100 * 1100
+
 Testing Log:
 
 Hope Page:
@@ -27,6 +29,8 @@ Hope Page:
     info to profile that did not exist. 
     Added the if statement. 
 
+10. checkout template references $ in the template instead of €
+    Updated to € symbot
 
 
 To DOs:
