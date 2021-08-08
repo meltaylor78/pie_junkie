@@ -14,6 +14,16 @@ Hope Page:
 5. Login / Logout success message displaying Cart Button.
     Added if statement to toast success to not display the button for certain circumstances.
 
+6. Posted review, drop down for recommended product on mobile too small.
+    Move to new line for small screens.
+
+7. Customer reviews. Updated producst view to include an order option to display the most recent review first
+
+8. Customer review, template was using full date / time from the DB. Updated Django template date output to onlu display day/monthyear.
+    Used month Name, for the avodiance of doubt in countries using other formats
+
+9. 
+
 
 
 To DOs:
