@@ -30,7 +30,7 @@ Hope Page:
     Added the if statement. 
 
 10. checkout template references $ in the template instead of €
-    Updated to € symbot
+    Updated to € symbol
 
 
 To DOs:
