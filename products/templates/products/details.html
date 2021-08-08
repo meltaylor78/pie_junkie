@@ -161,11 +161,11 @@
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="form-row">
-                        <div class="col-8">
+                        <div class="col-sm-12 col-md-8">
                             <small>Review Title:</small><br>
                             <input type="text" id="title" name="title" value="" id='id_title' class="w-100" required>
                         </div>
-                        <div class="col-4 pl-5">
+                        <div class="col-sm-12 col-md-4 pl-md-5">
                             <small>Recommend Buy?</small>
                             <select class="form-control rounded-0 w-50 recommended_drop_down" name="recommend" id='id_recommend' required>
                                 <option hidden disabled selected value> </option>
