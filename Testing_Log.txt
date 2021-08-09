@@ -35,6 +35,13 @@ Hope Page:
 11. Components and Sensors options in dropdown points to USB Dongles.
     Updated href for Components and sensors
 
+12. Console error > Uncaught IntegrationError: Please call Stripe() with your publishable key. You used an empty string.
+            @ static/checkout/js/stripe_elements.js:3
+    
+    fix :ixed issue where console was throwing up 'Uncaught IntegrationError: Please call Stripe() with your publishable key.', 
+    there was a missing return in the function StripeWH_Handler. added the additional return."
+
+
 To DOs:
 
 Edit / Delte reviews. Add user if to ensure only correct user can delete or edit.
