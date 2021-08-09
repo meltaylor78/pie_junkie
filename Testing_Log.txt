@@ -32,6 +32,8 @@ Hope Page:
 10. checkout template references $ in the template instead of €
     Updated to € symbol
 
+11. Components and Sensors options in dropdown points to USB Dongles.
+    Updated href for Components and sensors
 
 To DOs:
 
