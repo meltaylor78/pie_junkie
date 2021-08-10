@@ -11,12 +11,9 @@
                 </button>
             </div>
             <input class="form-control qty_input" type="number" 
-                name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                data-item_id="{{ item.item_id }}"
-                id="id_qty_{{ item.item_id }}">
+                name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
             <div class="input-group-append">
-                <button class="increment-qty btn"
-                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                <button class="increment-qty btn" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                     <span>
                         <i class="fas fa-plus fa-sm"></i>
                     </span>
@@ -33,5 +30,4 @@
 </form>
 <a class="update-item text-info float-right pr-3"><small>Update</small></a>
 <a class="remove-item text-danger float-left pl-3" id="remove_{{ item.item_id }}" data-product="{{ item.ram }}|{{ item.power }}"><small>Remove</small></a>
-
 

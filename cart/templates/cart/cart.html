@@ -118,7 +118,8 @@
     
     {% block postloadjs %}
     {{ block.super }}
-        {% include 'products/includes/quantity_input_script.html' %}
+    
+    {% include 'products/includes/quantity_input_script.html' %}
     
     <script type="text/javascript">
         $('.update-item').click(function(e) {
@@ -136,10 +137,12 @@
             let power = $(this).data('product').split('|')[1];
             let url = `/cart/remove/${itemId}/`;
             let data = {'csrfmiddlewaretoken': csrfToken, 'product_ram': ram, 'product_power': power};
+            
             $.post(url, data)
              .done(function() {
                 location.reload();
              });
         })
+                   
     </script>
     {% endblock %}
