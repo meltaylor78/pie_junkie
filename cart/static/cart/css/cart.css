@@ -1,14 +1,17 @@
 /* ___________ Shopping Cart ___________ */
 .border_bottom {
-    border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   }
+
 .table_price_row, .table_button_row{
     background-color: white !important;
-}
+  }
+
 .table_price_row{
   border-top: 1px solid lightgrey;
-}
+  }
+
 .remove-item,
 .update-item {
   cursor: pointer;
-}
+  }

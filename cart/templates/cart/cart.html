@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-hy
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
