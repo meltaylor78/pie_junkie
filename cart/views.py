@@ -79,7 +79,7 @@ def update_cart(request, item_id):
     ram = None
     power = None
 
-    if quantity >= 1 and quantity <= 99:
+    if quantity >= 0 and quantity <= 99:
         if 'product_ram' in request.POST:
             ram = request.POST['product_ram']
 
@@ -202,4 +202,3 @@ def remove_item(request, item_id):
 
     except Exception as e:
         return HttpResponse(status=500)
-
