@@ -52,6 +52,11 @@ Hope Page:
     b. On mobile, the bottons are mnore critical due to the small size of the intergrated buttons in the input field.
         To fix the issues of duplicate IDs, I have added the ram & power template tags to the ID ensuring that the ID is unique in all situations.
 
+    In addtion to the above, I also added an if statement to the view to prevent the update button processing updates where the number in the input box is
+    outside the range of allowed entries. This is a fall back, incase the input limits fail for some reason.
+
+    
+
 To DOs:
 
 Edit / Delte reviews. Add user if to ensure only correct user can delete or edit.
