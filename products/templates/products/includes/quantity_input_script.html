@@ -5,9 +5,7 @@
         var minusDisabled = currentValue < 2;
         var plusDisabled = currentValue > 98;
         $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        console.log((`#decrement-qty_${itemId}`))
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
-        console.log($(`#increment-qty_${itemId}`))
     }
 
     var allQtyInputs = $('.qty_input');
