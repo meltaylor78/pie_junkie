@@ -79,74 +79,78 @@ def update_cart(request, item_id):
     ram = None
     power = None
 
-    if 'product_ram' in request.POST:
-        ram = request.POST['product_ram']
+    if quantity >= 1 and quantity <= 99:
+        if 'product_ram' in request.POST:
+            ram = request.POST['product_ram']
 
-    if 'product_power' in request.POST:
-        power = request.POST['product_power']
+        if 'product_power' in request.POST:
+            power = request.POST['product_power']
 
-    cart = request.session.get('cart', {})
+        cart = request.session.get('cart', {})
 
-    if ram and power:
-        if quantity > 0:
-            cart[item_id][ram][power] = quantity
+        if ram and power:
+            if quantity > 0:
+                cart[item_id][ram][power] = quantity
 
-            messages.info(request, 
-                f'{product.name} (with {ram} Ram & {power} plug) updated in cart')
+                messages.info(request, 
+                    f'{product.name} (with {ram} Ram & {power} plug) updated in cart')
 
-        else:
-            del cart[item_id][ram][power]
-            if not cart[item_id][ram]:
-                del cart[item_id][ram]
-            if not cart[item_id]:
-                cart.pop(item_id)
+            else:
+                del cart[item_id][ram][power]
+                if not cart[item_id][ram]:
+                    del cart[item_id][ram]
+                if not cart[item_id]:
+                    cart.pop(item_id)
 
-            messages.info(request, 
-                f'{product.name} (with {ram} Ram & {power} plug) removed from cart')
-   
-    elif ram and not power:
-        if quantity > 0:
-            cart[item_id]['product_ram'][ram] = quantity
+                messages.info(request, 
+                    f'{product.name} (with {ram} Ram & {power} plug) removed from cart')
+    
+        elif ram and not power:
+            if quantity > 0:
+                cart[item_id]['product_ram'][ram] = quantity
 
-            messages.info(request,
-                f'{product.name} (with {ram} Ram) updated in cart')
+                messages.info(request,
+                    f'{product.name} (with {ram} Ram) updated in cart')
 
-        else:
-            del cart[item_id]['product_ram'][ram]
-            if not cart[item_id]['product_ram']:
-                cart.pop(item_id)
+            else:
+                del cart[item_id]['product_ram'][ram]
+                if not cart[item_id]['product_ram']:
+                    cart.pop(item_id)
 
-            messages.info(request,
-                f'{product.name} (with {ram} Ram) removed from cart')
+                messages.info(request,
+                    f'{product.name} (with {ram} Ram) removed from cart')
 
-    elif power and not ram:
-        if quantity > 0:
-            cart[item_id]['product_power'][power] = quantity
+        elif power and not ram:
+            if quantity > 0:
+                cart[item_id]['product_power'][power] = quantity
 
-            messages.info(request, 
-                f'{product.name} (with {power} plug) updated in cart')
+                messages.info(request, 
+                    f'{product.name} (with {power} plug) updated in cart')
 
-        else:
-            del cart[item_id]['product_power'][power]
-            if not cart[item_id]['product_power']:
-                cart.pop(item_id)
+            else:
+                del cart[item_id]['product_power'][power]
+                if not cart[item_id]['product_power']:
+                    cart.pop(item_id)
+                
+                messages.info(request, 
+                    f'{product.name} (with {power} plug) removed from cart')
+
             
-            messages.info(request, 
-                f'{product.name} (with {power} plug) removed from cart')
-
-        
-    else:
-        if quantity > 0:
-            cart[item_id] = quantity
-
-            messages.info(request, f'{product.name} updated in cart')
-
         else:
-            cart.pop(item_id)
-            messages.info(request, f'{product.name} removed from cart')
+            if quantity > 0:
+                cart[item_id] = quantity
 
-    request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+                messages.info(request, f'{product.name} updated in cart')
+
+            else:
+                cart.pop(item_id)
+                messages.info(request, f'{product.name} removed from cart')
+
+        request.session['cart'] = cart
+        return redirect(reverse('view_cart'))
+    else:
+        messages.error(request, f'Enter a quantity between 1 and 99')
+        return redirect(reverse('view_cart'))
 
 def remove_item(request, item_id):
     product = Product.objects.get(pk=item_id)

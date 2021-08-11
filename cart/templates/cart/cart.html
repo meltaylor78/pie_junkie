@@ -43,7 +43,7 @@
             </div>
             <div class="row">
                 <div class="col-10 offset-1">
-                    {% include "cart/qty-form.html" %}
+                    {% include "cart/qty-form-mobile.html" %}
                 </div>
             </div>
             <div class="row">
@@ -63,10 +63,10 @@
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr class="border_bottom">
-                                    <th scope="col">Product Info</th>
+                                    <th scope="col" class="pl-5">Product Info</th>
                                     <th scope="col"></th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Qty</th>
+                                    <th scope="col" class="pl-5">Qty</th>
                                     <th scope="col">Subtotal</th>
                                 </tr>
                             </thead>
@@ -82,7 +82,7 @@
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
-                                    <td class="py-3 w-25">
+                                    <td class="py-3">
                                         {% include "cart/qty-form.html" %}
                                     </td>
                                     <td class="py-3">
