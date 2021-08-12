@@ -66,27 +66,26 @@
     </div>
     <div class="container-fluid">
         <div class="row product_row">
-                <div class="col-10 offset-1 col-xl-8 offset-xl-2 mb-3">
+                <div class="col-10 offset-1 col-xl-8 offset-xl-2 mb-5 mb-lg-2">
                     <div class="row">
-                        {% if products %}
-                    {% for product in products %}
+                    {% if products %}
+                        {% for product in products %}
                             <div class="col-sm-6 col-md-6 col-lg-4">
                                 <div class="card border-0 mb-0 mt-0">
                                     <div class="card-body product_title pb-0 mb-2">
                                         <h4 class="mb-0 mt-0">{{ product.name }}</h4>
                                     </div>
                                     {% if product.image %}
-                                    <a href="{% url 'details' product.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}"
-                                            alt="{{ product.name }}">
-                                    </a>
+                                        <a href="{% url 'details' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}"
+                                                alt="{{ product.name }}">
+                                        </a>
                                     {% else %}
-                                    <a href="{% url 'details' product.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
-                                            alt="{{ product.name }}">
-                                    </a>
+                                        <a href="{% url 'details' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
+                                                alt="{{ product.name }}">
+                                        </a>
                                     {% endif %}
-                                    
                                     <div class="card-footer text-left">
                                         <div class="row mt-2">
                                             <div class="col-6">
@@ -104,16 +103,13 @@
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
-                            {% else %}
-                            
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 text-center mt-5">
-                                    <h6>Currently no products in this category</h6>
-                                    <a href="{% url 'products' %}" class="btn main_btn">All Products <i class="fas fa-chevron-right"></i></a>
-                                </div>
-                            
-                            {% endif %}
-                    
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-10 offset-1 col-md-8 offset-md-2 text-center mt-5">
+                            <h6>Currently no products in this category</h6>
+                            <a href="{% url 'products' %}" class="btn main_btn">All Products <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
