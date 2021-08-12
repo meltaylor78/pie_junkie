@@ -55,6 +55,13 @@ Hope Page:
     In addtion to the above, I also added an if statement to the view to prevent the update button processing updates where the number in the input box is
     outside the range of allowed entries. This is a fall back, incase the input limits fail for some reason.
 
+14. Recommended buy drop down menu on edit reveiw page, too small on mobile scree. 
+    Moved to its own row for small devices.
+
+15. edit and delete reviews. Views function did not include a verification that the user was logged in before preforming the action.
+    added an if "user.is_authenticated" into both functions.
+
+. checkout page, order summary has no margin on the side when viewed on mobile.
     
 
 To DOs:
