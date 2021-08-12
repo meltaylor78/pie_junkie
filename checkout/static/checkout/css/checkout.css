@@ -12,7 +12,7 @@
 
 @media only screen and (min-width: 768px) {
     .product_col{
-        max-height: 600px;
+        max-height: 650px;
         overflow-y: scroll;
     }
 }
@@ -29,7 +29,7 @@ select option[value=""] {
 
 /* ___________ Order Summary ___________ */
 .order_summary{
-  border: 1px solid lightgray;
+  border: .product_col lightgray;
 }
 
 /* ___________ Checkout Stripe Elements ___________ */

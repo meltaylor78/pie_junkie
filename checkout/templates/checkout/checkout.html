@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-4 order-lg-last order_summary">
+        <div class="col-10 offset-1 col-md-10 offset-md-1 col-lg-4 offset-lg-0 order-lg-last order_summary">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
             <div class="row">
                 <div class="col-7 offset-2">
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="col-12 offset-lg-2 col-lg-4">
-            <p class="text-muted mb-0 mt-1">Please fill out the form below to complete your order</p>
+            <p class="text-muted mb-0 mt-1 ml-3">Please fill out the form below to complete your order</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
