@@ -97,24 +97,30 @@ def add_review(request, product_id):
 def edit_review(request, review_id, product_id):
     review = get_object_or_404(Cust_Review, id=review_id)
     user = get_object_or_404(User, id=review.user.id)
-    if request.user == user:
-        if request.method == "GET":
-            form = AddReviewForm(instance=review)
-            context = {
-                "form": form,
-                "product_id": product_id,
-            }
-            print(context)
-            return render(request, "products/edit_review.html", context)
-        elif request.method =="POST":
-            review_edit = AddReviewForm(request.POST, instance=review)
-            if review_edit.is_valid():
-                review_edit.save()
-                messages.info(request, "Edited review has been posted")
-                return redirect("details", product_id=product_id)
-            else:
-                messages.error(request, "Error editing review, try again later")
-                return redirect("details", product_id=product_id)
+
+    if request.user.is_authenticated:
+        if request.user == user:
+            if request.method == "GET":
+                form = AddReviewForm(instance=review)
+                context = {
+                    "form": form,
+                    "product_id": product_id,
+                }
+                print(context)
+                return render(request, "products/edit_review.html", context)
+            elif request.method =="POST":
+                review_edit = AddReviewForm(request.POST, instance=review)
+                if review_edit.is_valid():
+                    review_edit.save()
+                    messages.info(request, "Edited review has been posted")
+                    return redirect("details", product_id=product_id)
+                else:
+                    messages.error(request, "Error editing review, try again later")
+                    return redirect("details", product_id=product_id)
+        else:
+            messages.error(request, "Requested action not allowed")
+            return redirect("details", product_id=product_id)
+
     else:
         messages.error(request, "Requested action not allowed")
         return redirect("details", product_id=product_id)
@@ -123,14 +129,26 @@ def edit_review(request, review_id, product_id):
 
 @login_required
 def delete_review(request, review_id, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    review_to_delete = get_object_or_404(Cust_Review, id=review_id)
-    review_to_delete.delete()
+    review = get_object_or_404(Cust_Review, id=review_id)
+    user = get_object_or_404(User, id=review.user.id)
 
-    messages.info(request, 
-                f'Product review has been posted')
-    
-    return redirect("details", product_id=product_id)
+    if request.user.is_authenticated:
+        if request.user == user:
+            review_to_delete = get_object_or_404(Cust_Review, id=review_id)
+            review_to_delete.delete()
+
+            messages.info(request, 
+                        f'Product review has been posted')
+            
+            return redirect("details", product_id=product_id)
+        
+        else:
+            messages.error(request, "Requested action not allowed")
+            return redirect("details", product_id=product_id)
+
+    else:
+        messages.error(request, "Requested action not allowed")
+        return redirect("details", product_id=product_id)
 
 
 @login_required
