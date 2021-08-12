@@ -21,13 +21,24 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="sccessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cases & Displays <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="Accessories link">
+                <a href="{% url 'products' %}?category=cases" class="dropdown-item">Cases</a>
+                <a href="{% url 'products' %}?category=display" class="dropdown-item">Display</a>
+                <a href="{% url 'products' %}?category=vid_audio_cable" class="dropdown-item">Video / Audio Cables</a>           
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="sccessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Accessories <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="Accessories link">
-                <a href="{% url 'products' %}?category=power_cable" class="dropdown-item">Power Cables</a>
-                <a href="{% url 'products' %}?category=vid_audio_cable" class="dropdown-item">Video / Audio Cables</a>
-                <a href="{% url 'products' %}?category=usb_dongles" class="dropdown-item">USB Dongles</a>
+                <a href="{% url 'products' %}?category=modules" class="dropdown-item">Add-on Modules</a>
                 <a href="{% url 'products' %}?category=components" class="dropdown-item">Components & Sensors</a>
+                <a href="{% url 'products' %}?category=power_cable" class="dropdown-item">Power Cables</a>
+                <a href="{% url 'products' %}?category=usb_dongles" class="dropdown-item">USB Dongles</a>             
             </div>
         </li>
 
