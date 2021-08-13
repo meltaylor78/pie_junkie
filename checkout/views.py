@@ -13,6 +13,7 @@ from profiles.models import UserProfile
 import json
 import stripe
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -29,6 +30,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -73,18 +75,18 @@ def checkout(request):
                         for opt in ram_options:
                             for power, quantity in item_data[opt].items():
                                 if opt != 'product_power':
-                                    ram=opt
+                                    ram = opt
                                     quantity = item_data[opt][power]
                                 else:
-                                    ram=''
-                                    quantity = item_data['product_power'][power]                                    
+                                    ram = ''
+                                    quantity = item_data['product_power'][power]
 
                                 order_line_item = OrderLineItem(
-                                    order = order,
-                                    product = product,
-                                    quantity = quantity,
-                                    product_ram = ram,
-                                    product_power = power
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_ram=ram,
+                                    product_power=power
                                 )
                                 order_line_item.save()
                     else:
@@ -107,7 +109,7 @@ def checkout(request):
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_successful',
-                args=[order.order_number]))
+                            args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -160,7 +162,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    
+
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -168,7 +170,7 @@ def checkout_success(request, order_number):
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
-    
+
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,
