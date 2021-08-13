@@ -40,7 +40,7 @@
         {% endif %}
     </div>
 </li>
-<li class="list-inline-item dropdown">
+<li class="list-inline-item dropdown d-block d-lg-none">
     <a class="cart_icon_mobile {% if grand_total %}text-primary font-weight-bold{% else %}text-white{% endif %} nav-link d-block d-lg-none" href="{% url 'view_cart' %}">
         {% if grand_total %}
             <a class="cart_logo pt-0" href="{% url 'view_cart' %}">
