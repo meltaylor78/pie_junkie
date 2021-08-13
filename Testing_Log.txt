@@ -73,3 +73,26 @@ Hope Page:
 To DOs:
 
 Edit / Delte reviews. Add user if to ensure only correct user can delete or edit.
+
+Notes from Read Media
+load all from req.txt > pip3 install -r requirements.txt
+> python3.8 -m pip install --upgrade pip
+___________________________________________________________________________________________________________________________
+                Notes to add to ReadMe.
+___________________________________________________________________________________________________________________________
+Features : Issues and fixes. 
+
+As partt of the products page, I want to diaplay the category or its a search result as the page header. 
+An issue arose, when selecting All Rasperberry Pi or all All kits, it displated each category in sequecny. 
+To resolve the issue, I updated the main nav page to pass in "All xxx" as the first category, this is not a valid DB value, 
+so in the views I extract the first item from the array if the array is more that one and secure it as varilable to be used in the template. 
+
+Some products have special options:
+  Ram - So Pi's have the option of 2 / 4 / 8 Gb of ram
+  Power - Pi's, Kits or accessories with power supplies have the option for Ire/UK / EU / US plug types. 
+Addtional coding was required in, the areas of prodduct views, cart view including the add to cart, update qty in 
+the car or delete from the cart as all these options had to account for the fact that there were 4 possible options
+    1. No Power Option or Ram Option
+    2. Both Power Option and Ram Option
+    3. Ram Option but no Power Option
+    4. Power Option but no Ram option.
