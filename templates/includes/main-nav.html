@@ -6,7 +6,7 @@
             </a>
         </li>
         <li class="nav-item d-block d-l-none">
-            <a class="logo-font font-weight-bold nav-link text-white mr-5 d-block d-lg-none" href="{% url 'products' %}" id="home-link">
+            <a class="logo-font font-weight-bold nav-link text-white mr-5 d-block d-lg-none" href="{% url 'products' %}" id="all-products-link">
                 All Products
             </a>
         </li>
@@ -14,21 +14,21 @@
             <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="pi-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Raspberry Pi Consoles <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-menu border-0 text-black" aria-labelledby="raspberry pi links">
+            <div class="dropdown-menu border-0 text-black" aria-labelledby="pi-links">
                 <a href="{% url 'products' %}?category=raspberry_pi_4" class="dropdown-item">Raspberry Pi 4</a>
                 <a href="{% url 'products' %}?category=raspberry_pi_3" class="dropdown-item">Raspberry Pi 3</a>
                 <a href="{% url 'products' %}?category=raspberry_pi_zero" class="dropdown-item">Raspberry Pi Zero</a>
                 <a href="{% url 'products' %}?category=raspberry_pi_pico" class="dropdown-item">Raspberry Pi Pico</a>
-                <a href="{% url 'products' %}?category=All Raspberry Pi,raspberry_pi_4,raspberry_pi_3,raspberry_pi_zero,raspberry_pi_pico" 
+                <a href="{% url 'products' %}?category=AllRaspberryPi,raspberry_pi_4,raspberry_pi_3,raspberry_pi_zero,raspberry_pi_pico" 
                 class="dropdown-item">All Raspberry Pi</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="sccessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="cases-displa-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Cases & Displays <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="Accessories link">
+            <div class="dropdown-menu border-0" aria-labelledby="cases-displa-link">
                 <a href="{% url 'products' %}?category=case" class="dropdown-item">Cases</a>
                 <a href="{% url 'products' %}?category=display" class="dropdown-item">Display</a>
                 <a href="{% url 'products' %}?category=vid_audio_cable" class="dropdown-item">Video / Audio Cables</a>           
@@ -36,10 +36,10 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="sccessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="accessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Accessories <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="Accessories link">
+            <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
                 <a href="{% url 'products' %}?category=modules" class="dropdown-item">Add-on Modules</a>
                 <a href="{% url 'products' %}?category=components" class="dropdown-item">Components & Sensors</a>
                 <a href="{% url 'products' %}?category=power_cable" class="dropdown-item">Power Cables</a>
@@ -51,7 +51,7 @@
             <a class="logo-font font-weight-bold nav-link text-black mr-5 product-menu" href="#" id="kits-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Raspberry Kits <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="Raspberry kits link">
+            <div class="dropdown-menu border-0" aria-labelledby="kits-link">
                 <a href="{% url 'products' %}?category=game_kit" class="dropdown-item">Gaming</a>
                 <a href="{% url 'products' %}?category=project" class="dropdown-item">Projects</a>
                 <a href="{% url 'products' %}?category=mini_projects" class="dropdown-item">Mini Projects</a>
