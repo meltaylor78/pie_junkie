@@ -26,7 +26,9 @@ ________________________________________________________________________________
 ___________________________________________________________________________________________________________________________
 
 # **Pie Junkie - Raspberry Pi Store ** 
-<img src="">
+<img src="/workspace/pie_junkie/readme_assets/images/site_banner.jpg">
+readme_assets/site_banner.jpg
+/workspace/pie_junkie/readme_assets/images/site_banner.jpg
 
 - - - -
 
