@@ -41,6 +41,10 @@ Hope Page:
     fix :ixed issue where console was throwing up 'Uncaught IntegrationError: Please call Stripe() with your publishable key.', 
     there was a missing return in the function StripeWH_Handler. added the additional return."
 
+    This error returned after the above fix, further investiagtion found, I had used the checkout templates as the base to created the checkout success page,
+    I had the code still in the bottom of the success page looking for the stripe keys that were not getting passed in.
+    I removed the unneeded code.
+
 13. Plus (+) / Minus (-) buttons not being disabled on Cart. Two issues found here:
     a. On a larger screen the buttons are in a table, I can not get the jQuery to target the ID of the button within the table.
         Once its outside the table it will target the ID. 
@@ -61,8 +65,10 @@ Hope Page:
 15. edit and delete reviews. Views function did not include a verification that the user was logged in before preforming the action.
     added an if "user.is_authenticated" into both functions.
 
-. checkout page, order summary has no margin on the side when viewed on mobile.
+16. checkout page, order summary has no margin on the side when viewed on mobile.
     
+17. Cart ICON on mobile header was set-down from the top compared to the other ICONs.
+    Added addtional CSS to remove the bootstrap default margins that was pushing the icon down.
 
 To DOs:
 
