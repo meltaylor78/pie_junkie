@@ -90,16 +90,18 @@ to improve the site.
 The site has a simple structure that makes it easy for new customers understand and navigate. The inclusion of an optional registration and authentication system allows returning customers save their details and view past orders. Registraton is not necessary to complete and order, rather an optional feature.
 
 ### **<ins>Models</ins>**
+
 The Pie Junkie site has 5 models in the DB, each linked with foreign keys from other models where required to link entries across the models. 
 
 <details><summary>Models Structure</summary>
         <img src="readme_assets/images/models.jpg">
     </details>
+    <br>
 
 **Dteails of Models;**
 
-**Categories**
-
+- **Categories**
+    
     Provides a list of categories that the products on the site can be categories under, to allow the creation of categorisation of products on the site for the customer
 
 - **Products**
@@ -120,9 +122,9 @@ The Pie Junkie site has 5 models in the DB, each linked with foreign keys from o
 
 ## **<ins>Base_Templates</ins>**
 
-    The site utilises a base template, that all the app templates are extended off. 
+The site utilises a base template, that all the app templates are extended off. 
     
-    - **Base Template Header**
+- **Base Template Header**
 
     The header and footer. The header contains the site name (as a home link), a search bar, a user menu and shopping cart. The search option, searches all products within both the product title and description. 
     The user menu varies depending on login status and user type. 
@@ -131,78 +133,143 @@ The Pie Junkie site has 5 models in the DB, each linked with foreign keys from o
     <details><summary>Base Template Header</summary>
         <img src="readme_assets/images/base_template_header.jpg">
     </details>
+    <br>
 
     On mobile, the headers is compressed in to a more mobile friendly display, it also incorporates the product filter menu into a 3 bar icon, this can be expanded to display the options. 
 
     <details><summary>Base Template Header Mobile</summary>
         <img src="readme_assets/images/base_template_header_mobile.jpg">
     </details>
+    <br>
 
-    - **Base Template Footer**
+- **Base Template Footer**
     The footer displays the company name and link to the Raspberry Pi home page. It also has social media link. The footer is dynamic, it is at the bottom of the screen when the page content is less than a full screen but moves down as the page content expands to maximise the screen size for main site information.
 
     <details><summary>Base Template Footer</summary>
         <img src="readme_assets/images/base_template_footer.jpg">
     </details>
+    <br>
 
-    - **Product Navigation Menu Template Footer**
-    The product naviagtion menu allows the customer to filter by categories.
+- **Product Navigation Menu Template Footer**
+    The product navigation menu allows the customer to filter by categories. The filter options also include an all products option and a filter by, price, category and rating.
+
+    **Note:** For mobile devices, this is collapsed into the nav bar as described above.
 
      <details><summary>Product Navigation</summary>
         <img src="readme_assets/images/includes_product_menu.jpg">
     </details>
+    <br>
 
 ## **<ins>Apps</ins>**
-The site consists od 5 individual apps within the main Django framework. The apps all extend off the base templates with an included production navigation menu. 
+The site consists of 5 individual apps within the main Django framework. The apps all extend off the base templates with an included production navigation menu. 
 
 
 - **Profile**
 
-    The rpoflie app linked to the profile model,  provies a page where login user can  view and edit their default deliver information. 
-    The proflie app also, get information from the order model and displays past orders for the user. 
+    The profile app linked to the profile model,  provides a page where login user can  view and edit their default deliver information. 
+    The profile app also, get information from the order model and displays past orders for the user. 
 
     <details><summary>Profile Page</summary>
         <img src="readme_assets/images/profile.jpg">
     </details>
+    <br>
 
-- Home
+- **Home**
 
-    The home app is the main home pahe (index.html) page for the site. It diplays information on raspberry pi articles and tutroilas to help inform the costomers with information on the Raspberry Pis and tutorials on what they can do with the products that they purchase.
+    The home app is the main home page (index.html) page for the site. It displays information on raspberry pi articles and tutorials to help inform the customers with information on the Raspberry Pis and tutorials on what they can do with the products that they purchase.
 
     <details><summary>Home Page</summary>
         <img src="readme_assets/images/home_page.jpg">
     </details>
+    <br>
     
-- Products
+- **Products**
 
-    The products app contains a number of pages, for displaying products, details of the products and user reviews. Products can be filtered based on the selected categorie selcetd. All products view can be sorted by prices. cartegory & rating (in bot assending & decending order)
+    The products app contains a number of pages, for displaying products, details of the products and user reviews. Products can be filtered based on the selected categories selected. All products view can be sorted by prices. category & rating (in bot ascending & depending order)
         
-    1. Products page, displays all products in the DB.
+    1. **Products page**, displays all products in the DB.
 
     <details><summary>Products Page</summary>
         <img src="readme_assets/images/product_page.jpg">
     </details>
+    <br>
 
-    2. Detail page, that provides all products details to the customer. 
+
+    2. **Detail page**, that provides all products details to the customer. 
 
     The details page also provides the interface to select the quantity and add the product to the cart.
 
     <details><summary>Details Page</summary>
         <img src="readme_assets/images/product_details_page.jpg">
     </details>
+    <br>
+
+    Two additional elements in the product model, Ram & Power are selectable from the details page. When a product has either or both options set in the DB additional options are included on the page. Allowing the customer to select the option;
+    **Ram** - Options > 2Gb / 4Gb / 8Gb
+    **Power** - Options > Ire_Up / EU / Europe
+
+    3. **User Reviews**
+
+    Integrated into the products details page, is a customer review section. This section of the page displays any reviews in the DB for the current product. If the user is logged in they have the option to write a review, other wise they are invited to login to create a review.
+    <details><summary>Customer Reviews</summary>
+        <img src="readme_assets/images/customer_reviews.jpg">
+    </details>
+    <br>
+
+    **3.1. Write a Review**
+    The write a review form is integrated into the details form and open using jQuery when the customer wants to write a review. In the review model, it records the user that submits the review and the product it is written for.
 
     <details><summary>Customer Reviews</summary>
         <img src="readme_assets/images/customer_reviews.jpg">
     </details>
+    <br>
 
-    The products app contains three modles;
+    **3.2. Edit Delete a review**
+    Customers that wrote a review can see two options within their review.
+    Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
+
+    <details><summary>Review Options Reviews</summary>
+        <img src="readme_assets/images/edit_delete_review.jpg">
+    </details>
+    <br>
+
+    **Delete**
+    The delete link will delete the review from the DB and reload the page on the same product.
+
+    **Edit**
+    The edit option will open a new page with the review form refilled with the review data, which the customer can edit and resubmit to the DB.
+
+    <details><summary>Edit Reviews</summary>
+        <img src="readme_assets/images/edit_review.jpg">
+    </details>
+    <br>
+
+        
+- **Cart**
+
+    <details><summary>Cart Page</summary>
+        <img src="readme_assets/images/cart_page.jpg">
+    </details>
+    <br>
+
     
-    1. categories
-    2. products
-    3. reviews    
-       
-- Cart
-- Checkout
+- **Checkout**
+    <details><summary>Cart Page</summary>
+        <img src="readme_assets/images/cart_page.jpg">
+    </details>
+    <br>
+
+    **Checkout Success**
+
+    <details><summary>Checkout Page</summary>
+        <img src="readme_assets/images/checkout_page.jpg">
+    </details>
+    <br>
+
+    <details><summary>Checkout Success Page</summary>
+        <img src="readme_assets/images/checkout_success_page.jpg">
+    </details>
+    <br>
 
 ### <ins>Existing_Features</ins>
 The following featuures have been implemented in the current deployment of the e-commerce site.
