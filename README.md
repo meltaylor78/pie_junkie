@@ -9,11 +9,15 @@ as part of the Diploma in Software Development with the <a href="https://codeins
 
 ## Index
 
-- [Project Motivation](#Project_Motivation)
-- [UX](#UX) 
-    - [User Stories](#User_Stories)
-    - [Wireframes](#Wireframes)
+- [Project Goals](#Project_Goals)
+- [User Stories](#User_Stories) 
+    - [Customer](#Customer)
+    - [Site Owner](#Site_Owner)
+- [Wireframes](#Wireframes)
 - [Features](#Features)
+    - [Models](#Models)
+    - [Base Template](#Base_Template)
+    - [Apps](#Apps)
     - [Existing Features](#Existing_Features)
     - [Future Enhancements](#Future_Enhancements)
 - [Technologies Used](#Technologies_Used)
@@ -32,15 +36,19 @@ as part of the Diploma in Software Development with the <a href="https://codeins
     - [Acknowledgements](#Acknowledgements)
 
 - - - -
-## **<ins>Project_Motivation</ins>**
-The project was motivated by the need to develope and e-commerece store to demenostrate my knowledge of Django
-The Pie-Junkie 
+## **<ins>Project_Goals</ins>**
+The Goal of the project is to develop and deploy an e-commerce store for a fictional online supplier of Raspberry Pi modules and products. 
 
-## **<ins>UX</ins>**
+**Project Requirements;**
+- Develop a site that is initituitve and easy to use for customers without and instructions
+- Ensure that products on the site can be easily added and edited by an admin user.
+- Demonstrate my knowledges and skills by building a full-stack site that includes;
+    HTML, CSS, Python & Javascript built on the Django frame work.
+- Showcase my skills in design to build a site that is inviting to customers and best showcases the products being sold.
 
-### <ins>User_Stories</ins>
+## <ins>User_Stories</ins>
 
-**Customer;**
+### **Customer;**
 
 As a customer I want to;
 1. view Raspberry Pi products that I might be interested in buying
@@ -53,7 +61,7 @@ As a customer I want to;
 8. have the ability to create an account and save my details for return visits
 9. confirmation of my order once places and details emailed to me as a record
 
-**Site Owner;**
+### **Site_Owner;**
 
 As the owner I want to;
 1. provide a site that is inviting to customers, easy to use and intuitive to navigate
@@ -65,7 +73,7 @@ As the owner I want to;
 6. provide a secure method for payment processing to protect customer payment details and site reputation
 
 
-### <ins>Wireframes</ins>
+## <ins>Wireframes</ins>
 During the planning stage of the project, wireframes were drawn up for each of the pages of the site.
 The wireframes, (linked below) were used as guides during the development with some minor tweaks during the build process
 to improve the site.
@@ -79,19 +87,95 @@ to improve the site.
 - - - -
 
 ## **<ins>Features</ins>**
-The site consists od 5 individual apps within the main Django framework. 
-- Profile
+The site has a simple structure that makes it easy for new customers understand and navigate. The inclusion of an optional registration and authentication system allows returning customers save their details and view past orders. Registraton is not necessary to complete and order, rather an optional feature.
 
-    Contains the profile page that allows an autenticated customer to save their deliver details and 
-    view a list of past orders
+### **<ins>Models</ins>**
+The Pie Junkie site has 5 models in the DB, each linked with foreign keys from other models where required to link entries across the models. 
+
+<details><summary>Models Structure</summary>
+        <img src="readme_assets/images/models.jpg">
+    </details>
+
+**Dteails of Models;**
+
+**Categories**
+
+    Provides a list of categories that the products on the site can be categories under, to allow the creation of categorisation of products on the site for the customer
+
+- **Products**
+
+    The products models contains all the information on each product. Included in the site is a admin page "add product" that a superuser can use to add products to this model. In additional an authenticated superuser also has the option to edit or delete a product directly from the products details page.
+
+- **Reviews**
+
+    The review models contains all the customer reviews submitted link to the relevant product. Reviews are displayed to all customers (regardless of login status). Users that are registered and login can post a review and have the option to edit or delete their previous reviews.
+
+- **Users**
+
+    The users models contains all the information on registered users. It also holds all the customers default deliver information if they choose to save it.
+
+- **Order**
+
+    Order model contains all the orders that have been places successfully. The orders are linked to the user (if authenticated at the time) that places the order, this enabled a past order history summary in the profile app.
+
+## **<ins>Base_Templates</ins>**
+
+    The site utilises a base template, that all the app templates are extended off. 
+    
+    - **Base Template Header**
+
+    The header and footer. The header contains the site name (as a home link), a search bar, a user menu and shopping cart. The search option, searches all products within both the product title and description. 
+    The user menu varies depending on login status and user type. 
+    A super users, sees an add product option.
+    
+    <details><summary>Base Template Header</summary>
+        <img src="readme_assets/images/base_template_header.jpg">
+    </details>
+
+    On mobile, the headers is compressed in to a more mobile friendly display, it also incorporates the product filter menu into a 3 bar icon, this can be expanded to display the options. 
+
+    <details><summary>Base Template Header Mobile</summary>
+        <img src="readme_assets/images/base_template_header_mobile.jpg">
+    </details>
+
+    - **Base Template Footer**
+    The footer displays the company name and link to the Raspberry Pi home page. It also has social media link. The footer is dynamic, it is at the bottom of the screen when the page content is less than a full screen but moves down as the page content expands to maximise the screen size for main site information.
+
+    <details><summary>Base Template Footer</summary>
+        <img src="readme_assets/images/base_template_footer.jpg">
+    </details>
+
+    - **Product Navigation Menu Template Footer**
+    The product naviagtion menu allows the customer to filter by categories.
+
+     <details><summary>Product Navigation</summary>
+        <img src="readme_assets/images/includes_product_menu.jpg">
+    </details>
+
+## **<ins>Apps</ins>**
+The site consists od 5 individual apps within the main Django framework. The apps all extend off the base templates with an included production navigation menu. 
+
+
+- **Profile**
+
+    The rpoflie app linked to the profile model,  provies a page where login user can  view and edit their default deliver information. 
+    The proflie app also, get information from the order model and displays past orders for the user. 
+
+    <details><summary>Profile Page</summary>
+        <img src="readme_assets/images/profile.jpg">
+    </details>
+
 - Home
 
-    Home app, conatins the main home (index.html) page with links to information and tutroials on Raspberry Pi
+    The home app is the main home pahe (index.html) page for the site. It diplays information on raspberry pi articles and tutroilas to help inform the costomers with information on the Raspberry Pis and tutorials on what they can do with the products that they purchase.
+
+    <details><summary>Home Page</summary>
+        <img src="readme_assets/images/home_page.jpg">
+    </details>
     
 - Products
 
-    The producs app contains all the producs, filter options (filter by product types, ) and sort options.
-    The site consists of two html pages, 
+    The products app contains a number of pages, for displaying products, details of the products and user reviews. Products can be filtered based on the selected categorie selcetd. All products view can be sorted by prices. cartegory & rating (in bot assending & decending order)
         
     1. Products page, displays all products in the DB.
 
