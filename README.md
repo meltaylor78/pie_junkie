@@ -9,15 +9,11 @@ as part of the Diploma in Software Development with the <a href="https://codeins
 
 ## Index
 
-- [Project Goals](#Project_Goals)
-- [User Stories](#User_Stories) 
-    - [Customer](#Customer)
-    - [Site Owner](#Site_Owner)
-- [Wireframes](#Wireframes)
+- [Project Motivation](#Project_Motivation)
+- [UX](#UX) 
+    - [User Stories](#User_Stories)
+    - [Wireframes](#Wireframes)
 - [Features](#Features)
-    - [Models](#Models)
-    - [Base Template](#Base_Template)
-    - [Apps](#Apps)
     - [Existing Features](#Existing_Features)
     - [Future Enhancements](#Future_Enhancements)
 - [Technologies Used](#Technologies_Used)
@@ -36,19 +32,15 @@ as part of the Diploma in Software Development with the <a href="https://codeins
     - [Acknowledgements](#Acknowledgements)
 
 - - - -
-## **<ins>Project_Goals</ins>**
-The Goal of the project is to develop and deploy an e-commerce store for a fictional online supplier of Raspberry Pi modules and products. 
+## **<ins>Project_Motivation</ins>**
+The project was motivated by the need to develope and e-commerece store to demenostrate my knowledge of Django
+The Pie-Junkie 
 
-**Project Requirements;**
-- Develop a site that is initituitve and easy to use for customers without and instructions
-- Ensure that products on the site can be easily added and edited by an admin user.
-- Demonstrate my knowledges and skills by building a full-stack site that includes;
-    HTML, CSS, Python & Javascript built on the Django frame work.
-- Showcase my skills in design to build a site that is inviting to customers and best showcases the products being sold.
+## **<ins>UX</ins>**
 
-## <ins>User_Stories</ins>
+### <ins>User_Stories</ins>
 
-### **Customer;**
+**Customer;**
 
 As a customer I want to;
 1. view Raspberry Pi products that I might be interested in buying
@@ -61,7 +53,7 @@ As a customer I want to;
 8. have the ability to create an account and save my details for return visits
 9. confirmation of my order once places and details emailed to me as a record
 
-### **Site_Owner;**
+**Site Owner;**
 
 As the owner I want to;
 1. provide a site that is inviting to customers, easy to use and intuitive to navigate
@@ -73,7 +65,7 @@ As the owner I want to;
 6. provide a secure method for payment processing to protect customer payment details and site reputation
 
 
-## <ins>Wireframes</ins>
+### <ins>Wireframes</ins>
 During the planning stage of the project, wireframes were drawn up for each of the pages of the site.
 The wireframes, (linked below) were used as guides during the development with some minor tweaks during the build process
 to improve the site.
@@ -87,115 +79,40 @@ to improve the site.
 - - - -
 
 ## **<ins>Features</ins>**
-The site has a simple structure that makes it easy for new customers understand and navigate. The inclusion of an optional registration and authentication system allows returning customers save their details and view past orders. Registraton is not necessary to complete and order, rather an optional feature.
+The site consists od 5 individual apps within the main Django framework. 
+- Profile
 
-### **<ins>Models</ins>**
-
-The Pie Junkie site has 5 models in the DB, each linked with foreign keys from other models where required to link entries across the models. 
-
-<details><summary>Models Structure</summary>
-        <img src="readme_assets/images/models.jpg">
-    </details>
-    <br>
-
-**Dteails of Models;**
-
-- **Categories**
-    
-    Provides a list of categories that the products on the site can be categories under, to allow the creation of categorisation of products on the site for the customer
-
-- **Products**
-
-    The products models contains all the information on each product. Included in the site is a admin page "add product" that a superuser can use to add products to this model. In additional an authenticated superuser also has the option to edit or delete a product directly from the products details page.
-
-- **Reviews**
-
-    The review models contains all the customer reviews submitted link to the relevant product. Reviews are displayed to all customers (regardless of login status). Users that are registered and login can post a review and have the option to edit or delete their previous reviews.
-
-- **Users**
-
-    The users models contains all the information on registered users. It also holds all the customers default deliver information if they choose to save it.
-
-- **Order**
-
-    Order model contains all the orders that have been places successfully. The orders are linked to the user (if authenticated at the time) that places the order, this enabled a past order history summary in the profile app.
-
-## **<ins>Base_Templates</ins>**
-
-The site utilises a base template, that all the app templates are extended off. 
-    
-- **Base Template Header**
-
-    The header and footer. The header contains the site name (as a home link), a search bar, a user menu and shopping cart. The search option, searches all products within both the product title and description. 
-    The user menu varies depending on login status and user type. 
-    A super users, sees an add product option.
-    
-    <details><summary>Base Template Header</summary>
-        <img src="readme_assets/images/base_template_header.jpg">
-    </details>
-    <br>
-
-    On mobile, the headers is compressed in to a more mobile friendly display, it also incorporates the product filter menu into a 3 bar icon, this can be expanded to display the options. 
-
-    <details><summary>Base Template Header Mobile</summary>
-        <img src="readme_assets/images/base_template_header_mobile.jpg">
-    </details>
-    <br>
-
-- **Base Template Footer**
-    The footer displays the company name and link to the Raspberry Pi home page. It also has social media link. The footer is dynamic, it is at the bottom of the screen when the page content is less than a full screen but moves down as the page content expands to maximise the screen size for main site information.
-
-    <details><summary>Base Template Footer</summary>
-        <img src="readme_assets/images/base_template_footer.jpg">
-    </details>
-    <br>
-
-- **Product Navigation Menu Template Footer**
-    The product navigation menu allows the customer to filter by categories. The filter options also include an all products option and a filter by, price, category and rating.
-
-    **Note:** For mobile devices, this is collapsed into the nav bar as described above.
-
-     <details><summary>Product Navigation</summary>
-        <img src="readme_assets/images/includes_product_menu.jpg">
-    </details>
-    <br>
-
-## **<ins>Apps</ins>**
-The site consists of 5 individual apps within the main Django framework. The apps all extend off the base templates with an included production navigation menu. 
-
-
-- **Profile**
-
-    The profile app linked to the profile model,  provides a page where login user can  view and edit their default deliver information. 
-    The profile app also, get information from the order model and displays past orders for the user. 
+    Contains the profile page that allows an autenticated customer to save their deliver details and 
+    view a list of past orders
 
     <details><summary>Profile Page</summary>
-        <img src="readme_assets/images/profile.jpg">
+        <img src="readme_assets/images/profile_page.jpg">
     </details>
     <br>
 
-- **Home**
+- Home
 
-    The home app is the main home page (index.html) page for the site. It displays information on raspberry pi articles and tutorials to help inform the customers with information on the Raspberry Pis and tutorials on what they can do with the products that they purchase.
-
+    Home app, conatins the main home (index.html) page with links to information and tutroials on Raspberry Pi
+    
     <details><summary>Home Page</summary>
         <img src="readme_assets/images/home_page.jpg">
     </details>
     <br>
-    
-- **Products**
 
-    The products app contains a number of pages, for displaying products, details of the products and user reviews. Products can be filtered based on the selected categories selected. All products view can be sorted by prices. category & rating (in bot ascending & depending order)
+- Products
+
+    The producs app contains all the producs, filter options (filter by product types, ) and sort options.
+    The site consists of two html pages, 
         
-    1. **Products page**, displays all products in the DB.
+    1. Products page, displays all products in the DB.
+    Products are displayed in a bootstrap card with the number per row, varying depending on screen size. The image for  each product is a link to open the details for the selected product.
 
     <details><summary>Products Page</summary>
         <img src="readme_assets/images/product_page.jpg">
     </details>
     <br>
 
-
-    2. **Detail page**, that provides all products details to the customer. 
+    2. Detail page, that provides all products details to the customer. 
 
     The details page also provides the interface to select the quantity and add the product to the cart.
 
@@ -204,72 +121,58 @@ The site consists of 5 individual apps within the main Django framework. The app
     </details>
     <br>
 
-    Two additional elements in the product model, Ram & Power are selectable from the details page. When a product has either or both options set in the DB additional options are included on the page. Allowing the customer to select the option;
-    **Ram** - Options > 2Gb / 4Gb / 8Gb
-    **Power** - Options > Ire_Up / EU / Europe
+    Two additional elements in the product model, Ram & Power are selectable from the details page. When a product has either or both options set in the DB additional options are included on the page. Allowing the customer to select the option; Ram - Options > 2Gb / 4Gb / 8Gb Power - Options > Ire_Up / EU / Europe
 
-    3. **User Reviews**
-
+    3. User Reviews
     Integrated into the products details page, is a customer review section. This section of the page displays any reviews in the DB for the current product. If the user is logged in they have the option to write a review, other wise they are invited to login to create a review.
-    <details><summary>Customer Reviews</summary>
-        <img src="readme_assets/images/customer_reviews.jpg">
-    </details>
-    <br>
-
-    **3.1. Write a Review**
-    The write a review form is integrated into the details form and open using jQuery when the customer wants to write a review. In the review model, it records the user that submits the review and the product it is written for.
 
     <details><summary>Customer Reviews</summary>
         <img src="readme_assets/images/customer_reviews.jpg">
     </details>
     <br>
+    
+    3.1. Write a Review The write a review form is integrated into the details form and open using jQuery when the customer wants to write a review. In the review model, it records the user that submits the review and the product it is written for.
 
-    **3.2. Edit Delete a review**
-    Customers that wrote a review can see two options within their review.
-    Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
+    <details><summary> Reviews</summary>
+        <img src="readme_assets/images/customer_reviews.jpg">
+    </details>
+    <br>
 
-    <details><summary>Review Options Reviews</summary>
+
+    3.2. Edit / Delete a review Customers that wrote a review can see two options within their review. Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
+    Review Options Reviews
+
+    <details><summary> Review Options</summary>
         <img src="readme_assets/images/edit_delete_review.jpg">
     </details>
     <br>
 
-    **Delete**
-    The delete link will delete the review from the DB and reload the page on the same product.
+    Delete The delete link will delete the review from the DB and reload the page on the same product.
 
-    **Edit**
-    The edit option will open a new page with the review form refilled with the review data, which the customer can edit and resubmit to the DB.
+    Edit The edit option will open a new page with the review form refilled with the review data, which the customer can edit and resubmit to the DB.
+    Edit Reviews
 
-    <details><summary>Edit Reviews</summary>
+    <details><summary>Review Options</summary>
         <img src="readme_assets/images/edit_review.jpg">
     </details>
     <br>
 
-        
-- **Cart**
+- Cart
 
     <details><summary>Cart Page</summary>
         <img src="readme_assets/images/cart_page.jpg">
     </details>
-    <br>
 
-    
-- **Checkout**
-    <details><summary>Cart Page</summary>
-        <img src="readme_assets/images/cart_page.jpg">
-    </details>
-    <br>
-
-    **Checkout Success**
+- Checkout
 
     <details><summary>Checkout Page</summary>
         <img src="readme_assets/images/checkout_page.jpg">
     </details>
-    <br>
 
     <details><summary>Checkout Success Page</summary>
         <img src="readme_assets/images/checkout_success_page.jpg">
     </details>
-    <br>
+
 
 ### <ins>Existing_Features</ins>
 The following featuures have been implemented in the current deployment of the e-commerce site.
@@ -402,8 +305,7 @@ As part of the UX testing all pages were tested for the following criteria;
 | --- | --- | --- |
 | Rahul Lakhanpal | Project Mentor | For all the guidance and input on UK and guiding me through the project with advise and direction. |
 | Caroline Taylor | Testing | For help with User Testing and feedback |
-|MongoDB | DB Hosting | For providing a free backend DB for the application|
-|Heroku | Live Site Hosting |For providing a free cloud environment to host the application|
+
 
 [Index](#Index)
 - - - -
