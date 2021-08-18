@@ -27,12 +27,6 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
-
-/* ___________ Order Summary ___________ */
-.order_summary{
-  border: .product_col lightgray;
-}
-
 /* ___________ Checkout Stripe Elements ___________ */
 .StripeElement,
 .stripe-style-input {

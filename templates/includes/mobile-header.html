@@ -1,3 +1,4 @@
+<ol class="mobile-ul">
 <li class="list-inline-item">
     <a class="nav-link d-block d-lg-none mobile_top_header" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
@@ -20,14 +21,16 @@
         </form>
     </div>
 </li>
+</ol>
+<ol class="mobile-ul">
 <li class="list-inline-item dropdown">
-    <a class="nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link d-block d-lg-none" href="#" id="user-options-mobile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-user fa-lg"></i></div>
             <p class="my-0 text-white">My Account</p>
         </div>
     </a>
-    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+    <div class="dropdown-menu border-0" aria-labelledby="user-options-mobile">
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
                 <a href="{% url 'new_product' %}" class="dropdown-item">Add Product</a>
@@ -40,8 +43,10 @@
         {% endif %}
     </div>
 </li>
+</ol>
+<ol class="mobile-ul">
 <li class="list-inline-item dropdown d-block d-lg-none">
-    <a class="cart_icon_mobile {% if grand_total %}text-primary font-weight-bold{% else %}text-white{% endif %} nav-link d-block d-lg-none" href="{% url 'view_cart' %}">
+    <a class="cart_icon_mobile {% if grand_total %}text-primary font-weight-bold{% else %}text-white{% endif %} nav-link d-block d-lg-none" href="{% url 'view_cart' %}"></a>
         {% if grand_total %}
             <a class="cart_logo pt-0" href="{% url 'view_cart' %}">
                 <div class="text-center">
@@ -61,5 +66,6 @@
                 </div>
             </a>
         {% endif %}
-    </a>
+    
 </li>
+</ol>

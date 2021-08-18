@@ -1,4 +1,6 @@
 // show review form
+/*jshint esversion: 6 */
+/*globals $:false */
 
 $(document).ready(function () {
     $(".review_form_row").hide();

@@ -186,6 +186,11 @@ html {
         padding-bottom: 0px !important;
     }
   }
+  .mobile-ul{
+      padding: 0px !important;
+      margin: 0px !important;
+      border: none !important;
+  }
   
 
 /* ___________ Toasts & Messages ___________ */

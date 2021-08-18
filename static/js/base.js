@@ -1,3 +1,6 @@
+/*jshint esversion: 6 */
+/*globals $:false */
+
 $(document).ready(function () {
     $("#product-search-large").submit(function (e) {
         e.preventDefault();

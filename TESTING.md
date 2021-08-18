@@ -2,12 +2,80 @@
 alt="site banner image" style="max-width:100%;"></img></a>
 
 - [Code Validation](#Code_Validation)
-    - [HTML Code](#HTML_Code)
+    - [HTML Code Validation](#HTML_Code_Validation)
     - [HTML Code](#HTML_Code)
     - [HTML Code](#HTML_Code)
 
 - [User Testing](#Code_Validation)
 
+
+## **<ins>Code_Validation</ins>**
+
+
+### **<ins>HTML_Code_Validation</ins>**
+HTML code for the project was validated using the <a href="https://validator.w3.org/">W3C Markup Validation Service</a>.
+
+The inital validation test on the validation tool showed 26 errors and 4 warning. 
+Many of the errors were from copying segments of code to reuse and not changing the IDs used. 
+
+All errors have been resolved
+
+<img src="readme_assets/images/html_validation.jpg">
+
+
+
+
+<details><summary>W3C Error Report</summary>
+
+1. Error: Element li not allowed as child of element nav in this context. (Suppressing further errors from this subtree.)   
+2. Error: Element li not allowed as child of element nav in this context. (Suppressing further errors from this subtree.)
+3. Error: Duplicate ID user-options.
+4. Warning: The first occurrence of ID user-options was here.
+5. Error: Element li not allowed as child of element nav in this context. (Suppressing further errors from this subtree.)
+6. Error: Start tag a seen but an element of the same type was already open.
+7. Error: Stray end tag a.
+8. Error: Duplicate ID home-link.
+9. Warning: The first occurrence of ID home-link was here.
+10. Error: Bad value /products/?category=All Raspberry Pi,raspberry_pi_4,raspberry_pi_3,raspberry_pi_zero,raspberry_pi_pico for attribute href on element a: Illegal character in query: space is not allowed.
+11. Error: Duplicate ID sccessories-link.
+12. Warning: The first occurrence of ID sccessories-link was here.
+13. Error: Bad value /products/?category=All Kits,game_kit,project,mini_projects for attribute href on element a: Illegal character in query: space is not allowed.
+14. Error: Attribute test not allowed on element h5 at this point.
+15. Error: Attribute test not allowed on element h5 at this point.
+16. Error: Attribute test not allowed on element h5 at this point.
+17. Error: Attribute text-b not allowed on element h5 at this point.
+18. Warning: The type attribute is unnecessary for JavaScript resources.
+19. Error: End tag for body seen, but there were unclosed elements.
+20. Error: Unclosed element div.
+21. Error: The aria-labelledby attribute must point to an element in the same document.
+22. Error: The aria-labelledby attribute must point to an element in the same document.
+23. Error: The aria-labelledby attribute must point to an element in the same document.
+24. Error: The aria-labelledby attribute must point to an element in the same document.
+25. Error: The aria-labelledby attribute must point to an element in the same document.
+26. Error: The aria-labelledby attribute must point to an element in the same document.<div class="dropdown-menu border-0" aria-labelledby="Accessories link">↩ 
+27. Error: The aria-labelledby attribute must point to an element in the same document.
+28. Error: The aria-labelledby attribute must point to an element in the same document.
+29. Error: The aria-labelledby attribute must point to an element in the same document.
+30. Error: The aria-labelledby attribute must point to an element in the same document.
+    </details>
+    <br>
+
+### **<ins>CSS_Code_Validation</ins>**
+CSS code for the project was validated using the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a>.
+
+All CSS files were test individuals. Only one error was found, in the CSS file for the checkout app. An incorrectly written CSS line on a class that was no longer being used. I removed the class and CSS associated with it. 
+
+All other files passed.
+
+### **<ins>CSS_Code_Validation</ins>**
+JavaScript code for the project was validated using the <a href="https://jshint.com/">JSHINT</a>.
+
+For the JavaScript testings, I added
+- /*jshint esversion: 6 */ (Suppress errors related to Let / Conts)
+- /*globals $:false */ (Suppress errors on $ from jQuery)
+
+All JS files have been validated. 
+The stripe_elemet.js file has one undefined variable error on "Stripe" but as this is coming from another file, no issue to resolve.
 
 ## **<ins>User_Testing</ins>**
 
