@@ -67,7 +67,7 @@ All CSS files were test individuals. Only one error was found, in the CSS file f
 
 All other files passed.
 
-### **<ins>CSS_Code_Validation</ins>**
+### **<ins>JavaScript_Code_Validation</ins>**
 JavaScript code for the project was validated using the <a href="https://jshint.com/">JSHINT</a>.
 
 For the JavaScript testings, I added
@@ -100,7 +100,7 @@ The following issues were found and resolved:
     I investigated changing the type of message to change it to an info but was it was coming from allauth, I was unable to change this. 
     To fix the issue, I added an if statement to toast success message to only include the cart button in certain circumstances.
 
-3.
+3. Checkout views.py
 - **Issue**
     Anonymous Ordering, issue when customer is not logged in, order was placed and e-mail received confirming order. but site failed on order successful page.
 
@@ -108,19 +108,19 @@ The following issues were found and resolved:
     There was an issue with checkout view, there was a missing if request.user.is_authenticated missing from checkout_success function so system was trying to save info to profile that did not exist. 
     I added the if statement to skip the profile step when user is not logged in 
 
-4.
+4. Checkout Template
 - **Issue**
     checkout template references $ in the template instead of €
 - **Fix:**
     Updated the template to use €s
 
-5.
+5. Main Navigation
 - **Issue**
     Components and Sensors options in dropdown points to USB Dongles.
 - **Fix:**
     Updated href in main-nav templates for Components and sensors
 
-6.
+6. Shopping Cart
 - **Issue**
     Plus (+) / Minus (-) buttons not being disabled on Cart. Two issues found here:
     
@@ -137,14 +137,14 @@ The following issues were found and resolved:
     In addition to the above, I also added an if statement to the view to prevent the update button processing updates where the number in the input box is
     outside the range of allowed entries. This is a fall back, incase the input limits fail for some reason.
 
-7.
+7. Edit Review
 - **Issue**
     Recommended buy drop down menu on edit review page, too small on mobile scree. 
 
 - **Fix:**
     Moved to its own row for small devices
 
-8.
+8. Console Error
 - **Issue**
     Console error > Uncaught IntegrationError: Please call Stripe() with your publishable key. You used an empty string. @ static/checkout/js/stripe_elements.js:3
 - **Fix:**
@@ -154,21 +154,21 @@ The following issues were found and resolved:
     This error returned after the above fix, further investigation found, I had used the checkout templates as the base to created the checkout success page,
     I had the code still in the bottom of the success page looking for the stripe keys that were not getting passed in. I removed the unneeded code.
 
-9.
+9. Post Review
 - **Issue**
     Posted review, drop down for recommended product on mobile too small.
 
 - **Fix:**
     Move to new line for small screens.
 
-10.
+10. Customer Reviews - Order
 - **Issue**
     Order of customer reviews, oldest was being displayed first.
 
 - **Fix:**
     Updated products view to include an order option to display the most recent review first
 
-11.
+11. Customer Reviews - Date Displayed
 - **Issue**
     Customer review date was displaying from the DB the date, time form the DB. More than was needed.
 
@@ -176,7 +176,7 @@ The following issues were found and resolved:
     Updated Django template date output to only display day/month/year.
     Used month Name, for the avoidance of doubt in countries using other formats
 
-12.
+12. Edit/ Delete Customer Reviews
 - **Issue**
     Validation of logon when allowing user to edit or delete a review.
     Options to edit / delete are only shown for owner of the event but as an extra layer of security a check was added in the view
@@ -184,7 +184,7 @@ The following issues were found and resolved:
 - **Fix:**
     Views function did not include a verification that the user was logged in before preforming the action. added an if "user.is_authenticated" into both functions.
 
-13.
+13. Checkout Page
 - **Issue**
     Checkout page, order summary has no margin on the side when viewed on mobile.
 
@@ -192,14 +192,14 @@ The following issues were found and resolved:
     Added additional classes for mobile and table devices. 
     Also moved the order summary to the bottom of the page for smaller devices.
 
-14.
+14. Cart ICON - Mobile Nav
 - **Issue**
     Cart ICON on mobile header was set-down from the top compared to the other ICONs.
 
 - **Fix:**
     Added additional CSS to remove the bootstrap default margins that was pushing the icon down.
 
-15.
+15. Order Confirmation Mail
 - **Issue**
      Order confirmation em-mail, cost, shipping etc were showing as $.
      
