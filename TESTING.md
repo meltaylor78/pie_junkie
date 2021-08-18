@@ -85,6 +85,7 @@ that I could not fix.
 All other issues with PEP8 compliance were resolved.
 
 |Code|Line|Column|Issue|File|
+| --- | --- | --- | --- | --- |
 |E713|30|50|test for membership should be 'not in'|Cart App, views.py|
 |E501|30|80|line too long (88 > 79 characters)|Cart App, views.py|
 |E501|39|80|line too long (86 > 79 characters)|Checkout App, webhooks.py|

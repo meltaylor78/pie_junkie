@@ -112,7 +112,7 @@ The site consists od 5 individual apps within the main Django framework.
     Products are displayed in a bootstrap card with the number per row, varying depending on screen size. The image for  each product is a link to open the details for the selected product.
 
     <details><summary>Products Page</summary>
-        <img src="readme_assets/images/product_page.jpg">
+        <img src="readme_assets/images/products_page.jpg">
     </details>
     <br>
 
@@ -155,7 +155,7 @@ The site consists od 5 individual apps within the main Django framework.
     Edit The edit option will open a new page with the review form refilled with the review data, which the customer can edit and resubmit to the DB.
     Edit Reviews
 
-    <details><summary>Review Options</summary>
+    <details><summary>Edit Review</summary>
         <img src="readme_assets/images/edit_review.jpg">
     </details>
     <br>
@@ -305,7 +305,7 @@ The future enhancement features would be the main areas of focus for the next ve
 ## <ins>Testing</ins>
 
 Testing is documented in the testing.md file.
-Full details of the testing can be dound there.
+Full details of the testing can be found there.
 
 
 [Index](#Index)
