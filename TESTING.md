@@ -3,16 +3,17 @@ alt="site banner image" style="max-width:100%;"></img></a>
 
 - [Code Validation](#Code_Validation)
     - [HTML Code Validation](#HTML_Code_Validation)
-    - [HTML Code](#HTML_Code)
-    - [HTML Code](#HTML_Code)
-
+    - [CSS Code Validation](#CSS_Code_Validation)
+    - [JavaScript Code Validation](#JavaScript_Code_Validation)
+    - [Python Code Validation](#Python_Code_Validation)
 - [User Testing](#Code_Validation)
+- [Lighthouse Report](#Lighthouse_Report)
 
 
 ## **<ins>Code_Validation</ins>**
 
 
-### **<ins>HTML_Code_Validation</ins>**
+### <ins>HTML_Code_Validation</ins>
 HTML code for the project was validated using the <a href="https://validator.w3.org/">W3C Markup Validation Service</a>.
 
 The inital validation test on the validation tool showed 26 errors and 4 warning. 
@@ -60,14 +61,14 @@ All errors have been resolved
     </details>
     <br>
 
-### **<ins>CSS_Code_Validation</ins>**
+### <ins>CSS_Code_Validation</ins>
 CSS code for the project was validated using the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a>.
 
 All CSS files were test individuals. Only one error was found, in the CSS file for the checkout app. An incorrectly written CSS line on a class that was no longer being used. I removed the class and CSS associated with it. 
 
 All other files passed.
 
-### **<ins>JavaScript_Code_Validation</ins>**
+### <ins>JavaScript_Code_Validation</ins>
 JavaScript code for the project was validated using the <a href="https://jshint.com/">JSHINT</a>.
 
 For the JavaScript testings, I added
@@ -76,6 +77,18 @@ For the JavaScript testings, I added
 
 All JS files have been validated. 
 The stripe_elemet.js file has one undefined variable error on "Stripe" but as this is coming from another file, no issue to resolve.
+
+### <ins>Python_Code_Validation</ins>
+For the python files, I have used <a href="https://jshint.com/">PEP8 online</a>, to check all the files are PEP8 Complient. 
+All .py files were test in the PEP8 online resources, ther were some issues displayed but I have decided not update these as they were causing functional issuse
+that I could not fix.
+All other issues with PEP8 compliance were resolved.
+
+|Code|Line|Column|Issue|File|
+|E713|30|50|test for membership should be 'not in'|Cart App, views.py|
+|E501|30|80|line too long (88 > 79 characters)|Cart App, views.py|
+|E501|39|80|line too long (86 > 79 characters)|Checkout App, webhooks.py|
+
 
 ## **<ins>User_Testing</ins>**
 
@@ -205,3 +218,8 @@ The following issues were found and resolved:
      
 - **Fix:**
     Updated the message template to € as per site set-up.
+
+
+## <ins>Lighthouse_Report</ins>
+
+<img src="readme_assets/images/lighthouse_report.jpg">
