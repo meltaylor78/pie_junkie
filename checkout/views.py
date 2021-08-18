@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse,
+                              get_object_or_404, HttpResponse)
 from django.contrib import messages
 from django.conf import settings
 
@@ -79,7 +80,8 @@ def checkout(request):
                                     quantity = item_data[opt][power]
                                 else:
                                     ram = ''
-                                    quantity = item_data['product_power'][power]
+                                    quantity = item_data[
+                                        'product_power'][power]
 
                                 order_line_item = OrderLineItem(
                                     order=order,
@@ -101,7 +103,8 @@ def checkout(request):
 
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
+                        "One of the products in your \
+                            cart wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -116,7 +119,8 @@ def checkout(request):
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(request,
+                           "There's nothing in your cart at the moment")
             return redirect(reverse('products'))
 
         current_cart = cart_contents(request)

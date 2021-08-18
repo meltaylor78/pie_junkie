@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
 from products.models import Product
 
+
 def view_cart(request):
     return render(request, 'cart/cart.html')
 
@@ -22,21 +23,23 @@ def add_to_cart(request, item_id):
 
     if ram and power:
         if item_id in list(cart.keys()):
-            if ram in cart[item_id].keys() and power in cart[item_id][ram].keys():
+            if ram in cart[item_id].keys() \
+              and power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] += quantity
 
             elif ram in cart[item_id].keys() and not power in cart[item_id][ram].keys():
                 cart[item_id][ram][power] = quantity
 
             else:
-                cart[item_id][ram]= {power: quantity}
+                cart[item_id][ram] = {power: quantity}
 
         else:
             cart[item_id] = {ram: {power: quantity}}
-    
-        messages.success(request, 
-        f'{product.name} (with {ram} Ram & {power} plug) added to cart')
-   
+
+        messages.success(request,
+                         f'{product.name} (with {ram} Ram & {power} \
+                             plug) added to cart')
+
     elif ram and not power:
         if item_id in list(cart.keys()):
             if ram in cart[item_id]['product_ram'].keys():
@@ -47,7 +50,7 @@ def add_to_cart(request, item_id):
             cart[item_id] = {'product_ram': {ram: quantity}}
 
         messages.success(request,
-         f'{product.name} (with {ram} Ram) added to cart')
+                         f'{product.name} (with {ram} Ram) added to cart')
 
     elif power and not ram:
         if item_id in list(cart.keys()):
@@ -59,19 +62,19 @@ def add_to_cart(request, item_id):
             cart[item_id] = {'product_power': {power: quantity}}
 
         messages.success(request,
-         f'{product.name} (with {power} plug) added to cart')
+                         f'{product.name} (with {power} plug) added to cart')
 
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
-        print(f'Added {product.name} to shopping cart')
-        
+
         messages.success(request, f'{product.name} to cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+
 
 def update_cart(request, item_id):
     product = Product.objects.get(pk=item_id)
@@ -92,8 +95,9 @@ def update_cart(request, item_id):
             if quantity > 0:
                 cart[item_id][ram][power] = quantity
 
-                messages.info(request, 
-                    f'{product.name} (with {ram} Ram & {power} plug) updated in cart')
+                messages.info(request,
+                              f'{product.name}(with {ram} Ram & {power} \
+                                  plug) updated in cart')
 
             else:
                 del cart[item_id][ram][power]
@@ -102,15 +106,17 @@ def update_cart(request, item_id):
                 if not cart[item_id]:
                     cart.pop(item_id)
 
-                messages.info(request, 
-                    f'{product.name} (with {ram} Ram & {power} plug) removed from cart')
-    
+                messages.info(request,
+                              f'{product.name} (with {ram} \
+                                 Ram & {power} plug) removed from cart')
+
         elif ram and not power:
             if quantity > 0:
                 cart[item_id]['product_ram'][ram] = quantity
 
                 messages.info(request,
-                    f'{product.name} (with {ram} Ram) updated in cart')
+                              f'{product.name} (with {ram} \
+                                  Ram) updated in cart')
 
             else:
                 del cart[item_id]['product_ram'][ram]
@@ -118,24 +124,26 @@ def update_cart(request, item_id):
                     cart.pop(item_id)
 
                 messages.info(request,
-                    f'{product.name} (with {ram} Ram) removed from cart')
+                              f'{product.name} (with {ram} Ram) \
+                                  removed from cart')
 
         elif power and not ram:
             if quantity > 0:
                 cart[item_id]['product_power'][power] = quantity
 
-                messages.info(request, 
-                    f'{product.name} (with {power} plug) updated in cart')
+                messages.info(request,
+                              f'{product.name} (with {power} plug) \
+                                  updated in cart')
 
             else:
                 del cart[item_id]['product_power'][power]
                 if not cart[item_id]['product_power']:
                     cart.pop(item_id)
-                
-                messages.info(request, 
-                    f'{product.name} (with {power} plug) removed from cart')
 
-            
+                messages.info(request,
+                              f'{product.name} (with {power} plug) \
+                                  removed from cart')
+
         else:
             if quantity > 0:
                 cart[item_id] = quantity
@@ -144,13 +152,15 @@ def update_cart(request, item_id):
 
             else:
                 cart.pop(item_id)
-                messages.info(request, f'{product.name} removed from cart')
+                messages.info(request, f'{product.name} \
+                    removed from cart')
 
         request.session['cart'] = cart
         return redirect(reverse('view_cart'))
     else:
-        messages.error(request, f'Enter a quantity between 1 and 99')
+        messages.error(request, 'Enter a quantity between 1 and 99')
         return redirect(reverse('view_cart'))
+
 
 def remove_item(request, item_id):
     product = Product.objects.get(pk=item_id)
@@ -171,31 +181,34 @@ def remove_item(request, item_id):
                 del cart[item_id][ram]
             if not cart[item_id]:
                 cart.pop(item_id)
-            
-            messages.info(request, 
-                f'{product.name} (with {ram} Ram & {power} plug) removed from cart')
-    
+
+            messages.info(request,
+                          f'{product.name} (with {ram} Ram & {power} \
+                              plug) removed from cart')
+
         elif ram and not power:
             del cart[item_id]['product_ram'][ram]
             if not cart[item_id]['product_ram']:
                 cart.pop(item_id)
-            
+
             messages.info(request,
-                f'{product.name} (with {ram} Ram) removed from cart')
+                          f'{product.name} (with {ram} Ram) \
+                              removed from cart')
 
         elif power and not ram:
             del cart[item_id]['product_power'][power]
             if not cart[item_id]['product_power']:
                 cart.pop(item_id)
-            
-            messages.info(request, 
-                f'{product.name} (with {power} plug) removed from cart')
+
+            messages.info(request,
+                          f'{product.name} (with {power} plug) \
+                              removed from cart')
 
         else:
             cart.pop(item_id)
 
-            messages.info(request, f'{product.name} removed from cart')
-
+            messages.info(request, f'{product.name} \
+                removed from cart')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)

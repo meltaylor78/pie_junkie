@@ -43,8 +43,8 @@ def all_products(request):
         if 'search_box' in request.GET:
             query = request.GET['search_box']
             if not query:
-                messages.warning(request, 
-                f'No search criteria entered')
+                messages.warning(request,
+                                 'No search criteria entered')
 
                 return redirect(reverse('products'))
 
@@ -67,8 +67,9 @@ def all_products(request):
 def details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-    cust_reviews = Cust_Review.objects.filter(product=product).order_by('-date')
-       
+    cust_reviews = Cust_Review.objects.filter(
+        product=product).order_by('-date')
+
     context = {
         'product': product,
         'cust_reviews': cust_reviews
@@ -76,13 +77,14 @@ def details(request, product_id):
 
     return render(request, 'products/details.html', context)
 
+
 @login_required
 def add_review(request, product_id):
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=product_id)
         user_product = Cust_Review(user=request.user, product=product)
         form = AddReviewForm(request.POST, instance=user_product)
-        
+
         if form.is_valid():
             form.save()
             messages.info(request, "Your review has been posted")
@@ -106,16 +108,18 @@ def edit_review(request, review_id, product_id):
                     "form": form,
                     "product_id": product_id,
                 }
-                print(context)
+
                 return render(request, "products/edit_review.html", context)
-            elif request.method =="POST":
+            elif request.method == "POST":
                 review_edit = AddReviewForm(request.POST, instance=review)
                 if review_edit.is_valid():
                     review_edit.save()
-                    messages.info(request, "Edited review has been posted")
+                    messages.info(request,
+                                  "Edited review has been posted")
                     return redirect("details", product_id=product_id)
                 else:
-                    messages.error(request, "Error editing review, try again later")
+                    messages.error(
+                        request, "Error editing review, try again later")
                     return redirect("details", product_id=product_id)
         else:
             messages.error(request, "Requested action not allowed")
@@ -124,7 +128,6 @@ def edit_review(request, review_id, product_id):
     else:
         messages.error(request, "Requested action not allowed")
         return redirect("details", product_id=product_id)
-
 
 
 @login_required
@@ -137,11 +140,11 @@ def delete_review(request, review_id, product_id):
             review_to_delete = get_object_or_404(Cust_Review, id=review_id)
             review_to_delete.delete()
 
-            messages.info(request, 
-                        f'Product review has been posted')
-            
+            messages.info(request,
+                          'Product review has been posted')
+
             return redirect("details", product_id=product_id)
-        
+
         else:
             messages.error(request, "Requested action not allowed")
             return redirect("details", product_id=product_id)
@@ -153,52 +156,55 @@ def delete_review(request, review_id, product_id):
 
 @login_required
 def new_product(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
-        
+
         if form.is_valid():
             product = form.save()
 
-            messages.info(request, 
-                f'New Product has been added.')
+            messages.info(request,
+                          'New Product has been added.')
 
             return redirect(reverse('details', args=[product.id]))
         else:
-            messages.error(request, 
-                f'Add new product failed, please recheck the form is valid.')
+            messages.error(request,
+                           'Add new product failed, \
+                           please recheck the form is valid.')
 
     else:
         form = ProductForm()
-        
+
     template = 'products/new_product.html'
-    context= {
-    'form': form,
+    context = {
+        'form': form,
     }
 
     return render(request, template, context)
-    
+
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
 
-        messages.error(request, 
-            f'You must be am admin to delete a product')
+        messages.error(request,
+                       'You must be am admin to delete a product')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
 
-    messages.info(request, 
-                f'The product has been deleted from the DB.')
-    
+    messages.info(request,
+                  'The product has been deleted from the DB.')
+
     return redirect(reverse('products'))
-    
+
+
 @login_required
 def edit_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, 
-            f'You must be am admin to edit product details')
+        messages.error(request,
+                       'You must be am admin to edit product details')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -209,8 +215,9 @@ def edit_product(request, product_id):
             messages.info(request, 'Updates habe been savd')
             return redirect(reverse('details', args=[product.id]))
         else:
-            messages.error(request, 
-                f'Failed to update product, please recheck the form is valid.')
+            messages.error(request,
+                           'Failed to update product, \
+                               please recheck the form is valid.')
 
     else:
         form = ProductForm(instance=product)

@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.conf import settings
 from products.models import Product
 
+
 def cart_contents(request):
     cart_items = []
     total = 0
@@ -21,7 +22,7 @@ def cart_contents(request):
                 'product': product,
                 'sub_total': sub_total
             })
-        
+
         elif 'product_ram' not in item_data.keys():
             product = get_object_or_404(Product, pk=item_id)
             ram_options = list(item_data.keys())
@@ -38,7 +39,7 @@ def cart_contents(request):
                         'power': power,
                         'sub_total': sub_total
                     })
-        else :
+        else:
             product = get_object_or_404(Product, pk=item_id)
             for ram, quantity in item_data['product_ram'].items():
                 total += quantity * product.price
@@ -58,9 +59,9 @@ def cart_contents(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-    
+
     grand_total = delivery + total
-    
+
     context = {
         'cart_items': cart_items,
         'total': total,

@@ -15,6 +15,7 @@ class ProductForm(forms.ModelForm):
 
         self.fields['category'].choices = friendly_names
 
+
 class AddReviewForm(forms.ModelForm):
 
     class Meta:
