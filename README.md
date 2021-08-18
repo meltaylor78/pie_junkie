@@ -27,6 +27,8 @@ alt="site view from AMI viewer" style="max-width:100%;"></img></a>
     - [Code Validation](#Code_Validation)
 - [Deployment](#Deployment)
     - [Live Deployment](#Live_Deployment)
+        - [Heroku App Set-up](#Heroku_App_Set-up)
+        - [AWS S3 Bucket Set-p](#AWS_S3_Bucket_Set-up)
     - [Local Deployment](#Local_Deployment)
 - [Credits](#Credits)
     - [Content](#Content)
@@ -316,7 +318,8 @@ This e-commerce stores has been built using gitpod, and using github as the vers
 ### <ins>Live_Deployment</ins>
 As we are deploying the site on Heroku and hosting the static and media files on AWS, we will need to set-up both to deploy the site live. The following are the steps to set-up both environments
 
-**Heroku App Set-up**
+### <ins>Heroku_App_Set-up</ins>
+
 Heroku provides a free tier of access, this free tier is being used for the deployment of this project.
 To create your account, visit  <a href="www.heroku.com" target="_blank"> www.heroku.com</a> and create your free account.
 Once you have your account set-up, the following steps can be followed to set-up an app on Heroku;
@@ -354,7 +357,8 @@ Once you have your account set-up, the following steps can be followed to set-up
 
 **Note:** On your Heroku app, you will need all the same config vars hat you are using in development added. Refer to the config vars on your local system and replicate them on Heroku
 
-**AWS S3 Bucket Set-up**
+### <ins>AWS_S3_Bucket_Set-up</ins>
+
 1. Login to <a href="https://aws.amazon.com/" target="_blank"> AWS</a>, if you don’t have an account you will need to create on. As part of the account creation you will need to supply a credit card number, this project should not exceed the free limit but do set notifications to remain in control of your spending.
 2. From the management console, you can search for S3 and create a new bucket, give the bucket a name (one you will recognise for this project) and selected the region to host the bucket.
 3. For basis settings, enable static website hosting and add index.html and error.html as the Index document and error document respectively. Set the bucket to be Public, this will generate a warning but the bucket needs to be public to allow access to the static and image files.
@@ -389,6 +393,16 @@ As the S3 Bucket is now set up you will need to link it to your project.
 4. At this point you can save, commit and push the updates to Github.
 
 **Note:** If you have products already set-up on the production DB you will need to upload the images manually to the S3 bucket in the media folder or edit the images on the live site and add the images again.
+
+### <ins>Local_Deployment</ins>
+
+To Clone the repository; From the Github repository (@ https://github.com/meltaylor78/pie_junkie/blob/master/README.md)
+
+    click on the code button <img src="readme_assets/images/Code_button.jpg"> and copy the link provided.
+    In a Terminal or IDE
+    Change the directory to the desired location on your drive
+    Type git clone, followed by the url you copied above Note: as an alternate, Git also allows the repository to be downloaded as a zip file.
+
 
 [Index](#Index)
 
