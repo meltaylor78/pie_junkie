@@ -7,6 +7,9 @@ This project is an e-commerce site developed to for Raspberry Pi products develo
 as part of the Diploma in Software Development with the <a href="https://codeinstitute.net/" target="_blank">Code Institute</a>,
  the live version of the site deployed on Heroku is available <a href="https://pie-junkie.herokuapp.com" target="_blank">HERE</a>
 
+<a href="https://pie-junkie.herokuapp.com"><img src="readme_assets/images/ami_site_view.jpg" target="_blank"
+alt="site view from AMI viewer" style="max-width:100%;"></img></a>
+
 ## Index
 
 - [Project Motivation](#Project_Motivation)
@@ -25,7 +28,6 @@ as part of the Diploma in Software Development with the <a href="https://codeins
 - [Deployment](#Deployment)
     - [Live Deployment](#Live_Deployment)
     - [Local Deployment](#Local_Deployment)
-- [Database](#Database) 
 - [Credits](#Credits)
     - [Content](#Content)
     - [Media](#Media)
@@ -138,7 +140,6 @@ The site consists od 5 individual apps within the main Django framework.
     </details>
     <br>
 
-
     3.2. Edit / Delete a review Customers that wrote a review can see two options within their review. Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
     Review Options Reviews
 
@@ -158,39 +159,79 @@ The site consists od 5 individual apps within the main Django framework.
     <br>
 
 - Cart
-
+    The shopping cart page provides the customer a summary of there items before they move to the checkout scree. While in the cart, the customer can adjust the quantity of any product or remove the product entirely. Once updates are process the customer will see the updated cart totals, shipping cost for their cart before moving to check out. 
+   
     <details><summary>Cart Page</summary>
         <img src="readme_assets/images/cart_page.jpg">
     </details>
+    <br>
 
 - Checkout
+    The checkout screen consists of three major elements;
+    1. Deliver Details
+    
+    A table the customer can provide the hipping address and contact details. 
+    For a login / registered user this data can be pulled from their profile app.
+
+    2. Payment card details
+
+    The payment details form, integrated to Stripe where the customer can securely enter their card details. Card details are sent to stripe for processing and never saved on the sight for security reasons.
+
+    3. Summary of the order
+
+    The checkout page also provides a summary of the order that is being process, the customer can see all the details of what there order consists of and the cost of each product and total cart cost.
+
+    Note: On mobile, the page is rearranged ti better suit mobile, the order summary is moved to the bottom of the screen below the forms. 
 
     <details><summary>Checkout Page</summary>
         <img src="readme_assets/images/checkout_page.jpg">
     </details>
+    <br>
 
+    **Order Successful**
+    Once the order has been successfully process the customers taken to the order successful page. The order number for the placed order is provided, a summary of the order and confirmation that an e-mail with the details have been sent.
+    
     <details><summary>Checkout Success Page</summary>
         <img src="readme_assets/images/checkout_success_page.jpg">
     </details>
-
+    <br>
 
 ### <ins>Existing_Features</ins>
-The following featuures have been implemented in the current deployment of the e-commerce site.
-Features described in the user stories have been priortised for the inital deployment
+Based on the user stories, the following features are included in this deployment of the site
+
 **User;**
+- View all products
+- view products by categories
+- customer reviews - view all reviews by product. Add your own review, edit & delete your reviews
+- add contents to cart, review and adjust cart directly from cart page
+- secure checkout, using stripe payments
+- account creation. save default deliver information, view past orders
+- e-mail confirmation of order
 
 **Admin**
+
+- a complete e-commerce site, with intuitive navigation and understanding for customers
+- secure customer payment system via Stripe linked to my account.
+- DBs for products, orders and users.
+- form to add a new product to the DB.
+- options from products details page to edit product details or delete the product from the DB.
 
 
 ### <ins>Future_Enhancements</ins>
 
-In addition to the existing features, some future planned features included.
+While the current deployment meet all the requirements from the user stories, there are some more features that could be added to improve the e-commerce store.
 
 **User;**
-
+- login linked to social media account for ease of loging and registration
+- information on any products that are on sale.
+- ability to view new products that have been added recently
 
 **Admin**
+- Additional fields in the order model that would allow the team managing the store to indicate when and     order has been picked and shipped allow a view of what orders are still to be actioned.
+- additional user groups to allow additional store employees to have access to additional features without he need to have superuser access.
+- a newsletter feature that users could signup to, which would allow site owner push regular information to customers to promote products and the store.
 
+The future enhancement features would be the main areas of focus for the next version of the site.
 
 [Index](#Index)
 - - - -
@@ -261,25 +302,8 @@ In addition to the existing features, some future planned features included.
 - - - -
 ## <ins>Testing</ins>
 
-### <ins>UX_Testing</ins>
-As part of the UX testing all pages were tested for the following criteria;
-
-| Page | Desktop | Tablet | Mobile | Issues |
-| --- | --- | --- | --- | --- |
-
-
-[Index](#Index)
-### <ins>Functional_Testing</ins>
-
-[Index](#Index)
-
-## **<ins>User_Testing</ins>**
-
-
-### <ins>Code_Validation</ins>
-
-|Code| Testing| Tool| Link|
-| --- | --- | --- | --- |
+Testing is documented in the testing.md file.
+Full details of the testing can be dound there.
 
 
 [Index](#Index)
@@ -287,17 +311,87 @@ As part of the UX testing all pages were tested for the following criteria;
 
 ## <ins>Deployment</ins>
 
+This e-commerce stores has been built using gitpod, and using github as the version control. Heroku has been chosen as the cloud environment to deploy the live site. In additional to Heroku, Amazon Web Service (AWS) cloud has been chose to host the static files (css) and media file (product images, etc) which is then linked to the Heroku app.
+
 ### <ins>Live_Deployment</ins>
+As we are deploying the site on Heroku and hosting the static and media files on AWS, we will need to set-up both to deploy the site live. The following are the steps to set-up both environments
 
-### <ins>Local_Deployment</ins>
+**Heroku App Set-up**
+Heroku provides a free tier of access, this free tier is being used for the deployment of this project.
+To create your account, visit  <a href="www.heroku.com" target="_blank"> www.heroku.com</a> and create your free account.
+Once you have your account set-up, the following steps can be followed to set-up an app on Heroku;
+1. On Heroku, select create New App.
+2. Enter the name for your app (note the name will be used as part of the url for the site)
+3. Select the region you want your project deployed on. (I chose Europe option as I am based in Europe)
+4. Once the app is created, in the resources tab of the newly created app, you will need to set-up your database for production environment. Add Heroku Postgres for the database
+5. On your project (in gitpod for me) you will need to install dj_database_url and psycopg2-binary to use Heroku Postgres (freeze your requirements again to ensure Heroku knows to install them)
+6. You will need to migrate your DBs from the Dev DB to the production DB.
+    In settings.py update DATABASE to point to your postgress DB in Heroku.
+    > DATABASES = {'default: dj_database_url.parse("place you Heroku DB link here)}
+    Heroku DB link can be retrieved from the Settings Tab, under config vars.
+7. Migrate the DB to your production DB.
+    I did not migrate any products and set-up products in the new site, as I only have test date on the development environment
+    > python3 manage.py showmigrations
+    > python3 manage.py migrate
+8. Create a superuser account on the new production DB so you have access to update it.
+    > python3 manage.py createsuperuser
+9. Install gunicorn to be used as the web server on Heroku (freeze requirements)
+10. Create a procfile (name : Procfile) and add:
+    > web: gunicorn pie_junkie.wsgi:application
+11. At this point, AWS instance is not set-up for static files so you can temporally disable collect static on Heroku
+> heroku config:set DISABLE_COLLECTSTATIC = 1
+
+12. At this point, you will need to configure your project to use the Heroku Postgres DB in production. In the settings. py file, configure DATABASES are per below image to direct to the correct DB in production or development. This set-up ensures that the site continues to the work in both dev and production.
+
+<details><summary>DATABASES Settings</summary>
+        <img src="readme_assets/images/databases_settings.jpg">
+    </details>
+    <br>
+
+13. Commit and push your changes to Github
+14. On Heroku app, deploy tab, link the app to your Github repository.
+    You can also enable automatic deploy to pickup any changes pushed to Github.
+
+**Note:** On your Heroku app, you will need all the same config vars hat you are using in development added. Refer to the config vars on your local system and replicate them on Heroku
+
+**AWS S3 Bucket Set-up**
+1. Login to <a href="https://aws.amazon.com/" target="_blank"> AWS</a>, if you don’t have an account you will need to create on. As part of the account creation you will need to supply a credit card number, this project should not exceed the free limit but do set notifications to remain in control of your spending.
+2. From the management console, you can search for S3 and create a new bucket, give the bucket a name (one you will recognise for this project) and selected the region to host the bucket.
+3. For basis settings, enable static website hosting and add index.html and error.html as the Index document and error document respectively. Set the bucket to be Public, this will generate a warning but the bucket needs to be public to allow access to the static and image files.
+4. Set-up the CORS config for access between Heroku & S3.
+5. Bucket Policy, generate a policy with AWS generator.
+(you will need to add /* to end of the resource to allow access to all resources)
+6. In AWS, got to IAM (Identity and Access Management) to create group, this is required as you will need to create a user in this group. For the group you can use a pre-built policy "AMAZONS3FullAccess"
+Import this policy and attach the policy to the group.
+7. Create a user and add the user to group created in the previous step.
+At this point you will have access to a csv file with details of the user including the Access Key ID. Download this file and save somewhere safe as you will need it to complete and the file can not be downloaded at a later time.
+
+Setting up AWS in Django
+As the S3 Bucket is now set up you will need to link it to your project. 
+
+1. Install boto3 & Django-storages (freeze the requirements)
+2. In settings.py add the S3 bucket details, linking it to your bucket.
+    This is only for project running in production so include an "if 'USE_AWS'
+    Go to Heroku and create the config vars for AWS;
+
+    Config Vars:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - USE_AWS
+
+   <details><summary>USE_AWS Settings</summary>
+        <img src="readme_assets/images/use_aws_settings.jpg">
+    </details>
+    <br>
+
+3. create a custom_storages.py file
+    This will be used to direct dJango to store static and images files in the S3 Bucket
+4. At this point you can save, commit and push the updates to Github.
+
+**Note:** If you have products already set-up on the production DB you will need to upload the images manually to the S3 bucket in the media folder or edit the images on the live site and add the images again.
 
 [Index](#Index)
-- - - -
-## **<ins>Database</ins>**
 
-
-
-[Index](#Index)
 - - - -
 
 ### <ins>Acknowledgements</ins>
