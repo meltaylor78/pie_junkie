@@ -1,6 +1,12 @@
 <a href="https://pie-junkie.herokuapp.com"><img src="readme_assets/images/site_banner.jpg" target="_blank"
 alt="site banner image" style="max-width:100%;"></img></a>
+<br>
+- - - -
+This documents covers the tests carried out on the Pie junkie site and documents issues found and fixes applied. 
+- - - - 
+<br>
 
+## Index
 - [Code Validation](#Code_Validation)
     - [HTML Code Validation](#HTML_Code_Validation)
     - [CSS Code Validation](#CSS_Code_Validation)
@@ -10,11 +16,18 @@ alt="site banner image" style="max-width:100%;"></img></a>
 - [Form Testing](#Form_Validation)
 - [Lighthouse Report](#Lighthouse_Report)
 
+<br>
+
+<br>
 
 ## **<ins>Code_Validation</ins>**
 
+<br>
+
+- - - -
 
 ### <ins>HTML_Code_Validation</ins>
+<br>
 HTML code for the project was validated using the <a href="https://validator.w3.org/">W3C Markup Validation Service</a>.
 
 The inital validation test on the validation tool showed 26 errors and 4 warning. 
@@ -60,14 +73,26 @@ All errors have been resolved
     </details>
     <br>
 
+[Index](#Index)
+
+- - - -
+<br>
+
 ### <ins>CSS_Code_Validation</ins>
+<br>
 CSS code for the project was validated using the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a>.
 
 All CSS files were tested individualy. Only one error was found, in the CSS file for the checkout app. An incorrectly written CSS line on a class that was no longer being used. I removed the class and CSS associated with it. 
 
 All other files passed.
 
+Index](#Index)
+
+- - - -
+<br>
+
 ### <ins>JavaScript_Code_Validation</ins>
+<br>
 JavaScript code for the project was validated using the <a href="https://jshint.com/">JSHINT</a>.
 
 For the JavaScript testings, I added
@@ -77,7 +102,13 @@ For the JavaScript testings, I added
 All JS files have been validated. 
 The stripe_elemet.js file has one undefined variable error on "Stripe" but as this is coming from another file, no issue to resolve.
 
+[Index](#Index)
+
+- - - -
+<br>
+
 ### <ins>Python_Code_Validation</ins>
+<br>
 For the python files, I have used <a href="https://jshint.com/">PEP8 online</a>, to check all the files are PEP8 Complient. 
 All .py files were tested in the PEP8 online resources, there were some issues displayed but I have decided not update these as they were causing functional issuse
 that I could not fix.
@@ -89,9 +120,13 @@ All other issues with PEP8 compliance were resolved.
 |E501|30|80|line too long (88 > 79 characters)|Cart App, views.py|
 |E501|39|80|line too long (86 > 79 characters)|Checkout App, webhooks.py|
 
+[Index](#Index)
+
+- - - -
+<br>
 
 ## **<ins>User_Testing</ins>**
-
+<br>
 As part of the testing of the site, a manual test was carried out on the site, testing all the pages and functions to ensure the correct results were seen.
 The testing was carried our across a number of devices including large monitor, tablet and mobile device.
 
@@ -219,8 +254,16 @@ The following issues were found and resolved:
 - **Fix:**
     Updated the message template to € as per site set-up.
 
+
+[Index](#Index)
+
+- - - -
+<br>
+
 ## <ins>Form_Testing</ins>
+<br>
 The site contains a number of forms, all forms were manually tested to check for the desired out come.
+<br>
 
 |App|Form|Outcome|
 | --- | --- | --- |

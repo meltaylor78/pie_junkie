@@ -403,6 +403,31 @@ To Clone the repository; From the Github repository (@ https://github.com/meltay
 
 
 [Index](#Index)
+- - - -
+## **<ins>Credits</ins>**
+The development of this site and store could not have happened without the help and support received. The site is a proof of concept that will be submitted as my milestone project.
+I would like to acknowledge, the people and resources that made this project possible.
+
+- - - -
+## **<ins>Media</ins>**
+
+| Details | Site | Link |
+| --- | --- | --- |
+| Images & Product information | The PiHut | https://thepihut.com/ |
+
+In addition to the list above, see the [Technologies Used](#Technologies_Used) and the [Acknowledgements](#Acknowledgements) section for others that I would like 
+to extend my thanks and appreciation to.
+
+- - - -
+
+## **<ins>Credits</ins>**
+
+| Details | Site | Link |
+| --- | --- | --- |
+| Walkthrough Project - Boutique Ado | Code Institute | https://codeinstitute.net |
+| Content on Raspberry Pi & Accessories | The PiHut | https://thepihut.com/ |
+
+In particular the Walkthrough Project - Boutique Ado, the instructional videos that I had to revisit on many times as I worked through the project.
 
 - - - -
 
@@ -412,6 +437,5 @@ To Clone the repository; From the Github repository (@ https://github.com/meltay
 | Rahul Lakhanpal | Project Mentor | For all the guidance and input on UX design and guiding me through the project with advise and direction. |
 | Caroline Taylor | Testing | For help with User Testing and feedback |
 
-
-[Index](#Index)
 - - - -
+[Index](#Index)
