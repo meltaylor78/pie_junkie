@@ -7,6 +7,7 @@ alt="site banner image" style="max-width:100%;"></img></a>
     - [JavaScript Code Validation](#JavaScript_Code_Validation)
     - [Python Code Validation](#Python_Code_Validation)
 - [User Testing](#Code_Validation)
+- [Form Testing](#Form_Validation)
 - [Lighthouse Report](#Lighthouse_Report)
 
 
@@ -64,7 +65,7 @@ All errors have been resolved
 ### <ins>CSS_Code_Validation</ins>
 CSS code for the project was validated using the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a>.
 
-All CSS files were test individuals. Only one error was found, in the CSS file for the checkout app. An incorrectly written CSS line on a class that was no longer being used. I removed the class and CSS associated with it. 
+All CSS files were tested individualy. Only one error was found, in the CSS file for the checkout app. An incorrectly written CSS line on a class that was no longer being used. I removed the class and CSS associated with it. 
 
 All other files passed.
 
@@ -80,7 +81,7 @@ The stripe_elemet.js file has one undefined variable error on "Stripe" but as th
 
 ### <ins>Python_Code_Validation</ins>
 For the python files, I have used <a href="https://jshint.com/">PEP8 online</a>, to check all the files are PEP8 Complient. 
-All .py files were test in the PEP8 online resources, ther were some issues displayed but I have decided not update these as they were causing functional issuse
+All .py files were tested in the PEP8 online resources, there were some issues displayed but I have decided not update these as they were causing functional issuse
 that I could not fix.
 All other issues with PEP8 compliance were resolved.
 
@@ -94,14 +95,14 @@ All other issues with PEP8 compliance were resolved.
 ## **<ins>User_Testing</ins>**
 
 As part of the testing of the site, a manual test was carried out on the site, testing all the pages and functions to ensure the correct results were seen.
-The testing was carried our across a number of devices, large monitor, tablet and mobile device.
+The testing was carried our across a number of devices including large monitor, tablet and mobile device.
 
 
 The following issues were found and resolved:
 
 1. Home Page
 - **Issue**
-    The sizing for mobile, was causing issue where the buttons for more information were not displayed or hidden under the next card. On a table device the last row of cards was being displayed over the footer
+    The sizing for mobile, was causing an issue where the buttons for more information were not displayed or hidden under the next card. On a table device the last row of cards was being displayed over the footer
 
 - **Fix:**
     Additional classes were added to provide more spacing and margins at the bottom to ensure there was no over lap of cards
@@ -111,7 +112,7 @@ The following issues were found and resolved:
     On login or logout the message being displayed, contained a link to the cart. At the time of login the cart was empty and at logout it was not a required button
 
 - **Fix:**
-    I investigated changing the type of message to change it to an info but was it was coming from allauth, I was unable to change this. 
+    I investigated changing the type of message to change it to an info message but was it was coming from allauth, I was unable to change this. 
     To fix the issue, I added an if statement to toast success message to only include the cart button in certain circumstances.
 
 3. Checkout views.py
@@ -153,7 +154,7 @@ The following issues were found and resolved:
 
 7. Edit Review
 - **Issue**
-    Recommended buy drop down menu on edit review page, too small on mobile scree. 
+    Recommended buy drop down menu on edit review page, too small on mobile screen. 
 
 - **Fix:**
     Moved to its own row for small devices
@@ -215,10 +216,27 @@ The following issues were found and resolved:
 
 15. Order Confirmation Mail
 - **Issue**
-     Order confirmation em-mail, cost, shipping etc were showing as $.
+     Order confirmation e-mail, cost, shipping etc were showing as $.
      
 - **Fix:**
     Updated the message template to € as per site set-up.
+
+## <ins>Form_Testing</ins>
+
+- Add Product
+- Edit Product
+- Product Details 
+    - Add review
+    - Edit Review
+    - Delete Review
+    - Add to Cart
+- Shopping Cart
+    - Edit cart
+- Checkout
+    - Delivery Details
+    - stripe Payment form
+- Profile
+    - Default Deliver Details
 
 
 ## <ins>Lighthouse_Report</ins>
