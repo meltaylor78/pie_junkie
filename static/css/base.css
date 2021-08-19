@@ -8,11 +8,30 @@ h1, h2, h3, h4, h5{
 p {
     font-family: "serrat", sans-serif;
 }
-html,body
-{
+html,body {
     width: 100%;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 8rem;
+    min-height: 100%;
+  }
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 
 .header-title{
     font-family: "Roboto Condensed", sans-serif;
@@ -20,9 +39,7 @@ html,body
 a {
     font-family: "serrat", sans-serif;
 }
-body{
-    overflow-x: hidden;
-}
+
 /* ___________ Messages ___________ */
 .messages_bar{
     background-color: #153243;
@@ -122,22 +139,6 @@ body{
 }
 .footericons:hover{
     color: lightgray;
-}
-html {
-    height: 100%;
-    box-sizing: border-box;
-  }
-  body {
-    position: relative;
-    margin: 0;
-    padding-bottom: 6rem;
-    min-height: 100%;
-  }
-.footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 @media only screen and (min-width: 768px) {
