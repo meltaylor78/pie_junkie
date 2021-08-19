@@ -120,17 +120,20 @@
     {% include 'products/includes/quantity_input_script.html' %}
     
     <script>
+        /*jshint esversion: 6 */
+        /*globals $:false */
+
         $('.update-item').click(function(e) {
             let form = $(this).prev('.update-form');
             form.submit();
-        })
+        });
 
         $('.remove-item').click(function(e) {
             let csrfToken = "{{ csrf_token }}";
             let itemId = $(this).attr('id').split('remove_')[1];
             let ram = $(this).data('product').split('|')[0];
             if (ram == "product_power"){
-                ram = "" 
+                ram = ""; 
             }
             let power = $(this).data('product').split('|')[1];
             let url = `/cart/remove/${itemId}/`;
@@ -140,7 +143,6 @@
              .done(function() {
                 location.reload();
              });
-        })
-                   
+        });           
     </script>
     {% endblock %}

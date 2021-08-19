@@ -55,7 +55,7 @@ select option[value=""] {
     color: #aab7c4;
 }
 
-/* ___________ Page loading overlay ___________ */
+/* ___________ Page loading overlay __________ */
 #loading-overlay {
 	display: none;
 	position: fixed;

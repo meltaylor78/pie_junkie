@@ -1,1 +1,1 @@
-Order Confirmation from Pie Junkie (Order # {{ order.order_number }})
+Order Confirmation from Pie-Junkie (Order # {{ order.order_number }})
