@@ -3,9 +3,9 @@
 <a href="https://pie-junkie.herokuapp.com"><img src="readme_assets/images/site_banner.jpg" target="_blank"
 alt="site banner image" style="max-width:100%;"></img></a>
 
-This project is an e-commerce site developed to for Raspberry Pi products developed for submission as my Milestone 4 project
+This project is an e-commerce site developed for Raspberry Pi products and was developed for submission as my Milestone 4 project
 as part of the Diploma in Software Development with the <a href="https://codeinstitute.net/" target="_blank">Code Institute</a>,
- the live version of the site deployed on Heroku is available <a href="https://pie-junkie.herokuapp.com" target="_blank">HERE</a>
+ the live version of the site is deployed on Heroku and available <a href="https://pie-junkie.herokuapp.com" target="_blank">HERE</a>
 
 <a href="https://pie-junkie.herokuapp.com"><img src="readme_assets/images/ami_site_view.jpg" target="_blank"
 alt="site view from AMI viewer" style="max-width:100%;"></img></a>
@@ -37,8 +37,8 @@ alt="site view from AMI viewer" style="max-width:100%;"></img></a>
 
 - - - -
 ## **<ins>Project_Motivation</ins>**
-The project was motivated by the need to develope and e-commerece store to demenostrate my knowledge of Django
-The Pie-Junkie 
+The project was motivated by the need to develop an e-commerece store to demonstrate my knowledge of Django
+I decided on a site selling raspberry pi products and called it The Pie-Junkie.
 
 ## **<ins>UX</ins>**
 
@@ -50,19 +50,19 @@ As a customer I want to;
 1. view Raspberry Pi products that I might be interested in buying
 2. navigate the site with ease, view products by categories, search for items I am looking for.
 3. view details of the products that I am interested in.
-4. see review of products from other customers, leave my own review
+4. see reviews of products from other customers, leave my own review
 5. add products to my cart as I browse the site and see a running total of the cost.
 6. review the contents of my cart with ability to adjust quantities or remove items before I check out.
 7. have a secure checkout, that ensures my credit card details are safe.
 8. have the ability to create an account and save my details for return visits
-9. confirmation of my order once places and details emailed to me as a record
+9. confirmation of my order once placed and details emailed to me as a record
 
 **Site Owner;**
 
 As the owner I want to;
 1. provide a site that is inviting to customers, easy to use and intuitive to navigate
 2. provide customers with a method to leave reviews on products and view reviews from other customers
-2. allow customers to checkout without needing to register but include the option to to register and save details if they wish to.
+2. allow customers to checkout without needing to register but include the option to register and save details if they wish to.
 3. add new products to the site
 4. be able to edit or remove existing products as required
 5. ensure the site is secure, limit actions based on login profiles (add / edit / delete products | write / edit / delete review)
@@ -83,10 +83,10 @@ to improve the site.
 - - - -
 
 ## **<ins>Features</ins>**
-The site consists od 5 individual apps within the main Django framework. 
+The site consists of 5 individual apps within the main Django framework. 
 - Profile
 
-    Contains the profile page that allows an autenticated customer to save their deliver details and 
+    Contains the profile page that allows an authenticated customer to save their delivery details and 
     view a list of past orders
 
     <details><summary>Profile Page</summary>
@@ -135,14 +135,14 @@ The site consists od 5 individual apps within the main Django framework.
     </details>
     <br>
     
-    3.1. Write a Review The write a review form is integrated into the details form and open using jQuery when the customer wants to write a review. In the review model, it records the user that submits the review and the product it is written for.
+    3.1. Write a Review The write a review form is integrated into the details form and opens using jQuery when the customer wants to write a review. In the review model, it records the user that submits the review and the product it is written for.
 
     <details><summary> Reviews</summary>
         <img src="readme_assets/images/customer_reviews.jpg">
     </details>
     <br>
 
-    3.2. Edit / Delete a review Customers that wrote a review can see two options within their review. Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
+    3.2. Edit / Delete a review: Customers that wrote a review can see two options within their review. Only reviews submitted by the current users have the delete & edit options shown. additionally the views file has a login required check to prevent others circumventing the hidden options.
     Review Options Reviews
 
     <details><summary> Review Options</summary>
@@ -161,7 +161,7 @@ The site consists od 5 individual apps within the main Django framework.
     <br>
 
 - Cart
-    The shopping cart page provides the customer a summary of there items before they move to the checkout scree. While in the cart, the customer can adjust the quantity of any product or remove the product entirely. Once updates are process the customer will see the updated cart totals, shipping cost for their cart before moving to check out. 
+    The shopping cart page provides the customer with a summary of their items before they move to the checkout screen. While in the cart, the customer can adjust the quantity of any product or remove the product entirely. Once updates are process the customer will see the updated cart totals and shipping cost for their cart before moving to check out. 
    
     <details><summary>Cart Page</summary>
         <img src="readme_assets/images/cart_page.jpg">
@@ -170,20 +170,21 @@ The site consists od 5 individual apps within the main Django framework.
 
 - Checkout
     The checkout screen consists of three major elements;
-    1. Deliver Details
+    1. Delivery Details
     
-    A table the customer can provide the hipping address and contact details. 
+    A table for the customer to provide their shipping address and contact details. 
     For a login / registered user this data can be pulled from their profile app.
+    Includes option to save delivery details as default delivery in profile
 
     2. Payment card details
 
-    The payment details form, integrated to Stripe where the customer can securely enter their card details. Card details are sent to stripe for processing and never saved on the sight for security reasons.
+    The payment details form, integrated to Stripe where the customer can securely enter their card details. Card details are sent to stripe for processing and never saved on the site for security reasons.
 
     3. Summary of the order
 
     The checkout page also provides a summary of the order that is being process, the customer can see all the details of what there order consists of and the cost of each product and total cart cost.
 
-    Note: On mobile, the page is rearranged ti better suit mobile, the order summary is moved to the bottom of the screen below the forms. 
+    Note: On mobile, the page is rearranged to better suit mobile, the order summary is moved to the bottom of the screen below the forms. 
 
     <details><summary>Checkout Page</summary>
         <img src="readme_assets/images/checkout_page.jpg">
@@ -191,7 +192,7 @@ The site consists od 5 individual apps within the main Django framework.
     <br>
 
     **Order Successful**
-    Once the order has been successfully process the customers taken to the order successful page. The order number for the placed order is provided, a summary of the order and confirmation that an e-mail with the details have been sent.
+    Once the order has been successfully processed the customer is taken to the order successful page. The order number for the placed order is provided, a summary of the order and confirmation that an e-mail with the details have been sent.
     
     <details><summary>Checkout Success Page</summary>
         <img src="readme_assets/images/checkout_success_page.jpg">
@@ -229,7 +230,7 @@ While the current deployment meet all the requirements from the user stories, th
 - ability to view new products that have been added recently
 
 **Admin**
-- Additional fields in the order model that would allow the team managing the store to indicate when and     order has been picked and shipped allow a view of what orders are still to be actioned.
+- Additional fields in the order model that would allow the team managing the store to indicate when an     order has been picked and shipped and allow a view of what orders are still to be actioned.
 - additional user groups to allow additional store employees to have access to additional features without he need to have superuser access.
 - a newsletter feature that users could signup to, which would allow site owner push regular information to customers to promote products and the store.
 
@@ -281,9 +282,6 @@ The future enhancement features would be the main areas of focus for the next ve
 **Stripe** https://stripe.com
 - For payment processing
 
-**Stripe** https://stripe.com
-- For payment processing
-
 **W3C Validation Service** https://validator.w3.org/
 - HTML & CSS code was checked on W3C validator at the end of the project.
 
@@ -305,7 +303,7 @@ The future enhancement features would be the main areas of focus for the next ve
 ## <ins>Testing</ins>
 
 Testing is documented in the testing.md file.
-Full details of the testing can be found there.
+Full details of the testing are available there.
 
 
 [Index](#Index)
@@ -313,7 +311,7 @@ Full details of the testing can be found there.
 
 ## <ins>Deployment</ins>
 
-This e-commerce stores has been built using gitpod, and using github as the version control. Heroku has been chosen as the cloud environment to deploy the live site. In additional to Heroku, Amazon Web Service (AWS) cloud has been chose to host the static files (css) and media file (product images, etc) which is then linked to the Heroku app.
+This e-commerce store has been built using gitpod, and using github as the version control. Heroku has been chosen as the cloud environment to deploy the live site. In additional to Heroku, Amazon Web Service (AWS) cloud has been chose to host the static files (css) and media file (product images, etc) which is then linked to the Heroku app.
 
 ### <ins>Live_Deployment</ins>
 As we are deploying the site on Heroku and hosting the static and media files on AWS, we will need to set-up both to deploy the site live. The following are the steps to set-up both environments
@@ -333,7 +331,7 @@ Once you have your account set-up, the following steps can be followed to set-up
     > DATABASES = {'default: dj_database_url.parse("place you Heroku DB link here)}
     Heroku DB link can be retrieved from the Settings Tab, under config vars.
 7. Migrate the DB to your production DB.
-    I did not migrate any products and set-up products in the new site, as I only have test date on the development environment
+    I did not migrate any products and set-up products in the new site, as I only have test data on the development environment
     > python3 manage.py showmigrations
     > python3 manage.py migrate
 8. Create a superuser account on the new production DB so you have access to update it.
@@ -355,7 +353,7 @@ Once you have your account set-up, the following steps can be followed to set-up
 14. On Heroku app, deploy tab, link the app to your Github repository.
     You can also enable automatic deploy to pickup any changes pushed to Github.
 
-**Note:** On your Heroku app, you will need all the same config vars hat you are using in development added. Refer to the config vars on your local system and replicate them on Heroku
+**Note:** On your Heroku app, you will need all the same config vars that you are using in development added. Refer to the config vars on your local system and replicate them on Heroku
 
 ### <ins>AWS_S3_Bucket_Set-up</ins>
 
@@ -396,12 +394,12 @@ As the S3 Bucket is now set up you will need to link it to your project.
 
 ### <ins>Local_Deployment</ins>
 
-To Clone the repository; From the Github repository (@ https://github.com/meltaylor78/pie_junkie/blob/master/README.md)
+To Clone the repository; From the Github repository (@ https://github.com/meltaylor78/pie_junkie)
 
-    click on the code button <img src="readme_assets/images/Code_button.jpg"> and copy the link provided.
-    In a Terminal or IDE
-    Change the directory to the desired location on your drive
-    Type git clone, followed by the url you copied above Note: as an alternate, Git also allows the repository to be downloaded as a zip file.
+- click on the code button <img src="readme_assets/images/Code_button.jpg"> and copy the link provided.
+- In a Terminal or IDE
+    - Change the directory to the desired location on your drive
+    - Type git clone, followed by the url you copied above Note: as an alternate, Git also allows the repository to be downloaded as a zip file.
 
 
 [Index](#Index)
@@ -411,7 +409,7 @@ To Clone the repository; From the Github repository (@ https://github.com/meltay
 ### <ins>Acknowledgements</ins>
 | Name | Area | Description |
 | --- | --- | --- |
-| Rahul Lakhanpal | Project Mentor | For all the guidance and input on UK and guiding me through the project with advise and direction. |
+| Rahul Lakhanpal | Project Mentor | For all the guidance and input on UX design and guiding me through the project with advise and direction. |
 | Caroline Taylor | Testing | For help with User Testing and feedback |
 
 
