@@ -25,8 +25,6 @@ All errors have been resolved
 <img src="readme_assets/images/html_validation.jpg">
 
 
-
-
 <details><summary>W3C Error Report</summary>
 
 1. Error: Element li not allowed as child of element nav in this context. (Suppressing further errors from this subtree.)   
@@ -222,21 +220,19 @@ The following issues were found and resolved:
     Updated the message template to € as per site set-up.
 
 ## <ins>Form_Testing</ins>
+The site contains a number of forms, all forms were manually tested to check for the desired out come.
 
-- Add Product
-- Edit Product
-- Product Details 
-    - Add review
-    - Edit Review
-    - Delete Review
-    - Add to Cart
-- Shopping Cart
-    - Edit cart
-- Checkout
-    - Delivery Details
-    - stripe Payment form
-- Profile
-    - Default Deliver Details
+|App|Form|Outcome|
+| --- | --- | --- |
+|Products|Add Product|Passed|
+|Products|Edit Product|Passed|
+|Products|Add review|Passed|
+|Products|Edit Review|Passed|
+|Products|Add to Cart|Passed|
+|Shopping Cart|Edit cart|Passed|
+|Checkout|Delivery Details|Passed|
+|Checkout|Stripe Payment|Passed|
+|Profile|Default Deliver Details|Passed|
 
 
 ## <ins>Lighthouse_Report</ins>
